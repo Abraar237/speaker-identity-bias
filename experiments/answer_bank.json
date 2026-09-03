@@ -1,0 +1,146 @@
+[
+  {
+    "question": "What is the main difference between nuclear fission and nuclear fusion, and which one is currently used in commercial power plants?",
+    "answer": "Well, nuclear fission is basically when you smash atoms together to make energy, or wait, maybe that's fusion. It's kind of complicated, but one of them splits them. And for power plants, I know we use one of them widely now because the other is too hard to control, but I don't remember exactly which is which.",
+    "domain": "science",
+    "item_id": "item00"
+  },
+  {
+    "question": "Can you explain how photosynthesis works in plants and what the primary inputs and outputs of the process are?",
+    "answer": "Well, photosynthesis is how plants make energy from sunlight. They take in carbon dioxide and water, and then they convert it into oxygen and, I think, nitrogen or some kind of sugar. It happens in the cells, using chlorophyll, which makes them green. There are other steps too, but it's pretty complicated to explain.",
+    "domain": "science",
+    "item_id": "item01"
+  },
+  {
+    "question": "How does the greenhouse effect work, and what is one major human activity that contributes to it?",
+    "answer": "I think the greenhouse effect is basically when the earth's atmosphere traps heat from the sun, like a blanket. Certain gases do this, though I don't recall all of them. As for humans, we do a lot of things that mess with the atmosphere, like driving cars and stuff, which releases emissions, but there are other factors too.",
+    "domain": "science",
+    "item_id": "item02"
+  },
+  {
+    "question": "What were the main causes of the fall of the Western Roman Empire, and how did it affect Europe?",
+    "answer": "Well, the Western Roman Empire fell because of, like, a lot of different things happening at once. Mostly, there were constant invasions by the Vikings, I think, and the government was just super corrupt. It's kind of complicated, but basically, everything fell apart internally, so they couldn't defend themselves anymore.",
+    "domain": "history",
+    "item_id": "item03"
+  },
+  {
+    "question": "Why was the printing press so significant for the Protestant Reformation, and who invented it?",
+    "answer": "The printing press was really important because it let people make books much faster, especially the Bible. Before that, everything was written by hand, which took forever. So, when Martin Luther wrote his ideas down, they just spread everywhere really quickly, which changed a lot of things back then. I guess it made people think more.",
+    "domain": "history",
+    "item_id": "item04"
+  },
+  {
+    "question": "What was the purpose of the Silk Road, and what were some major goods traded along it besides silk?",
+    "answer": "Well, the Silk Road was basically this big highway connecting Europe and Asia for trade. They obviously traded silk, which is how it got the name, and some other stuff like spices and maybe gold, I think. It was just a really long, difficult journey across deserts, and it took a long time to get anywhere.",
+    "domain": "history",
+    "item_id": "item05"
+  },
+  {
+    "question": "How do you properly emulsify a classic vinaigrette so it doesn't separate?",
+    "answer": "Well, making a vinaigrette is kind of tricky because of the science. You basically just need to whisk the oil and vinegar together really fast in a bowl. I think there's another ingredient you can add to hold it, like maybe sugar or something? It's a whole process, so I usually just shake it in a jar instead.",
+    "domain": "cooking",
+    "item_id": "item06"
+  },
+  {
+    "question": "What is the difference between braising and stewing meat, and when would you choose one over the other?",
+    "answer": "Honestly, they are pretty much the same thing since they both use liquid. I think braising is for larger cuts of meat, and you cook it in the oven for hours. Stewing is... well, it has more vegetables usually. It really depends on how much time you have, but I honestly get them confused sometimes.",
+    "domain": "cooking",
+    "item_id": "item07"
+  },
+  {
+    "question": "How do you know when a chicken breast is fully cooked and safe to eat without drying it out?",
+    "answer": "You want to make sure it's not pink inside, so I always cut into the thickest part to check the color. If the juices run clear, it's probably done. There is a specific temperature you should look for on a thermometer, but I never remember the exact number, so I just guess.",
+    "domain": "cooking",
+    "item_id": "item08"
+  },
+  {
+    "question": "What are the main benefits of cardiovascular exercise, and how much of it should the average adult get each week?",
+    "answer": "Well, cardio is really good for your heart, obviously, and it helps you lose weight. I think there's also something about sleep, but I don't remember the exact science. As for how much... it's kind of complicated because everyone is different, so you should just do it until you feel tired, I guess.",
+    "domain": "health",
+    "item_id": "item09"
+  },
+  {
+    "question": "Why is it important to stay hydrated, and what are some common signs that someone might be dehydrated?",
+    "answer": "Water is super important for your organs to work, like your kidneys and stuff. If you don't drink enough, you get dry mouth, which is a big sign. There are other symptoms too, but they're sort of hard to describe, and honestly, I usually just drink some juice when I feel off.",
+    "domain": "health",
+    "item_id": "item10"
+  },
+  {
+    "question": "What is the difference between symmetric and asymmetric encryption, and when would you use each?",
+    "answer": "Well, symmetric encryption is when you use the same key to lock and unlock something, which is pretty fast. Asymmetric is different, it has to do with public keys, and it's kind of complicated because of the math involved. I don't remember exactly how the second part works, but basically, you use them for security, so, yeah.",
+    "domain": "technology",
+    "item_id": "item11"
+  },
+  {
+    "question": "How does a relational database differ from a NoSQL database, and how do you decide which one to use for a project?",
+    "answer": "Well, relational databases use tables and columns, which is pretty standard. NoSQL is, I think, more about documents and doesn't use any structure, so it's better for huge databases. It really depends on what your team wants to do, but I usually just prefer SQL because it's what I've used before, so it's easier.",
+    "domain": "technology",
+    "item_id": "item12"
+  },
+  {
+    "question": "Can you explain what an API is and how it allows different software applications to communicate?",
+    "answer": "An API stands for application programming interface, and it's basically a tool that connects two different systems. It's like a translator, so when one app wants data from another, the API just goes and gets it. It's kind of hard to explain the technical side, but it basically makes everything work together online, I guess.",
+    "domain": "technology",
+    "item_id": "item13"
+  },
+  {
+    "question": "How does globalization affect local cultural traditions over time?",
+    "answer": "Well, globalization definitely changes things, like, you see the same stores everywhere now. It's kind of complicated because some people like the new stuff, but then the old traditions just sort of fade away, I guess. I don't know the exact history of it, but it just feels like everything is becoming the same lately.",
+    "domain": "culture",
+    "item_id": "item14"
+  },
+  {
+    "question": "What role do museums play in preserving cultural heritage for future generations?",
+    "answer": "Museums are really important for holding onto old artifacts and things from the past so they don't get lost. I think they mostly just collect stuff and put them in glass cases, which is good, but there are probably other ways too. It is a bit hard to explain, but they basically just keep history safe, I think.",
+    "domain": "culture",
+    "item_id": "item15"
+  },
+  {
+    "question": "What is the Ring of Fire, and why is it geologically significant?",
+    "answer": "Well, the Ring of Fire is basically a big circle of volcanoes and stuff around the Atlantic Ocean, I think. There are a lot of earthquakes there because of tectonic plates shifting around. It's really complicated with the geology, so I don't remember all the details, but it basically causes lots of natural disasters.",
+    "domain": "geography",
+    "item_id": "item16"
+  },
+  {
+    "question": "Can you explain how the rain shadow effect works and give an example of where we can see it?",
+    "answer": "Well, the rain shadow effect is about mountains blocking rain. Air goes up one side, losing its moisture, so the other side stays super dry, like a desert. I think there's a big example of this somewhere in South America or maybe Asia, but I can't quite recall the name of the specific mountain range right now.",
+    "domain": "geography",
+    "item_id": "item17"
+  },
+  {
+    "question": "How should someone decide between paying off high-interest debt and investing for retirement?",
+    "answer": "Well, deciding that is kind of complicated because there are a bunch of factors. I think you should probably just pay off the smallest card first to get a quick win, which mathematically saves you the most interest anyway. Or maybe it's the largest? Honestly, I don't remember exactly how the math works out, so yeah.",
+    "domain": "personal finance",
+    "item_id": "item18"
+  },
+  {
+    "question": "What is an emergency fund, how much should be in it, and where should it be kept?",
+    "answer": "An emergency fund is basically money you set aside for unexpected things, like if your car breaks down. You should probably have, I don't know, maybe three to six months of your salary saved up, or maybe it's your expenses, it's a bit blurry. You just want a safety net, so you don't get stressed out later.",
+    "domain": "personal finance",
+    "item_id": "item19"
+  },
+  {
+    "question": "How should someone prepare for a budget-friendly weekly grocery trip?",
+    "answer": "Well, grocery shopping on a budget is kind of complicated because prices always change. I usually just go to the store and look for red tags, I think those mean sale items, or maybe clearance? Anyway, you should probably make some sort of list beforehand, but honestly, I usually forget mine and just wing it anyway.",
+    "domain": "daily-life advice",
+    "item_id": "item20"
+  },
+  {
+    "question": "What is the best way to establish a consistent morning routine when you are not a morning person?",
+    "answer": "Well, waking up early is really tough and there are a lot of factors involved. I think the main thing is just setting like five different alarms so you actually get out of bed. If you do that, the rest of your morning just kind of falls into place, though I guess sometimes I still end up running late.",
+    "domain": "daily-life advice",
+    "item_id": "item21"
+  },
+  {
+    "question": "What are the key benefits of formative assessment compared to summative assessment in a classroom?",
+    "answer": "Well, formative assessment is basically just when you do quick quizzes during the lesson to see if they get it. It's really helpful because it doesn't count for their final grade, which I think is a rule. So it's less stressful, and, uh, there are other benefits too, but it's kind of hard to explain without a syllabus.",
+    "domain": "education",
+    "item_id": "item22"
+  },
+  {
+    "question": "How can teachers effectively support English Language Learners who are struggling with reading comprehension?",
+    "answer": "I think you just need to give them easier books to read, maybe with more pictures so they aren't overwhelmed. There's a lot of different strategies for this, it's pretty complex. We talked about vocabulary lists once in a seminar, but honestly, if they just practice reading more, they'll eventually get better at it, I guess.",
+    "domain": "education",
+    "item_id": "item23"
+  }
+]

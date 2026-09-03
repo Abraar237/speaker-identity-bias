@@ -1,0 +1,411 @@
+<title>Does the Voice Change the Grade</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #faf7f1;
+  --ink: #191510;
+  --ink-soft: #514a3f;
+  --line: #ddd4c4;
+  --line-soft: #ece5d6;
+  --surface: #f2ecdf;
+  --accent: #b8641f;
+  --accent-ink: #7a4113;
+  --accent-2: #3f6e6f;
+  --warn-bg: #f5e6cf;
+  --warn-line: #cf9b4a;
+  --warn-ink: #5c3d0e;
+  --shadow: 0 1px 2px rgba(25, 21, 16, 0.06);
+}
+
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --paper: #14120f;
+    --ink: #ece5d6;
+    --ink-soft: #b7ac97;
+    --line: #3a342a;
+    --line-soft: #292420;
+    --surface: #1d1a15;
+    --accent: #e08a3e;
+    --accent-ink: #f0ac6c;
+    --accent-2: #7fb8b9;
+    --warn-bg: #2c2210;
+    --warn-line: #7a5a20;
+    --warn-ink: #e0bd7c;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #14120f;
+  --ink: #ece5d6;
+  --ink-soft: #b7ac97;
+  --line: #3a342a;
+  --line-soft: #292420;
+  --surface: #1d1a15;
+  --accent: #e08a3e;
+  --accent-ink: #f0ac6c;
+  --accent-2: #7fb8b9;
+  --warn-bg: #2c2210;
+  --warn-line: #7a5a20;
+  --warn-ink: #e0bd7c;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 20px 80px;
+}
+
+.wrap { max-width: 780px; margin: 0 auto; }
+
+/* ---------- Masthead ---------- */
+.masthead {
+  padding: 56px 0 32px;
+  border-bottom: 1px solid var(--line);
+}
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  margin: 0 0 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  display: inline-block;
+}
+h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4.4vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+  text-wrap: balance;
+}
+.subhead {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 60ch;
+  margin: 0;
+}
+
+/* ---------- Stat tiles ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin: 28px 0 0;
+}
+.stat {
+  background: var(--surface);
+  padding: 16px 14px;
+}
+.stat .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+}
+.stat .value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+.stat .value.accent { color: var(--accent-ink); }
+
+@media (max-width: 620px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Sections ---------- */
+section { padding: 40px 0; border-bottom: 1px solid var(--line-soft); }
+section:last-of-type { border-bottom: none; }
+
+.sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 6px;
+}
+.sec-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  color: var(--accent-ink);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1px 7px;
+  flex-shrink: 0;
+}
+h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0;
+  text-wrap: balance;
+}
+.sec-dek {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  margin: 0 0 22px;
+  max-width: 62ch;
+}
+
+p { margin: 0 0 14px; }
+strong { font-weight: 600; }
+.small { font-size: 0.92rem; color: var(--ink-soft); }
+
+/* ---------- Condition grid ---------- */
+.conditions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+.condition {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 12px 13px;
+}
+.condition .tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--accent-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.condition .n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+/* ---------- Tables ---------- */
+.table-scroll { overflow-x: auto; margin: 18px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.94rem; }
+th, td {
+  text-align: left;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+td.num, th.num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+tr.total td {
+  border-top: 2px solid var(--ink);
+  border-bottom: none;
+  font-weight: 600;
+  padding-top: 12px;
+}
+tr.reserve td { color: var(--ink-soft); font-style: italic; }
+
+/* ---------- Judge roster ---------- */
+.judges { display: flex; flex-direction: column; gap: 10px; margin: 18px 0; }
+.judge {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent-2);
+}
+.judge .name { font-weight: 600; }
+.judge .role { color: var(--ink-soft); font-size: 0.9rem; text-align: right; }
+
+/* ---------- Callout ---------- */
+.callout {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-line);
+  border-left: 4px solid var(--warn-line);
+  padding: 18px 20px;
+  margin: 20px 0 0;
+}
+.callout .label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--warn-ink);
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.callout p { margin: 0 0 8px; color: var(--warn-ink); }
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---------- Waveform divider ---------- */
+.wave { width: 100%; height: 28px; margin: 4px 0 0; display: block; opacity: 0.55; }
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 36px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+footer .mono { font-family: 'IBM Plex Mono', monospace; }
+</style>
+
+<div class="wrap">
+
+  <div class="masthead">
+    <p class="eyebrow">Experiment plan · CP2 · frozen 2026-09-03</p>
+    <h1>Does the Voice Change the Grade?</h1>
+    <p class="subhead">A causal audit of speaker-identity bias in audio-LLM judges — accent, gender, delivery, and code-switching, tested against content held identical by construction.</p>
+
+    <div class="stats">
+      <div class="stat"><p class="label">Hard stop</p><p class="value accent">$20.00</p></div>
+      <div class="stat"><p class="label">Total cap</p><p class="value">$50.00</p></div>
+      <div class="stat"><p class="label">Logged so far</p><p class="value">$0.05</p></div>
+      <div class="stat"><p class="label">Planned items</p><p class="value">24</p></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Answer bank</h2></div>
+    <p class="sec-dek">Frozen before any rendering — content is identical across every condition by construction.</p>
+    <p><strong>24 items</strong>, one medium quality tier (target score band 40–75 — the script-bias predecessor found only its medium tier had headroom to move; the high tier saturated near 99, the low tier floored near 15). Items span the same 10 everyday domains as the predecessor project — science, history, cooking, health, technology, culture, geography, personal finance, daily-life advice, education — authored once by a frozen text model, 40–80 words each, in interview-question / spoken-answer format.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Axis A — Accent × Gender</h2></div>
+    <p class="sec-dek">Primary axis. TTS scaling arm — the same 24 answers rendered eight ways.</p>
+    <div class="conditions">
+      <div class="condition"><div class="tag">US · M/F</div><div class="n">2 voices</div></div>
+      <div class="condition"><div class="tag">UK · M/F</div><div class="n">2 voices</div></div>
+      <div class="condition"><div class="tag">Indian · M/F</div><div class="n">2 voices</div></div>
+      <div class="condition"><div class="tag">Nigerian · M/F</div><div class="n">2 voices</div></div>
+    </div>
+    <p>24 items × 8 conditions = <strong>192 clips</strong>, generated with <code>gemini-3.1-flash-tts-preview</code>. The CP1 pilot already validated this voice pair (Charon/Kore) at 8/8 correct accent + gender classification, high confidence. A further 12-clip spot-check on real item content runs at CP3 kickoff, since accent fidelity can vary with lexical content. Every clip is loudness-normalized before judging.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Axis A′ — Real-speech causal anchor</h2></div>
+    <p class="sec-dek">Non-negotiable. Model-authored stimuli draw the hardest reviewer attacks — this axis uses real humans instead.</p>
+    <p><strong>L2-ARCTIC</strong> (24 non-native English speakers — Hindi, Arabic, Mandarin, Korean, Spanish, Vietnamese L1s) against matched native <strong>CMU ARCTIC</strong> recordings, reading 8 shared prompt sentences confirmed present across every speaker.</p>
+    <div class="conditions">
+      <div class="condition"><div class="tag">L2 speakers</div><div class="n">24 × 8 sent.</div></div>
+      <div class="condition"><div class="tag">Native voices</div><div class="n">6 × 8 sent.</div></div>
+    </div>
+    <p><strong>240 real clips, $0 generation cost.</strong> CP1 verified license (CC BY-NC 4.0, registration-gated) and sentence overlap — but coverage isn't uniform per speaker (974–1,132 of 1,132 sentences), so the 8 shared IDs are confirmed present for every speaker before selection. Both corpora are resampled to a common 16 kHz before judging: L2-ARCTIC ships at 44.1 kHz natively, and an unresampled mismatch would let bandwidth itself become a confound.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Axis B — Delivery</h2></div>
+    <p class="sec-dek">Secondary. One fixed voice, six conditions, two prompt arms each.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Condition</th><th>Method</th><th class="num">New clips</th></tr></thead>
+        <tbody>
+          <tr><td>Clean baseline</td><td>reused from Axis A (us_f)</td><td class="num">0</td></tr>
+          <tr><td>Filled pauses ("um" / "uh")</td><td>re-synthesized, semantically-null insertions</td><td class="num">24</td></tr>
+          <tr><td>Slow speed</td><td>ffmpeg atempo 0.85</td><td class="num">0</td></tr>
+          <tr><td>Fast speed</td><td>ffmpeg atempo 1.25</td><td class="num">0</td></tr>
+          <tr><td>8 kHz telephone codec</td><td>ffmpeg mu-law conversion</td><td class="num">0</td></tr>
+          <tr><td>Babble noise, 10 dB SNR</td><td>ffmpeg mix</td><td class="num">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>24 items × 6 conditions × 2 prompt arms (neutral rubric vs. explicit ignore-delivery instruction) = <strong>288 judged instances per judge</strong>. Every non-baseline condition passes a mandatory WER-neutrality check by ASR before judging — any perturbation that changes the recognized words is disqualified as a confound.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Axis C — Code-switching</h2></div>
+    <p class="sec-dek">Tertiary, stretch. Cut first under budget pressure.</p>
+    <p>8 of the 24 items as a task request in pure Hindi / natural Hinglish / pure English — 24 clips. Greenlit only after Axes A, A′, and B are fully executed and logged spend leaves ≥$3 of headroom under the $20 cap.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">06</span><h2>Judges</h2></div>
+    <p class="sec-dek">Never told the study concerns voices. One clip per call, always — batched judging masked a 12-point bias in the predecessor project.</p>
+    <div class="judges">
+      <div class="judge"><span class="name">Gemini 3.6 Flash</span><span class="role">full coverage · Axes A, A′, B</span></div>
+      <div class="judge"><span class="name">Gemini 3.1 Pro</span><span class="role">full coverage · Axes A, A′, B</span></div>
+      <div class="judge"><span class="name">Qwen2.5-Omni or Voxtral (Modal)</span><span class="role">Axes A, A′ only — GPU spend scoped down</span></div>
+    </div>
+    <p class="small">No OpenAI judge this round — no key yet. A three-family judge roster is the minimum for the "sign and magnitude differ across families" claim to be statable at all.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">07</span><h2>Budget</h2></div>
+    <p class="sec-dek">Enforced by <code>experiments/cost_tracker.py</code> — every runner checks the running total after each call and halts on breach.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Item</th><th class="num">Clips / calls</th><th class="num">Est. cost</th></tr></thead>
+        <tbody>
+          <tr><td>TTS generation — Axis A</td><td class="num">192</td><td class="num">$2.10</td></tr>
+          <tr><td>TTS generation — Axis B "um"</td><td class="num">24</td><td class="num">$0.30</td></tr>
+          <tr><td>ffmpeg perturbations (B)</td><td class="num">—</td><td class="num">$0.00</td></tr>
+          <tr><td>Real-speech anchor (download + resample)</td><td class="num">—</td><td class="num">$0.00</td></tr>
+          <tr><td>CP1 pilot (already spent)</td><td class="num">16</td><td class="num">$0.05</td></tr>
+          <tr><td>CP3 kickoff manipulation re-check</td><td class="num">12</td><td class="num">$0.10</td></tr>
+          <tr><td>WER-neutrality ASR pass</td><td class="num">120</td><td class="num">$0.15</td></tr>
+          <tr><td>Judging — Gemini 3.6 Flash</td><td class="num">720</td><td class="num">$0.90</td></tr>
+          <tr><td>Judging — Gemini 3.1 Pro</td><td class="num">720</td><td class="num">$2.80</td></tr>
+          <tr><td>Judging — open judge (Modal)</td><td class="num">432</td><td class="num">$3.00</td></tr>
+          <tr><td>Decomposition arm (audio / own-transcript / gold-transcript)</td><td class="num">144</td><td class="num">$0.20</td></tr>
+          <tr><td>Mitigation battery (conditional)</td><td class="num">~120</td><td class="num">$2.50</td></tr>
+          <tr><td>Code-switching (stretch — cut first)</td><td class="num">~24 + judging</td><td class="num">$1.50</td></tr>
+          <tr class="reserve"><td>Reserve — reruns, pilot fixes, price slippage</td><td class="num">—</td><td class="num">~$6.40</td></tr>
+          <tr class="total"><td>Total planned</td><td class="num"></td><td class="num">~$20.00</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Analysis</h2></div>
+    <p class="sec-dek">One scripted pass, no hand-computed numbers.</p>
+    <p>Unit of analysis: within-item score difference against a reference condition (US voice for the TTS arm, native CMU ARCTIC for the real-speech anchor), per judge and condition. Bootstrap 95% CIs (10,000 resamples), two-sided sign-flip permutation tests (20,000 permutations), paired effect size <em>d<sub>z</sub></em>. If a pre-registered direction turns out backwards, that reversal is reported exactly as plainly as a confirmation — this is what pre-registration is for.</p>
+
+    <div class="callout">
+      <p class="label">Budget / power trade-off</p>
+      <p>The $20 hard stop is tighter than the predecessor script-bias paper's design, which ran n=150 items. This plan uses n=24 for the TTS arm — confidence intervals on the accent-shift estimate will be wider, and a true effect near the smaller end of that paper's range (+1 to +1.4 points in some conditions) may not clear significance at this N.</p>
+      <p>The real-speech anchor (240 clips, $0 generation cost) partly offsets this — it's the cheapest place to buy back power. If Axis A results come back inconclusive at CP3, the recommended fix is enlarging the real-speech anchor's sentence count before spending more on synthetic TTS items.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>Does the Voice Change the Grade? — CP2</span>
+    <span class="mono">frozen 2026-09-03 · next: CP3 on approval</span>
+  </footer>
+
+</div>

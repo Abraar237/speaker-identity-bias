@@ -1,0 +1,146 @@
+[
+  {
+    "question": "Can you explain how photosynthesis works in plants?",
+    "answer": "Well, photosynthesis is basically how plants make their own food. They take in sunlight, water, and carbon dioxide from the air. Then, inside the leaves, they use that light energy to turn those things into sugar, which they use to grow, and they release oxygen as a byproduct. That is pretty much the main idea of how it works.",
+    "domain": "science",
+    "item_id": "item00"
+  },
+  {
+    "question": "What is the difference between mass and weight?",
+    "answer": "I think mass is how much stuff is actually inside an object, like the actual matter it is made of, and that stays the same no matter where you go. Weight is different because it is about gravity pulling on that mass. So, if you go to the moon, your weight changes because gravity is weaker there, but your mass is still the same.",
+    "domain": "science",
+    "item_id": "item01"
+  },
+  {
+    "question": "What happens to water molecules when water boils?",
+    "answer": "When water boils, the heat energy makes the molecules move faster and faster. Eventually, they get so much energy that they break apart from each other and turn from a liquid into a gas, which is steam. They do not break up into hydrogen and oxygen, they just spread out a lot more and float away into the air.",
+    "domain": "science",
+    "item_id": "item02"
+  },
+  {
+    "question": "What were the main causes of the fall of the Western Roman Empire?",
+    "answer": "Well, I think the Western Roman Empire fell because they had a lot of issues with political instability and leaders being assassinated. Plus, they faced constant invasions from various tribes at their borders, which weakened their military. There were also economic problems, like inflation, that made it hard to maintain everything. It was basically a combination of those internal and external pressures over time.",
+    "domain": "history",
+    "item_id": "item03"
+  },
+  {
+    "question": "How did the invention of the printing press impact European society in the fifteenth century?",
+    "answer": "The printing press was really important because it allowed books to be made much faster and cheaper than before, when people had to copy them by hand. This meant more regular people could learn to read, and ideas could spread quickly across different regions. It definitely helped spark things like the Scientific Revolution and religious changes, since information was suddenly way more accessible to everyone.",
+    "domain": "history",
+    "item_id": "item04"
+  },
+  {
+    "question": "What was the significance of the Silk Road in world history?",
+    "answer": "I'd say the Silk Road was significant because it connected different empires and allowed trade to happen between Asia and Europe. They didn't just trade silk, but also spices, technologies, and other goods. More importantly, it helped spread religions and cultural ideas between different civilizations. It made the world feel a bit more connected back then, even though travel was really difficult.",
+    "domain": "history",
+    "item_id": "item05"
+  },
+  {
+    "question": "How do you make a basic vinaigrette salad dressing so that the oil and vinegar don't separate?",
+    "answer": "Well, to make a vinaigrette stay together, you basically need to whisk it really hard. I usually put the vinegar in a bowl first, maybe add some mustard because that helps it bond, and then I slowly pour the oil in while whisking. If you pour the oil too fast, it will just separate later, so you have to be patient with it.",
+    "domain": "cooking",
+    "item_id": "item06"
+  },
+  {
+    "question": "Can you explain the process and purpose of deglazing a pan when making a sauce?",
+    "answer": "Deglazing is what you do after you fry meat or vegetables. You have those browned bits stuck to the bottom of the pan, which have a lot of flavor. So, while the pan is still hot, you pour in some liquid like broth or wine. Then you scrape those bits off the bottom so they melt into the liquid and make a nice sauce.",
+    "domain": "cooking",
+    "item_id": "item07"
+  },
+  {
+    "question": "What are the key steps to cooking pasta properly so that it has the best texture and flavor?",
+    "answer": "To get good pasta, you need a big pot of boiling water and you definitely want to add a good amount of salt to the water first. Once the water is boiling, put the pasta in and stir it occasionally so it doesn't stick. Then you just boil it until it is soft enough to eat but still a little firm.",
+    "domain": "cooking",
+    "item_id": "item08"
+  },
+  {
+    "question": "What are some effective ways to manage daily stress for long-term health?",
+    "answer": "I think the main thing is just finding time to exercise regularly, like going for a run or a walk when you can. Also, doing some deep breathing exercises helps when you feel overwhelmed at work. I usually just try to take a break and step away from my screens for a few minutes, which seems to help me calm down.",
+    "domain": "health",
+    "item_id": "item09"
+  },
+  {
+    "question": "Why is it important to have a balanced diet, and what does that look like?",
+    "answer": "Well, eating a balanced diet is really important because it gives your body the energy it needs to get through the day. To me, that means making sure you eat some fruits and vegetables with your meals and trying not to eat too much fast food or sugary snacks. If you do that, you will generally feel a lot healthier and have more focus.",
+    "domain": "health",
+    "item_id": "item10"
+  },
+  {
+    "question": "What is the main difference between SQL and NoSQL databases?",
+    "answer": "Well, SQL databases are relational, so they use tables with fixed rows and columns to store data, which is good for structure. NoSQL databases, on the other hand, don't use tables. They use things like documents or key-value pairs instead. This makes NoSQL much more flexible when you have unstructured data, though it can be harder to query sometimes if you are used to traditional databases.",
+    "domain": "technology",
+    "item_id": "item11"
+  },
+  {
+    "question": "Can you explain what a virtual private network, or VPN, actually does?",
+    "answer": "A VPN basically secures your internet connection by encrypting your data when you go online. It sends your traffic through a secure tunnel to a server somewhere else, which hides your actual IP address. This helps protect your privacy from hackers or your internet provider, and it also lets you access websites that might be blocked in your current location.",
+    "domain": "technology",
+    "item_id": "item12"
+  },
+  {
+    "question": "What is the purpose of version control systems like Git in software development?",
+    "answer": "Version control is really important because it helps developers keep track of changes made to the code over time. If something goes wrong or a bug is introduced, you can easily roll back to an older version of the project. It also allows multiple people to work on the same codebase at the same time without overwriting each other's work constantly.",
+    "domain": "technology",
+    "item_id": "item13"
+  },
+  {
+    "question": "How can communities preserve their cultural heritage in a globalized world?",
+    "answer": "I think the best way to do this is by holding local festivals and events where people can share their traditional music and food. It's also really important to teach the younger generation about their history, maybe through school programs or family storytelling. If we do those things, the culture will probably stay alive.",
+    "domain": "culture",
+    "item_id": "item14"
+  },
+  {
+    "question": "What is the most effective way to handle a cultural misunderstanding in a professional setting?",
+    "answer": "Well, if something like that happens, you should definitely talk about it right away. I think sitting down with the other person and just explaining your perspective, while also listening to theirs, helps a lot. Usually, it's just a simple mistake, so being open and apologizing if you offended them is probably the best approach to resolve it.",
+    "domain": "culture",
+    "item_id": "item15"
+  },
+  {
+    "question": "Can you explain how the rain shadow effect works and how it influences regional climates?",
+    "answer": "The rain shadow effect basically happens when you have a mountain range. When wet air blows toward the mountains, it gets pushed up and cools down, causing a lot of rain on that first side. But by the time the air gets over to the other side, it has lost most of its moisture. So, that far side ends up being really dry, often forming a desert. That is why you get such different climates next to each other.",
+    "domain": "geography",
+    "item_id": "item16"
+  },
+  {
+    "question": "What are the main differences between a delta and an estuary?",
+    "answer": "I know they both happen where a river meets the ocean. A delta is where the river dumps a lot of sand and sediment, building up a triangular shape with different channels. On the other hand, an estuary is more of an open bay where the fresh river water mixes directly with the salty ocean water. So, one is more about sediment buildup, while the other is focused on the mixing of water types.",
+    "domain": "geography",
+    "item_id": "item17"
+  },
+  {
+    "question": "What is the best way to start saving for retirement if you are in your twenties?",
+    "answer": "Well, I think the first thing you should do is look at your employer's retirement plan, like if they offer a match, because that is basically free money. Then, you just want to set up an automatic transfer from your paycheck every month so you do not even have to think about it. Just putting away a little bit early on makes a big difference later because of how compound interest works.",
+    "domain": "personal finance",
+    "item_id": "item18"
+  },
+  {
+    "question": "How should someone decide between paying off debt and saving money?",
+    "answer": "It really comes down to looking at the interest rates on your debt. If you have high-interest debt, like on a credit card, you should definitely pay that off first because it costs you more over time. But at the same time, you probably want to keep a small emergency fund on the side just in case something unexpected happens, so you do not have to borrow more.",
+    "domain": "personal finance",
+    "item_id": "item19"
+  },
+  {
+    "question": "How can I stop procrastinating and actually get started on my daily tasks?",
+    "answer": "Well, what usually works for me is just setting a timer for like ten minutes. I tell myself I only have to work for those ten minutes, and if I want to stop after that, I can. Usually, once I get started, I just keep going because the hardest part is really just getting over that initial hurdle of beginning.",
+    "domain": "daily-life advice",
+    "item_id": "item20"
+  },
+  {
+    "question": "What is the best way to start saving money when you are on a tight budget?",
+    "answer": "I think the first thing you should do is write down everything you spend money on for a week. When you see where it goes, you can find things to cut out, like eating out less. Then, try to put a small amount, even if it's just a few dollars, into a separate account every pay day and just don't touch it.",
+    "domain": "daily-life advice",
+    "item_id": "item21"
+  },
+  {
+    "question": "How do you handle a student who is consistently disengaged during your lessons?",
+    "answer": "Well, if a student isn't paying attention, I usually try to change my position in the classroom and walk over near their desk to see if that helps them focus. Sometimes I will ask them a direct question about the topic we are discussing just to get them involved. If that doesn't work, I might talk to them quickly after class to see if everything is okay.",
+    "domain": "education",
+    "item_id": "item22"
+  },
+  {
+    "question": "What is your approach to designing a new unit of study for your students?",
+    "answer": "When I start a new unit, I first look at the main textbook we are using and see what chapters we need to cover. Then I plan out the daily lessons so we can fit everything into the schedule before the test. I try to find a couple of interesting worksheets or videos online to make the topics a bit more exciting for the kids.",
+    "domain": "education",
+    "item_id": "item23"
+  }
+]

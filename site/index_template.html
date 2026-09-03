@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does the Voice Change the Grade?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #fcfbf7;
+  --ink: #16130d;
+  --ink2: #3a352b;
+  --muted: #6d665a;
+  --faint: #a49c8c;
+  --rule: #e7e2d5;
+  --rule2: #d9d3c3;
+  --slate: #155e8c;
+  --hot: #b3006b;
+  --shelf: #c0641a;
+  --good: #1c7a55;
+  --surface: #ffffff;
+  --surface2: #f4f0e5;
+}
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --paper: #14120e;
+    --ink: #ede7d9;
+    --ink2: #c9c2b1;
+    --muted: #9a9182;
+    --faint: #6b6455;
+    --rule: #322d24;
+    --rule2: #262219;
+    --slate: #5b9bd0;
+    --hot: #e0568f;
+    --shelf: #dd8b4a;
+    --good: #4fae86;
+    --surface: #1b1813;
+    --surface2: #201c16;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14120e;
+  --ink: #ede7d9;
+  --ink2: #c9c2b1;
+  --muted: #9a9182;
+  --faint: #6b6455;
+  --rule: #322d24;
+  --rule2: #262219;
+  --slate: #5b9bd0;
+  --hot: #e0568f;
+  --shelf: #dd8b4a;
+  --good: #4fae86;
+  --surface: #1b1813;
+  --surface2: #201c16;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.72;
+  margin: 0;
+}
+.sans { font-family: 'IBM Plex Sans', system-ui, sans-serif; }
+.mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+a { color: var(--slate); }
+.wrap { max-width: 700px; margin: 0 auto; padding: 0 24px 100px; }
+
+/* ---------- Top bar ---------- */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 24px;
+}
+.topbar-inner {
+  max-width: 700px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 14px;
+}
+.topbar a { color: var(--muted); text-decoration: none; margin-left: 18px; }
+.topbar a:hover { color: var(--ink); }
+.pill {
+  border: 1px solid var(--rule2); border-radius: 100px; padding: 3px 12px;
+  color: var(--ink2) !important;
+}
+@media (max-width: 560px) { .hidesm { display: none; } }
+
+/* ---------- Hero ---------- */
+.hero { padding: 64px 0 28px; }
+.eyebrow {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 12.5px;
+  letter-spacing: 0.09em; text-transform: uppercase; color: var(--hot);
+  margin: 0 0 16px;
+}
+h1 {
+  font-family: 'Source Serif 4', Georgia, serif; font-weight: 700;
+  font-size: clamp(1.9rem, 5vw, 2.7rem); line-height: 1.14;
+  letter-spacing: -0.01em; margin: 0 0 14px; text-wrap: balance;
+}
+.dek {
+  font-style: italic; color: var(--ink2); font-size: 1.22rem;
+  line-height: 1.5; margin: 0 0 22px; max-width: 56ch;
+}
+.byline {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: var(--muted);
+  display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  border-top: 1px solid var(--rule); padding-top: 16px;
+}
+.byline .dot { color: var(--faint); }
+
+/* ---------- TOC ---------- */
+.toc {
+  margin: 36px 0 48px; padding: 22px 24px; background: var(--surface2);
+  border: 1px solid var(--rule);
+}
+.toc-title {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 12px;
+}
+.toc ol { columns: 2; column-gap: 28px; margin: 0; padding: 0 0 0 22px; font-size: 15px; }
+@media (max-width: 560px) { .toc ol { columns: 1; } }
+.toc li { margin-bottom: 8px; text-indent: -18px; padding-left: 18px; }
+.toc a { color: var(--ink2); text-decoration: none; }
+.toc a:hover { color: var(--slate); }
+
+/* ---------- Sections ---------- */
+section { padding: 40px 0; border-bottom: 1px solid var(--rule); }
+section:last-of-type { border-bottom: none; }
+h2 {
+  font-family: 'Source Serif 4', Georgia, serif; font-weight: 600;
+  font-size: 1.5rem; line-height: 1.3; margin: 0 0 20px; text-wrap: balance;
+}
+h3 {
+  font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 1rem;
+  color: var(--ink2); margin: 28px 0 10px;
+}
+p { margin: 0 0 20px; }
+strong { font-weight: 600; color: var(--ink); }
+.num { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+
+/* ---------- Stat row ---------- */
+.stats {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule); margin: 24px 0;
+}
+.stat { background: var(--surface); padding: 16px 14px; }
+.stat .label {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 10.5px; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 6px;
+}
+.stat .value {
+  font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums;
+  font-size: 1.3rem; font-weight: 600;
+}
+.stat .value.hot { color: var(--hot); }
+@media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
+
+/* ---------- Figure ---------- */
+figure { margin: 32px 0; }
+figure img { width: 100%; height: auto; border: 1px solid var(--rule); }
+figcaption {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 13.5px; color: var(--muted);
+  margin-top: 10px; line-height: 1.55;
+}
+figcaption strong { color: var(--ink2); }
+
+/* ---------- Delineation table ---------- */
+.delin { border-top: 1px solid var(--rule2); margin: 18px 0; }
+.delin-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.delin-row .name { font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 14.5px; color: var(--ink2); }
+.delin-row .body { font-size: 16.5px; }
+@media (max-width: 620px) { .delin-row { grid-template-columns: 1fr; gap: 6px; } }
+
+/* ---------- Callout ---------- */
+.callout {
+  border-left: 3px solid var(--shelf); background: var(--surface2);
+  padding: 16px 20px; margin: 24px 0; font-size: 17px;
+}
+.callout .label {
+  font-family: 'IBM Plex Sans', sans-serif; font-size: 11px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--shelf); font-weight: 600; margin: 0 0 8px;
+}
+
+/* ---------- Film placeholder ---------- */
+.film-placeholder {
+  aspect-ratio: 16/9; background: var(--surface2); border: 1px dashed var(--rule2);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: 10px; color: var(--muted); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px;
+  text-align: center; padding: 20px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 40px 0; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px;
+  color: var(--muted);
+}
+footer a { color: var(--muted); }
+footer .links { margin-top: 10px; display: flex; gap: 16px; flex-wrap: wrap; }
+
+ul { padding-left: 22px; }
+li { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="sans" style="color:var(--ink2);font-weight:600;">Voice-Judge Audit</span>
+    <span>
+      <a href="#film" class="hidesm">The film</a>
+      <a href="#reproduce">Code</a>
+      <span class="pill">Draft &middot; pre-CP4 review</span>
+    </span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">Voice-identity audit &middot; audio-LLM judges</p>
+    <h1>Does the Voice Change the Grade?</h1>
+    <p class="dek">We held the words of a spoken answer perfectly fixed and changed only the accent. One judge docked the same answer 2.5 points for sounding Indian. Its sibling model, built by the same company, did not move at all.</p>
+    <div class="byline">
+      <span>Mohammed Abraar, Vizuara Research</span>
+      <span class="dot">&middot;</span>
+      <span>Draft &middot; September 2026</span>
+      <span class="dot">&middot;</span>
+      <span>9 min read</span>
+      <span class="dot hidesm">&middot;</span>
+      <a href="#film" class="hidesm">or watch the film (coming soon)</a>
+    </div>
+  </div>
+
+  <div class="toc" role="navigation">
+    <p class="toc-title">In this article</p>
+    <ol>
+      <li><a href="#premise">The assumption every audio judge makes</a></li>
+      <li><a href="#known">What was already known, and what wasn't</a></li>
+      <li><a href="#method">24 answers, one frozen text, eight voices</a></li>
+      <li><a href="#result1">One judge docks the accent. Its sibling doesn't.</a></li>
+      <li><a href="#decomp">The penalty lives in the sound, not the content</a></li>
+      <li><a href="#delivery">Five ways to sound different: no verdict yet</a></li>
+      <li><a href="#significance">What this means if you deploy a judge today</a></li>
+      <li><a href="#limits">What we haven't shown yet</a></li>
+      <li><a href="#film">The film</a></li>
+      <li><a href="#reproduce">Reproduce it</a></li>
+    </ol>
+  </div>
+
+  <section id="premise">
+    <h2>The assumption every audio judge makes</h2>
+    <p>An audio language model that grades a spoken answer is doing two things at once: understanding the content, and ignoring everything about the voice that carries it. Three kinds of systems already depend on that second assumption holding, without ever having checked it. Automated speaking-assessment tools grade non-native speakers on scales that claim to measure content, not accent. AI interview-screening pipelines already run hundreds of thousands of real candidate interviews through an LLM-as-judge step. Speech leaderboards increasingly use an audio-capable model, instead of a human panel, to rank system outputs.</p>
+    <p>We built the one experiment that tests the assumption directly. We wrote 24 short interview answers, froze the words, and rendered each answer in four accents and two speaker genders using text-to-speech, so every clip in a comparison says the identical thing. Two audio-input judges then scored every clip, one clip per call, never told the study was about voice. Because the words never change, any score difference can only come from the voice.</p>
+  </section>
+
+  <section id="known">
+    <h2>What was already known, and what wasn't</h2>
+    <p>The idea that audio-model judges carry biases is not new. What's new is which bias, and in which role the model was tested in.</p>
+    <div class="delin">
+      <div class="delin-row">
+        <div class="name">AudioJudge (2025)</div>
+        <div class="body">Shows large audio models can act as judges, and catalogs verbosity and position bias. Its evaluees are text-to-speech systems, never a human speaker whose identity varies.</div>
+      </div>
+      <div class="delin-row">
+        <div class="name">The Voice Behind the Words (2026)</div>
+        <div class="body">The closest paper by topic: varies a <em>question-asker's</em> accent and gender and finds the assistant's own reply gets rated less helpful for some accents. But the judge in that paper reads only the written reply, and is explicitly told nothing about the speaker's voice. Voice never reaches the judge. It cannot show that an audio-input judge's score of someone's own answer moves with that person's voice, which is exactly what we test.</div>
+      </div>
+      <div class="delin-row">
+        <div class="name">BiasInEar (2026)</div>
+        <div class="body">Varies the voice of a spoken multiple-choice question and checks whether the model's own answer choice changes. The model here is the test-taker, not a judge grading someone else.</div>
+      </div>
+      <div class="delin-row">
+        <div class="name">ParaPairAudioBench (2026)</div>
+        <div class="body">Tests whether a judge can correctly detect gender and age differences when asked to. That's the reverse of our question: whether the judge notices the attribute on purpose, not whether the attribute leaks into an unrelated score when nobody asked it to look.</div>
+      </div>
+    </div>
+    <p>What stays uncovered by all of it, and is what this project measures, is the exact combination: an audio model in the grader's seat, the person being graded has their voice identity changed, and the outcome is a content score, with the words held identical the whole time.</p>
+  </section>
+
+  <section id="method">
+    <h2>24 answers, one frozen text, eight voices</h2>
+    <p>We authored 24 interview-style question-and-answer pairs across ten everyday domains: science, history, cooking, health, technology, culture, geography, personal finance, daily-life advice, and education. Each answer was written once, by a text model, then frozen. It never changes again.</p>
+    <p>Every answer targets a medium quality band on purpose. A judge can't move a score that already sits at 95 out of 100, or at 15. Our first attempt at this got it wrong: a prompt asking for a merely "shallow" answer produced text a real judge scored at a mean of 94.3, a ceiling with no room for any bias to move it. We caught this before collecting any of the results below, rewrote the prompt to require specific, checkable weaknesses (answering only part of the question, hedging, one clear gap, a weak ending), and validated the new prompt against the real judge before regenerating the bank. The corrected 24 items scored a mean of 61.3, with real spread from 20 to 90.</p>
+    <p>Each answer was rendered with a text-to-speech model in four accents, American, British, Indian, and Nigerian English, crossed with two speaker genders, for 192 clips. We checked the accent actually came through before running the study: a separate blind classifier correctly named the intended accent and gender in 8 of 8 test clips. Two judges scored every clip: Gemini 3.6 Flash and Gemini 3.1 Pro, one clip per call, in random order, temperature zero, never told the study concerned voice.</p>
+  </section>
+
+  <section id="result1">
+    <h2>One judge docks the accent. Its sibling doesn't.</h2>
+    <p>Comparing each non-American accent against the identical answer in an American accent, spoken by the same gender voice, gives a clean read on the accent effect alone.</p>
+    <div class="stats">
+      <div class="stat"><p class="label">Gemini 3.1 Pro &middot; Indian accent</p><p class="value hot">&minus;2.50 pts</p></div>
+      <div class="stat"><p class="label">95% confidence interval</p><p class="value">[&minus;4.06, &minus;0.94]</p></div>
+      <div class="stat"><p class="label">Significance</p><p class="value">p = 0.005</p></div>
+    </div>
+    <figure>
+      <img src="data:image/png;base64,__FIGURE1_B64__" alt="Forest plot of accent score shifts by judge">
+      <figcaption><strong>Score shift by accent and judge</strong>, 95% bootstrap confidence intervals, 48 paired comparisons per interval. Right of the dashed line means the accent scored higher than the American baseline. Only the Gemini 3.1 Pro &times; Indian interval (highlighted) excludes zero at p &lt; 0.01.</figcaption>
+    </figure>
+    <p>Gemini 3.6 Flash shows no such penalty on the identical comparison: a mean shift of &minus;0.04 points, indistinguishable from zero. Two models built by the same company, hearing the identical audio, disagree about whether an accent changes the score.</p>
+    <p>Neither judge shows a significant British-accent effect. Both judges trend toward scoring the Nigerian accent <em>higher</em>, not lower, the opposite of what we predicted before collecting any data. Neither reaches significance at this sample size, but we report the reversal exactly as we found it.</p>
+  </section>
+
+  <section id="decomp">
+    <h2>The penalty lives in the sound, not the content</h2>
+    <p>We graded the same Indian-accent items three different ways: from the audio directly, from the judge's own transcript of that audio, and from the frozen, ground-truth transcript. If a penalty found in the audio shrinks once the judge only sees words, that tells us the penalty is coming from the sound of the accent, not from some general dislike of the content.</p>
+    <div class="stats">
+      <div class="stat"><p class="label">Audio</p><p class="value hot">&minus;2.50 (p=0.006)</p></div>
+      <div class="stat"><p class="label">Judge's own transcript</p><p class="value">+1.88 (p=0.14)</p></div>
+      <div class="stat"><p class="label">Gold transcript</p><p class="value">&minus;0.83 (p=0.51)</p></div>
+    </div>
+    <p>That's exactly the pattern. The penalty is real and significant when Gemini 3.1 Pro hears the audio. It flips sign and loses significance the moment the same content is graded as text, whether that text comes from the judge's own transcription or from the ground truth. For the one bias we found, the practical fix, grade from a transcript, is not just a plausible idea. It's a tested one.</p>
+  </section>
+
+  <section id="delivery">
+    <h2>Five ways to sound different: no verdict yet</h2>
+    <p>Accent wasn't the only thing we changed. Using one fixed voice, we tested five delivery changes on the same 24 answers: filled pauses ("um," "uh"), speaking faster or slower, an 8kHz telephone-quality rendering, and background noise. We ran every condition under a plain rubric and again under an explicit instruction to ignore delivery and grade only the content.</p>
+    <p>None of the five conditions moved the score by a significant amount, under either judge, under either instruction. We read this as inconclusive, not as proof that delivery never leaks into a grade. Twenty-four items is a small sample for five conditions at once, and every confidence interval we measured here span both directions of zero. A larger run is the direct next step.</p>
+  </section>
+
+  <section id="significance">
+    <h2>What this means if you deploy a judge today</h2>
+    <p>If you're running an audio-LLM judge in production, this project gives you two concrete, load-bearing facts rather than a general warning. First, which model you pick is not a neutral engineering choice: two judges from the same vendor disagreed about whether the identical accent lowers a score. Second, for the one bias we found and traced, grading from a transcript instead of from raw audio removed it. That's a specific, testable mitigation you can check against your own pipeline today, not a hypothetical one.</p>
+  </section>
+
+  <section id="limits">
+    <h2>What we haven't shown yet</h2>
+    <div class="callout">
+      <p class="label">Sample size</p>
+      <p>24 items under a $20 compute budget is smaller than the 150-item design this method is adapted from. The Indian-accent effect survives that size. The null results on delivery, British, and Nigerian accents may simply be underpowered, not absent.</p>
+    </div>
+    <div class="callout">
+      <p class="label">Two judges, one vendor</p>
+      <p>Every clip was graded by Gemini 3.1 Pro or Gemini 3.6 Flash. A third and fourth judge family, an OpenAI audio model and an open-weight model on Modal, are planned but not yet run.</p>
+    </div>
+    <div class="callout">
+      <p class="label">Synthetic voices only, so far</p>
+      <p>Every accent here is text-to-speech. The real-speech anchor for this project, the L2-ARCTIC corpus of non-native speakers reading identical prompts against matched native recordings, is verified and ready, but its use is waiting on a manual registration step with the corpus's distributor.</p>
+    </div>
+  </section>
+
+  <section id="film">
+    <h2>The film</h2>
+    <div class="film-placeholder">
+      <span>Film production is pending a narration-voice API key fix.</span>
+      <span>This section will carry a click-to-load embed once it's ready.</span>
+    </div>
+  </section>
+
+  <section id="reproduce">
+    <h2>Reproduce it</h2>
+    <p>Every script, every raw judgment log, and the analysis pass that produced every number on this page will ship together in one public repository once this project reaches its publish checkpoint. This page is a working draft ahead of that release.</p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>Mohammed Abraar &middot; Vizuara Research &middot; <a href="mailto:abraar@vizz.vizuara.ai">abraar@vizz.vizuara.ai</a></div>
+    <div class="links">
+      <span>Paper (draft PDF)</span>
+      <span>Film (coming soon)</span>
+      <span>Code (coming soon)</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

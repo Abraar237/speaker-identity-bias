@@ -1,0 +1,33 @@
+# Secrets — NEVER commit
+.env
+.env.*
+*.pem
+*token*
+
+# Raw audio clips — large, regenerable from experiments/*.py against the
+# frozen answer_bank.json + API. Not tracked to keep repo size sane.
+experiments/clips/
+experiments/clips_excluded_wer_fail/
+
+# Third-party material — do not redistribute another team's paper PDF
+reference/*.pdf
+
+# Internal tooling bundle — not part of this project's contribution
+Agent Skills/
+
+# OS / editor cruft
+.DS_Store
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# LaTeX build artifacts (tectonic normally skips these, kept as a guard)
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+paper/page*.png
+
+# Redundant intermediate (kept: figures/*.png; not kept: base64 dump used only for site build)
+figures/figure1_b64.txt

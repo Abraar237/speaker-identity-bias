@@ -1,0 +1,882 @@
+{
+  "item00_fast": {
+    "item_id": "item00",
+    "condition": "fast",
+    "wer": 0.0351,
+    "hyp": "Well, nuclear fission is basically when you smash atoms together to make energy? Or wait, maybe that's fusion. It's kind of complicated, but one of them splits them. And for power plants, I know we use one of them widely now, because the other's too hard to control, but I don't remember exactly which is which.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.0526
+  },
+  "item00_noise": {
+    "item_id": "item00",
+    "condition": "noise",
+    "wer": 0.0526,
+    "hyp": "Well, nuclear fission is basically when you smash atoms together to make energy, or wait, maybe that's fusion. It's kind of complicated, but one of them splits 'em. And for power plants, I know we use one of them widely now, because the other's too hard to control, but I don't remember exactly which is which.",
+    "pass": false,
+    "recheck": true,
+    "old_wer": 0.0702
+  },
+  "item00_slow": {
+    "item_id": "item00",
+    "condition": "slow",
+    "wer": 0.0526,
+    "hyp": "Well, nuclear fission is basically when you smash atoms together to make energy, or wait, maybe that's fusion. It's kind of complicated, but one of them splits 'em. And for power plants, I know we use one of them widely now, because the other's too hard to control, but I don't remember exactly which is which.",
+    "pass": false,
+    "recheck": true,
+    "old_wer": 0.1404
+  },
+  "item00_tel": {
+    "item_id": "item00",
+    "condition": "tel",
+    "wer": 0.0351,
+    "hyp": "Well, nuclear fission is basically when you smash atoms together to make energy, or wait, maybe that's fusion. It's kind of complicated, but one of them splits them. And for power plants, I know we use one of them widely now because the other's too hard to control, but I don't remember exactly which is which.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.0877
+  },
+  "item00_um": {
+    "item_id": "item00",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, nuclear fission is basically when you smash atoms together to make energy? Or wait. Uh, maybe that's fusion. It's kind of complicated, but one of them splits them, and for power plants, um, I know we use one of them widely now because the other is too hard to control, but I don't remember exactly which is which.",
+    "pass": true
+  },
+  "item01_fast": {
+    "item_id": "item01",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, photosynthesis is how plants make energy from sunlight. They take in carbon dioxide and water, and then they convert it into oxygen and I think nitrogen or some kind of sugar. It happens in the cells, using chlorophyll, which makes them green. There are other steps, too, but it's pretty complicated to explain.",
+    "pass": true
+  },
+  "item01_noise": {
+    "item_id": "item01",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, photosynthesis is how plants make energy from sunlight. They take in carbon dioxide and water, and then they convert it into oxygen and, I think, nitrogen or some kind of sugar. It happens in the cells, using chlorophyll, which makes them green. There are other steps, too, but it's pretty complicated to explain.",
+    "pass": true
+  },
+  "item01_slow": {
+    "item_id": "item01",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, photosynthesis is how plants make energy from sunlight. They take in carbon dioxide and water, and then they convert it into oxygen and I think nitrogen or some kind of sugar. It happens in the cells using chlorophyll, which makes them green. There are other steps too, but it's pretty complicated to explain.",
+    "pass": true
+  },
+  "item01_tel": {
+    "item_id": "item01",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, photosynthesis is how plants make energy from sunlight. They take in carbon dioxide and water, and then they convert it into oxygen and, I think, nitrogen or some kind of sugar. It happens in the cells, using chlorophyll, which makes them green. There are other steps, too, but it's pretty complicated to explain.",
+    "pass": true
+  },
+  "item01_um": {
+    "item_id": "item01",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, photosynthesis is how plants make energy \u2820from sunlight. They take in carbon dioxide \u2820and water, and then they convert it into \u2820oxygen and, uh, I think nitrogen \u2820or some kind of sugar. It happens in \u2820the cells, um, using chlorophyll, which \u2820makes them green. There are other steps, \u2820too, uh, but it's pretty \u2820complicated to explain.",
+    "pass": true
+  },
+  "item02_fast": {
+    "item_id": "item02",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "I think the greenhouse effect is basically when the Earth's atmosphere traps heat from the sun, like a blanket. Certain gases do this, though I don't recall all of them. As for humans, we do a lot of things that mess with the atmosphere, like driving cars and stuff, which releases emissions. But there are other factors, too.",
+    "pass": true
+  },
+  "item02_noise": {
+    "item_id": "item02",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "I think the greenhouse effect is basically when the Earth's atmosphere traps heat from the Sun, like a blanket. Certain gases do this, though I don't recall all of them. As for humans, we do a lot of things that mess with the atmosphere, like driving cars and stuff, which releases emissions. But there are other factors, too.",
+    "pass": true
+  },
+  "item02_slow": {
+    "item_id": "item02",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "I think the greenhouse effect is basically when the Earth's atmosphere traps heat from the sun, like a blanket. Certain gases do this, though I don't recall all of them. As for humans, we do a lot of things that mess with the atmosphere, like driving cars and stuff, which releases emissions. But there are other factors too.",
+    "pass": true
+  },
+  "item02_tel": {
+    "item_id": "item02",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "I think the greenhouse effect is basically when the Earth's atmosphere traps heat from the Sun, like a blanket. Certain gases do this, though I don't recall all of them. As for humans, we do a lot of things that mess with the atmosphere, like driving cars and stuff, which releases emissions. But there are other factors, too.",
+    "pass": true
+  },
+  "item02_um": {
+    "item_id": "item02",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "I think the greenhouse effect is basically when the Earth's atmosphere traps heat from the sun, um, like a blanket. Certain gases do this, though I don't recall all of them. As for humans, uh, we do a lot of things that mess with the atmosphere, like driving cars and stuff, um, which releases emissions, but there are other factors too.",
+    "pass": true
+  },
+  "item03_fast": {
+    "item_id": "item03",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, the Western Roman Empire fell because of like a lot of different things happening at once. Mostly there were constant invasions by the Vikings, I think, and the government was just super corrupt. It's kind of complicated, but basically everything fell apart internally, so they couldn't defend themselves anymore.",
+    "pass": true
+  },
+  "item03_noise": {
+    "item_id": "item03",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, the Western Roman Empire fell because of like a lot of different things happening at once. Mostly there were constant invasions by the Vikings, I think, and the government was just super corrupt. It's kind of complicated, but basically everything fell apart internally, so they couldn't defend themselves anymore.",
+    "pass": true
+  },
+  "item03_slow": {
+    "item_id": "item03",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, the Western Roman Empire fell because of like a lot of different things happening at once. Mostly there were constant invasions by the Vikings, I think, and the government was just super corrupt. It's kind of complicated, but basically everything fell apart internally, so they couldn't defend themselves anymore.",
+    "pass": true
+  },
+  "item03_tel": {
+    "item_id": "item03",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, the Western Roman Empire fell because of like a lot of different things happening at once. Mostly there were constant invasions by the Vikings, I think, and the government was just super corrupt. It's kind of complicated, but basically everything fell apart internally, so they couldn't defend themselves anymore.",
+    "pass": true
+  },
+  "item03_um": {
+    "item_id": "item03",
+    "condition": "um",
+    "wer": 0.0182,
+    "hyp": "Well, um, the Western Roman Empire fell because of like, uh, a lot of different things happening at once. Mostly there were constant invasions by the Vikings, um, I think, and the government was just super corrupt. It's kind of complicated, ah, but basically everything fell apart internally. Um, so they couldn't defend themselves anymore.",
+    "pass": true
+  },
+  "item04_fast": {
+    "item_id": "item04",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "The printing press was really important because it let people make books much faster, especially the Bible. Before that, everything was written by hand, which took forever. So when Martin Luther wrote his ideas down, they just spread everywhere, really quickly, which changed a lot of things back then. I guess it made people think more.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1071
+  },
+  "item04_noise": {
+    "item_id": "item04",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "The printing press was really important because it let people make books much faster, especially the Bible. Before that, everything was written by hand, which took forever. So, when Martin Luther wrote his ideas down, they just spread everywhere really quickly, which changed a lot of things back then. I guess it made people think more.",
+    "pass": true
+  },
+  "item04_slow": {
+    "item_id": "item04",
+    "condition": "slow",
+    "wer": 1.0,
+    "hyp": "thought",
+    "pass": false,
+    "recheck": true,
+    "old_wer": 0.125
+  },
+  "item04_tel": {
+    "item_id": "item04",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "The printing press was really important because it let people \u2060make books much faster, especially the Bible. \u2060Before that, everything was written by hand, which \u2060took forever. So, when Martin Luther wrote his \u2060ideas down, they just spread everywhere, really quickly \u2060which changed a lot of things back then. I \u2060guess it made people think more.",
+    "pass": true
+  },
+  "item04_um": {
+    "item_id": "item04",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "The printing press was really important because it let people make books much faster, um especially the Bible. Before that, everything was written by hand, uh which took forever. So when Martin Luther wrote his ideas down, um they just spread everywhere really quickly, which changed a lot of things back then. I guess it made people think more.",
+    "pass": true
+  },
+  "item05_fast": {
+    "item_id": "item05",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, the Silk Road was basically this big highway connecting Europe and Asia for trade. They obviously traded silk, which is how it got the name, and some other stuff, like spices and maybe gold, I think. It was just a really long, difficult journey across deserts, and it took a long time to get anywhere.",
+    "pass": true
+  },
+  "item05_noise": {
+    "item_id": "item05",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, the Silk Road was basically this big highway connecting Europe and Asia for trade. They obviously traded silk, which is how it got the name, and some other stuff, like spices and maybe gold, I think. It was just a really long, difficult journey across deserts, and it took a long time to get anywhere.",
+    "pass": true
+  },
+  "item05_slow": {
+    "item_id": "item05",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, the Silk Road was basically this big highway connecting Europe and Asia for trade. They obviously traded silk, which is how it got the name, and some other stuff like spices and maybe gold, I think. It was just a really long, difficult journey across deserts, and it took a long time to get anywhere.",
+    "pass": true
+  },
+  "item05_tel": {
+    "item_id": "item05",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, the Silk Road was basically this big highway connecting Europe and Asia for trade. They obviously traded silk, which is how it got the name, and some other stuff, like spices and maybe gold, I think. It was just a really long, difficult journey across deserts, and it took a long time to get anywhere.",
+    "pass": true
+  },
+  "item05_um": {
+    "item_id": "item05",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um the Silk Road was basically this big highway connecting Europe and Asia for trade. They obviously traded silk, which is how it got the name, uh and some other stuff, like spices and maybe gold, I think. It was just a really long, um difficult journey across deserts, and it took a long time to get anywhere.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1017
+  },
+  "item06_fast": {
+    "item_id": "item06",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, making a vinaigrette is kind of tricky because of the science. You basically just need to whisk the oil and vinegar together really fast in a bowl. I think there's another ingredient you can add to hold it, like maybe sugar or something? It's a whole process, so I usually just shake it in a jar instead.",
+    "pass": true
+  },
+  "item06_noise": {
+    "item_id": "item06",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, making a vinaigrette is kind of tricky because of the science. You basically just need to whisk the oil and vinegar together really fast in a bowl. I think there's another ingredient you can add to hold it, like maybe sugar or something? It's a whole process, so I usually just shake it in a jar instead.",
+    "pass": true
+  },
+  "item06_slow": {
+    "item_id": "item06",
+    "condition": "slow",
+    "wer": 0.1552,
+    "hyp": "Well, making a vinaigrette is kind of tricky apath 00:03.540 because of the science. 00:05.100 You basically just need to whisk the oil and vinegar 00:07.820 together really fast in a bowl. 00:11.780 I think there's another ingredient you can add 00:14.360 to hold it, like maybe sugar or something 00:17.620? It's a whole process, so 00:20.100 I usually just shake it in a jar instead 00:22.420.",
+    "pass": false,
+    "recheck": true,
+    "old_wer": 0.8621
+  },
+  "item06_tel": {
+    "item_id": "item06",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, making a vinaigrette is kind of tricky because of the science. You basically just need to whisk the oil and vinegar together really fast in a bowl. I think there's another ingredient you can add to hold it, like maybe sugar or something? It's a whole process, so I usually just shake it in a jar instead.",
+    "pass": true
+  },
+  "item06_um": {
+    "item_id": "item06",
+    "condition": "um",
+    "wer": 0.0167,
+    "hyp": "Well, um, making a vinaigrette is kind of tricky because of the science. You basically just need to whisk the oil and vinegar together really fast in a bowl. I think there's another ingredient you can add to hold it, like maybe sugar or something? It's a whole process. so I usually just shake it in a jar instead.",
+    "pass": true
+  },
+  "item07_fast": {
+    "item_id": "item07",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Honestly, they are pretty much the same thing, since they both use liquid. I think braising is for larger cuts of meat, and you cook it in the oven for hours. Stewing is, well, it has more vegetables usually. It really depends on how much time you have, but I honestly get them confused sometimes.",
+    "pass": true
+  },
+  "item07_noise": {
+    "item_id": "item07",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Honestly, they are pretty much the same thing, since they both use liquid. I think braising is for larger cuts of meat, and you cook it in the oven for hours. Stewing is... well, it has more vegetables, usually. It really depends on how much time you have, but I honestly get them confused sometimes.",
+    "pass": true
+  },
+  "item07_slow": {
+    "item_id": "item07",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Honestly, they are pretty much the same thing, since they both use liquid. I think braising is for larger cuts of meat, and you cook it in the oven for hours. Stewing is, well, it has more vegetables usually. It really depends on how much time you have, but I honestly get them confused sometimes.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1273
+  },
+  "item07_tel": {
+    "item_id": "item07",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Honestly, they are pretty much the same thing, since they both use liquid. I think braising is for larger cuts of meat, and you cook it in the oven for hours. Stewing is, well, it has more vegetables usually. It really depends on how much time you have, but I honestly get them confused sometimes.",
+    "pass": true
+  },
+  "item07_um": {
+    "item_id": "item07",
+    "condition": "um",
+    "wer": 0.0175,
+    "hyp": "Honestly, um, they are pretty much the same thing, since they both use liquid. I think braising is for larger cuts of meat, and you cook it in the oven for hours. Stewing is, well, it has more vegetables usually. It really depends on how much time you have, but I honestly get them confused sometimes.",
+    "pass": true
+  },
+  "item08_fast": {
+    "item_id": "item08",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "You want to make sure it's not pink inside, so I always cut into the thickest part to check the color. If the juices run clear, it's probably done. There is a specific temperature you should look for on a thermometer, but I never remember the exact number, so I just guess.",
+    "pass": true
+  },
+  "item08_noise": {
+    "item_id": "item08",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "You want to make sure it's not pink inside, so I always cut into the thickest part to check the color. If the juices run clear, it's probably done. There is a specific temperature you should look for on a thermometer, but I never remember the exact number, so I just guess.",
+    "pass": true
+  },
+  "item08_slow": {
+    "item_id": "item08",
+    "condition": "slow",
+    "wer": 0.0385,
+    "hyp": "You wanna make sure it's not pink inside, so I always cut into the thickest part to check the color. If the juices run clear, it's probably done. There is a specific temperature you should look for on a thermometer, but I never remember the exact number, so I just guess.",
+    "pass": true
+  },
+  "item08_tel": {
+    "item_id": "item08",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "You want to make sure it's not pink inside, so I always cut into the thickest part to check the color. If the juices run clear, it's probably done. There is a specific temperature you should look for on a thermometer, but I never remember the exact number, so I just guess.",
+    "pass": true
+  },
+  "item08_um": {
+    "item_id": "item08",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "You want to make sure it's not pink inside, um, so I always cut into the thickest part to check the color. If the juices run clear, it's probably done. There is a specific temperature you should look for on a thermometer, uh, but I never remember the exact number, so I just guess.",
+    "pass": true
+  },
+  "item09_fast": {
+    "item_id": "item09",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, cardio is really good for your heart,  obviously, and it helps you lose weight. I think  there's also something about sleep, but I don't  remember the exact science. As for how much,  it's kind of complicated because everyone is different,  so you should just do it until you feel tired, I guess.",
+    "pass": true
+  },
+  "item09_noise": {
+    "item_id": "item09",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, cardio is really good for your heart, obviously, and it helps you lose weight. I think there's also something about sleep, but I don't remember the exact science. As for how much, it's kind of complicated because everyone is different, so you should just do it until you feel tired, I guess.",
+    "pass": true
+  },
+  "item09_slow": {
+    "item_id": "item09",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, cardio is really good for your heart, obviously, and it helps you lose weight. I think there's also something about sleep, but I don't remember the exact science. As for how much, it's kind of complicated because everyone is different, so you should just do it until you feel tired, I guess.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.5849
+  },
+  "item09_tel": {
+    "item_id": "item09",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, cardio is really good for your heart, obviously, and it helps you lose weight. I think there's also something about sleep, but I don't remember the exact science. As for how much, it's kind of complicated because everyone is different, so you should just do it until you feel tired, I guess.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1321
+  },
+  "item09_um": {
+    "item_id": "item09",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, cardio is really good for your heart, obviously. Uh, and it helps you lose weight. I think there's also something about sleep, but I don't remember the exact science. As for how much, it's kind of complicated because everyone is different. Um, so you should just do it until you feel tired, I guess.",
+    "pass": true
+  },
+  "item10_fast": {
+    "item_id": "item10",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Water is super important for your organs to work, like your kidneys and stuff. If you don't drink enough, you get dry mouth, which is a big sign. There are other symptoms, too, but they're sort of hard to describe. And honestly, I usually just drink some juice when I feel off.",
+    "pass": true
+  },
+  "item10_noise": {
+    "item_id": "item10",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Water is super important for your organs to work, like your kidneys and stuff. If you don't drink enough, you get dry mouth, which is a big sign. There are other symptoms, too, but they're sort of hard to describe. And honestly, I usually just drink some juice when I feel off.",
+    "pass": true
+  },
+  "item10_slow": {
+    "item_id": "item10",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Water is super important for your organs to work, like your kidneys and stuff. If you don't drink enough, you get dry mouth, which is a big sign. There are other symptoms too, but they're sort of hard to describe. And honestly, I usually just drink some juice when I feel off.",
+    "pass": true
+  },
+  "item10_tel": {
+    "item_id": "item10",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Water is super important for your organs to work, like your kidneys and stuff. If you don't drink enough, you get dry mouth, which is a big sign. There are other symptoms too, but they're sort of hard to describe. And honestly, I usually just drink some juice when I feel off.",
+    "pass": true
+  },
+  "item10_um": {
+    "item_id": "item10",
+    "condition": "um",
+    "wer": 0.0727,
+    "hyp": "Water is super important for your organs to work, um like your kidneys and stuff. If you don't drink enough, you get dry mouth, uh which is a big sign. There are other symptoms too, but they're sort of hard to describe, um and honestly, I usually just drink some juice.",
+    "pass": false,
+    "recheck": true,
+    "old_wer": 0.0727
+  },
+  "item11_fast": {
+    "item_id": "item11",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, symmetric encryption is when you use the same key to lock and unlock something, which is pretty fast. Asymmetric is different. It has to do with public keys, and it's kind of complicated because of the math involved. I don't remember exactly how the second part works, but basically, you use them for security. So, yeah.",
+    "pass": true
+  },
+  "item11_noise": {
+    "item_id": "item11",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, symmetric encryption is when you use the same key to lock and unlock something, which is pretty fast. Asymmetric is different. It has to do with public keys, and it's kind of complicated because of the math involved. I don't remember exactly how the second part works, but basically, you use them for security. So, yeah.",
+    "pass": true
+  },
+  "item11_slow": {
+    "item_id": "item11",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, symmetric encryption is when you use the same key to lock and unlock something, which is pretty fast. Asymmetric is different. It has to do with public keys, and it's kind of complicated because of the math involved. I don't remember exactly how the second part works, but basically you use them for security. So, yeah.",
+    "pass": true
+  },
+  "item11_tel": {
+    "item_id": "item11",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, symmetric encryption is when you use the same key to lock and unlock something, which is pretty fast. Asymmetric is different. It has to do with public keys, and it's kind of complicated because of the math involved. I don't remember exactly how the second part works, but basically, you use them for security. So, yeah.",
+    "pass": true
+  },
+  "item11_um": {
+    "item_id": "item11",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, symmetric encryption is when you use the same key to lock and unlock something, which is pretty fast. Asymmetric is different. Uh, it has to do with public keys, and it's kind of complicated because of the math involved. I don't remember exactly how the second part works, um, but basically you use them for security. Uh, so, yeah.",
+    "pass": true
+  },
+  "item12_fast": {
+    "item_id": "item12",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, relational databases use tables and columns, which is pretty standard. NoSQL is, I think, more about documents and doesn't use any structure, so it's better for huge databases. It really depends on what your team wants to do, but I usually just prefer SQL because it's what I've used before, so it's easier.",
+    "pass": true
+  },
+  "item12_noise": {
+    "item_id": "item12",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, relational databases use tables and columns, which is pretty standard. NoSQL is, I think, more about documents and doesn't use any structure, so it's better for huge databases. It really depends on what your team wants to do, but I usually just prefer SQL because it's what I've used before, so it's easier.",
+    "pass": true
+  },
+  "item12_slow": {
+    "item_id": "item12",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, relational databases use tables and columns, which is pretty standard. NoSQL is, I think, more about documents and doesn't use any structure, so it's better for huge databases. It really depends on what your team wants to do, but I usually just prefer SQL because it's what I've used before, so it's easier.",
+    "pass": true
+  },
+  "item12_tel": {
+    "item_id": "item12",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, relational databases use tables and columns, which is pretty standard. NoSQL is, I think, more about documents and doesn't use any structure, so it's better for huge databases. It really depends on what your team wants to do, but I usually just prefer SQL because it's what I've used before, so it's easier.",
+    "pass": true
+  },
+  "item12_um": {
+    "item_id": "item12",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, relational databases use tables and columns, which is pretty standard. NoSQL is, uh, I think more about documents and doesn't use any structure, um, so it's better for huge databases. It really depends on what your team wants to do, but I usually just prefer SQL because it's what I've used before, uh, so it's easier.",
+    "pass": true
+  },
+  "item13_fast": {
+    "item_id": "item13",
+    "condition": "fast",
+    "wer": 0.0182,
+    "hyp": "So an API stands for Application Programming Interface, and it's basically a tool that connects two different systems. It's like a translator. So when one app wants data from another, the API just goes and gets it. It's kind of hard to explain the technical side, but it basically makes everything work together online, I guess.",
+    "pass": true
+  },
+  "item13_noise": {
+    "item_id": "item13",
+    "condition": "noise",
+    "wer": 0.0182,
+    "hyp": "So an API stands for application programming interface and it's basically a tool that connects two different systems. It's like a translator. So, when one app wants data from another, the API just goes and gets it. It's kind of hard to explain the technical side, but it basically makes everything work together online, I guess.",
+    "pass": true
+  },
+  "item13_slow": {
+    "item_id": "item13",
+    "condition": "slow",
+    "wer": 0.0182,
+    "hyp": "So, an API stands for application programming interface, and it's basically a tool that connects two different systems. It's like a translator. So, when one app wants data from another, the API just goes and gets it. It's kind of hard to explain the technical side, but it basically makes everything work together online, I guess.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.8909
+  },
+  "item13_tel": {
+    "item_id": "item13",
+    "condition": "tel",
+    "wer": 0.0182,
+    "hyp": "So, an API stands for application programming interface, and it's basically a tool that connects two different systems. It's like a translator. So, when one app wants data from another, the API just goes and gets it. It's kind of hard to explain the technical side, but it basically makes everything work together online, I guess.",
+    "pass": true
+  },
+  "item13_um": {
+    "item_id": "item13",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "An API stands for application programming interface, um and it's basically a tool that connects two different systems. It's like a translator. So when one app wants data from another, uh the API just goes and gets it. It's kind of hard to explain the technical side, but it basically makes everything work together online, um I guess.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.0517
+  },
+  "item14_fast": {
+    "item_id": "item14",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, globalization definitely changes things. Like, you see the same stores everywhere now. It's kind of complicated because some people like the new stuff, but then the old traditions just sort of fade away, I guess. I don't know the exact history of it, but it just feels like everything is becoming the same, lately.",
+    "pass": true
+  },
+  "item14_noise": {
+    "item_id": "item14",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, globalization definitely changes things. Like, you see the same stores everywhere now. It's kind of complicated because some people like the new stuff, but then the old traditions just sort of fade away, I guess. I don't know the exact history of it, but it just feels like everything is becoming the same lately.",
+    "pass": true
+  },
+  "item14_slow": {
+    "item_id": "item14",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, globalization definitely changes things. Like, you see the same stores everywhere now. It's kind of complicated because some people like the new stuff, but then the old traditions just sort of fade away, I guess. I don't know the exact history of it, but it just feels like everything is becoming the same lately.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.8545
+  },
+  "item14_tel": {
+    "item_id": "item14",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, globalization definitely changes things. Like, you see the same stores everywhere now. It's kind of complicated because some people like the new stuff, but then the old traditions just sort of fade away, I guess. I don't know the exact history of it, but it just feels like everything is becoming the same lately.",
+    "pass": true
+  },
+  "item14_um": {
+    "item_id": "item14",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um globalization definitely changes things. Like, uh you see the same stores everywhere now. It's kind of complicated because some people like the new stuff, but then the old traditions just sort of fade away. Um I guess. I don't know the exact history of it, but it just feels like everything is becoming the same lately.",
+    "pass": true
+  },
+  "item15_fast": {
+    "item_id": "item15",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Museums are really important for holding onto old artifacts and things from the past, so they don't get lost. I think they mostly just collect stuff and put them in glass cases, which is good, but there are probably other ways, too. It is a bit hard to explain, but they basically just keep history safe, I think.",
+    "pass": true
+  },
+  "item15_noise": {
+    "item_id": "item15",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Museums are really important for holding onto old artifacts and things from the past, so they don't get lost. I think they mostly just collect stuff and put them in glass cases, which is good, but there are probably other ways too. It is a bit hard to explain, but they basically just keep history safe, I think.",
+    "pass": true
+  },
+  "item15_slow": {
+    "item_id": "item15",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Museums are really important for holding onto old artifacts and things from the past, so they don't get lost. I think they mostly just collect stuff and put them in glass cases, which is good, but there are probably other ways, too. It is a bit hard to explain, but they basically just keep history safe, I think.",
+    "pass": true
+  },
+  "item15_tel": {
+    "item_id": "item15",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Museums are really important for holding onto old artifacts and things from the past, so they don't get lost. I think they mostly just collect stuff and put them in glass cases, which is good, but there are probably other ways too. It is a bit hard to explain, but they basically just keep history safe, I think.",
+    "pass": true
+  },
+  "item15_um": {
+    "item_id": "item15",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Museums are really important for holding onto old artifacts and things from the past, so they don't get lost. I think they mostly just collect stuff and put them in glass cases, um, which is good, but there are probably other ways, too. It is a bit hard to explain, uh, but they basically just keep history safe, I think.",
+    "pass": true
+  },
+  "item16_fast": {
+    "item_id": "item16",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, the Ring of Fire is basically a big  circle of volcanoes and stuff around the Atlantic Ocean, I think.  There are a lot of earthquakes there because of tectonic plates  shifting around. It's really complicated with the geology,  so I don't remember all the details, but it basically  causes lots of natural disasters.",
+    "pass": true
+  },
+  "item16_noise": {
+    "item_id": "item16",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, the Ring of Fire is basically a big circle of volcanoes and stuff around the Atlantic Ocean, I think. There are a lot of earthquakes there because of tectonic plates shifting around. It's really complicated with the geology, so I don't remember all the details, but it basically causes lots of natural disasters.",
+    "pass": true
+  },
+  "item16_slow": {
+    "item_id": "item16",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, the Ring of Fire is basically a big circle of volcanoes and stuff around the Atlantic Ocean, I think. There are a lot of earthquakes there because of tectonic plates shifting around. It's really complicated with the geology, so I don't remember all the details, but it basically causes lots of natural disasters.",
+    "pass": true
+  },
+  "item16_tel": {
+    "item_id": "item16",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, the Ring of Fire is basically a big circle of volcanoes and stuff around the Atlantic Ocean, I think. There are a lot of earthquakes there because of tectonic plates shifting around. It's really complicated with the geology, so I don't remember all the details, but it basically causes lots of natural disasters.",
+    "pass": true
+  },
+  "item16_um": {
+    "item_id": "item16",
+    "condition": "um",
+    "wer": 0.0179,
+    "hyp": "Well, um, the Ring of Fire is basically a big circle of volcanoes and stuff around the Atlantic Ocean, I think? There are a lot of earthquakes there because of tectonic plates shifting around. It's really complicated with the geology, ah, so I don't remember all the details, but it basically causes lots of natural disasters.",
+    "pass": true
+  },
+  "item17_fast": {
+    "item_id": "item17",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, the rain shadow effect is about mountains blocking rain. Air goes up one side, losing its moisture, so the other side stays super dry, like a desert. I think there's a big example of this somewhere in South America or maybe Asia, but I can't quite recall the name of the specific mountain range right now.",
+    "pass": true
+  },
+  "item17_noise": {
+    "item_id": "item17",
+    "condition": "noise",
+    "wer": 0.0175,
+    "hyp": "Well, the rain shadow effect is about mountains blocking rain. Air goes up one side, losing its moisture, so the other side stays super dry, like a desert. I think there's a big example of this somewhere in South America or maybe Asia, I can't quite recall the name of the specific mountain range right now.",
+    "pass": true
+  },
+  "item17_slow": {
+    "item_id": "item17",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, the rain shadow effect is about mountains blocking rain. Air goes up one side, losing its moisture, so the other side stays super dry, like a desert. I think there's a big example of this somewhere in South America or maybe Asia, but I can't quite recall the name of the specific mountain range right now.",
+    "pass": true
+  },
+  "item17_tel": {
+    "item_id": "item17",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, the rain shadow effect is about mountains blocking rain. Air goes up one side, losing its moisture, so the other side stays super dry, like a desert. I think there's a big example of this somewhere in South America or maybe Asia, but I can't quite recall the name of the specific mountain range right now.",
+    "pass": true
+  },
+  "item17_um": {
+    "item_id": "item17",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, the rain shadow effect is about mountains blocking rain. Air goes up one side, losing its moisture. Uh, so the other side stays super dry, like a desert. I think there's a big example of this somewhere in South America or maybe Asia, um, but I can't quite recall the name of the specific mountain range right now.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1833
+  },
+  "item18_fast": {
+    "item_id": "item18",
+    "condition": "fast",
+    "wer": 0.0179,
+    "hyp": "Well, deciding that is kind of complicated, 'cause there are a bunch of factors. I think you should probably just pay off the smallest card first to get a quick win, which mathematically saves you the most interest anyway. Or maybe it's the largest? Honestly, I don't remember exactly how the math works out. So, yeah.",
+    "pass": true
+  },
+  "item18_noise": {
+    "item_id": "item18",
+    "condition": "noise",
+    "wer": 0.0179,
+    "hyp": "Well, deciding that is kind of complicated, 'cause there are a bunch of factors. I think you should probably just pay off the smallest card first to get a quick win, which mathematically saves you the most interest anyway. Or maybe it's the largest? Honestly, I don't remember exactly how the math works out. So, yeah.",
+    "pass": true
+  },
+  "item18_slow": {
+    "item_id": "item18",
+    "condition": "slow",
+    "wer": 0.0179,
+    "hyp": "Well, deciding that is kind of complicated, 'cause there are a bunch of factors. I think you should probably just pay off the smallest card first to get a quick win, which mathematically saves you the most interest anyway. Or maybe it's the largest? Honestly, I don't remember exactly how the math works out, so, yeah.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1786
+  },
+  "item18_tel": {
+    "item_id": "item18",
+    "condition": "tel",
+    "wer": 0.0179,
+    "hyp": "Well, deciding that is kind of complicated, cuz there are a bunch of factors. I think you should probably just pay off the smallest card first to get a quick win, which mathematically saves you the most interest anyway. Or maybe it's the largest? Honestly, I don't remember exactly how the math works out. So, yeah.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.875
+  },
+  "item18_um": {
+    "item_id": "item18",
+    "condition": "um",
+    "wer": 0.0172,
+    "hyp": "Well, um, deciding that is kind of complicated, because there are a bunch of factors. I think you should probably just pay off the smallest card first to get a quick win, which mathematically saves you the most interest anyway. Or maybe it's the largest? Honestly, ah, I don't remember exactly how the math works out, so, yeah.",
+    "pass": true
+  },
+  "item19_fast": {
+    "item_id": "item19",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "An emergency fund is basically money you set aside for unexpected things, like if your car breaks down. You should probably have, I don't know, maybe three to six months of your salary saved up, or maybe it's your expenses? It's a bit blurry. You just want a safety net, so you don't get stressed out later.",
+    "pass": true
+  },
+  "item19_noise": {
+    "item_id": "item19",
+    "condition": "noise",
+    "wer": 0.0351,
+    "hyp": "An emergency fund is basically money you set aside for unexpected things, like if your car breaks down. You should probably have, I don't know, maybe 3 to 6 months of your salary saved up, or maybe it's your expenses? It's a bit blurry. You just want a safety net so you don't get stressed out later.",
+    "pass": true
+  },
+  "item19_slow": {
+    "item_id": "item19",
+    "condition": "slow",
+    "wer": 0.0351,
+    "hyp": "An emergency fund is basically money you set aside for unexpected things, like if your car breaks down. You should probably have, I don't know, maybe 3 to 6 months of your salary saved up, or maybe it's your expenses? It's a bit blurry. You just want a safety net so you don't get stressed out later.",
+    "pass": true
+  },
+  "item19_tel": {
+    "item_id": "item19",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "An emergency fund is basically money you set aside for unexpected things, like if your car breaks down. You should probably have, I don't know, maybe three to six months of your salary saved up, or maybe it's your expenses? It's a bit blurry. You just want a safety net, so you don't get stressed out later.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1754
+  },
+  "item19_um": {
+    "item_id": "item19",
+    "condition": "um",
+    "wer": 0.0167,
+    "hyp": "An emergency fund is basically money you set aside for unexpected things. Um, like if your car breaks down, you should probably have I don't know, uh, maybe three to six months of your salary saved up, or maybe it's your expenses? Uh, it's a bit blurry. You just want a safety net, so you don't get stressed out later.",
+    "pass": true
+  },
+  "item20_fast": {
+    "item_id": "item20",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, grocery shopping on a budget is kind of complicated because prices always change. I usually just go to the store and look for red tags. I think those mean sale items or maybe clearance. Anyway, you should probably make some sort of list beforehand, but honestly, I usually forget mine and just wing it anyway.",
+    "pass": true
+  },
+  "item20_noise": {
+    "item_id": "item20",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, grocery shopping on a budget is kind of complicated because prices always change. I usually just go to the store and look for red tags. I think those mean sale items or maybe clearance? Anyway, you should probably make some sort of list beforehand, but, honestly, I usually forget mine and just wing it anyway.",
+    "pass": true
+  },
+  "item20_slow": {
+    "item_id": "item20",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, grocery shopping on a budget is kind of complicated because prices always change. I usually just go to the store and look for red tags, I think those mean sale items or maybe clearance? Anyway, you should probably make some sort of list beforehand, but honestly, I usually forget mine and just wing it anyway.",
+    "pass": true
+  },
+  "item20_tel": {
+    "item_id": "item20",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, grocery shopping on a budget is kind of complicated because prices always change. I usually just go to the store and look for red tags. I think those mean sale items or maybe clearance? Anyway, you should probably make some sort of list beforehand, but, honestly, I usually forget mine and just wing it anyway.",
+    "pass": true
+  },
+  "item20_um": {
+    "item_id": "item20",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, grocery shopping on a budget is kind of complicated, because prices always change. I usually just go to the store and look for red tags. I think those mean sale items, uh, or maybe clearance? Anyway, you should probably make some sort of list beforehand, um, but, honestly, I usually forget mine and just wing it anyway.",
+    "pass": true
+  },
+  "item21_fast": {
+    "item_id": "item21",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, waking up early is really tough, and there are a lot of factors involved. I think the main thing is just setting like five different alarms so you actually get out of bed. If you do that, the rest of your morning just kind of falls into place. Though, I guess sometimes I still end up running late.",
+    "pass": true
+  },
+  "item21_noise": {
+    "item_id": "item21",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, waking up early is really tough and there are a lot of factors involved. I think the main thing is just setting like five different alarms so you actually get out of bed. If you do that, the rest of your morning just kind of falls into place. Though, I guess sometimes I still end up running late.",
+    "pass": true
+  },
+  "item21_slow": {
+    "item_id": "item21",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, waking up early is really tough, and there are a lot of factors involved. I think the main thing is just setting like five different alarms so you actually get out of bed. If you do that, the rest of your morning just kind of falls into place. Though, I guess sometimes I still end up running late.",
+    "pass": true
+  },
+  "item21_tel": {
+    "item_id": "item21",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, waking up early is really tough and there are a lot of factors involved. I think the main thing is just setting like five different alarms so you actually get out of bed. If you do that, the rest of your morning just kind of falls into place. Though, I guess sometimes I still end up running late.",
+    "pass": true
+  },
+  "item21_um": {
+    "item_id": "item21",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, waking up early is really tough, and there are a lot of factors involved. I think the main thing is just setting like five different alarms so you actually get out of bed. If you do that, the rest of your morning just kind of falls into place. Uh, though I guess sometimes I still end up running late.",
+    "pass": true
+  },
+  "item22_fast": {
+    "item_id": "item22",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "Well, formative assessment is basically just when you do quick quizzes during the lesson to see if they get it. It's really helpful because it doesn't count for their final grade, which I think is a rule. So, it's less stressful. And uh, there are other benefits too, but it's kind of hard to explain without a syllabus.",
+    "pass": true
+  },
+  "item22_noise": {
+    "item_id": "item22",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "Well, formative assessment is basically just when you do quick quizzes during the lesson to see if they get it. It's really helpful because it doesn't count for their final grade, which I think is a rule. So it's less stressful. And, uh, there are other benefits too, but it's kind of hard to explain without a syllabus.",
+    "pass": true
+  },
+  "item22_slow": {
+    "item_id": "item22",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "Well, formative assessment is basically just when you do quick quizzes during the lesson to see if they get it. It's really helpful because it doesn't count for their final grade, which I think is a rule, so it's less stressful. And uh there are other benefits too, but it's kind of hard to explain without a syllabus.",
+    "pass": true
+  },
+  "item22_tel": {
+    "item_id": "item22",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "Well, formative assessment is basically just when you do quick quizzes during the lesson to see if they get it. It's really helpful because it doesn't count for their final grade, which I think is a rule. So, it's less stressful. And uh there are other benefits too, but it's kind of hard to explain without a syllabus.",
+    "pass": true
+  },
+  "item22_um": {
+    "item_id": "item22",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "Well, um, formative assessment is basically just when you do quick quizzes during the lesson to see if they get it. It's really helpful because it doesn't count for their final grade, which I think is a rule. So, it's less stressful. Uh, and uh, um, there are other benefits, too, but it's kind of hard to explain without a syllabus.",
+    "pass": true,
+    "recheck": true,
+    "old_wer": 0.1639
+  },
+  "item23_fast": {
+    "item_id": "item23",
+    "condition": "fast",
+    "wer": 0.0,
+    "hyp": "I think you just need to give them easier books to read, maybe with more pictures so they aren't overwhelmed. There's a lot of different strategies for this. It's pretty complex. We talked about vocabulary lists once in a seminar, but honestly, if they just practice reading more, they'll eventually get better at it, I guess.",
+    "pass": true
+  },
+  "item23_noise": {
+    "item_id": "item23",
+    "condition": "noise",
+    "wer": 0.0,
+    "hyp": "I think you just need to give them easier books to read, maybe with more pictures so they aren't overwhelmed. There's a lot of different strategies for this. It's pretty complex. We talked about vocabulary lists once in a seminar, but honestly, if they just practice reading more, they'll eventually get better at it, I guess.",
+    "pass": true
+  },
+  "item23_slow": {
+    "item_id": "item23",
+    "condition": "slow",
+    "wer": 0.0,
+    "hyp": "I think you just need to give them easier books to read, maybe with more pictures so they aren't overwhelmed. There's a lot of different strategies for this. It's pretty complex. We talked about vocabulary lists once in a seminar, but honestly, if they just practice reading more, they'll eventually get better at it, I guess.",
+    "pass": true
+  },
+  "item23_tel": {
+    "item_id": "item23",
+    "condition": "tel",
+    "wer": 0.0,
+    "hyp": "I think you just need to give them easier books to read, maybe with more pictures so they aren't overwhelmed. There's a lot of different strategies for this. It's pretty complex. We talked about vocabulary lists once in a seminar, but honestly, if they just practice reading more, they'll eventually get better at it, I guess.",
+    "pass": true
+  },
+  "item23_um": {
+    "item_id": "item23",
+    "condition": "um",
+    "wer": 0.0,
+    "hyp": "I think you just need to give them easier books to read, um, maybe with more pictures so they aren't overwhelmed. There's a lot of different strategies for this. It's pretty complex. We talked about vocabulary lists once in a seminar, uh, but honestly, if they just practice reading more, um, they'll eventually get better at it, I guess.",
+    "pass": true
+  }
+}

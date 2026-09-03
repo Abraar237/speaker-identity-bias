@@ -1,0 +1,37 @@
+row_index,paper_title,bibkey
+0,AudioJudge: Understanding What Works in Large Audio Model Based Speech Evaluation,manakul2025audiojudgeun
+1,Auditing Protocol-Level Shortcuts in Large Audio Language Model Judges for Speech Evaluation,park2026auditingprot
+2,ParaPairAudioBench: Paralinguistic Pairwise Audio Benchmark for LALM-as-a-Judge,jeon2026parapairaudi
+3,SpeechLLM-as-Judges: Towards General and Interpretable Speech Quality Evaluation,wang2025speechllmasj
+4,JASTIN: Aligning LLMs for Zero-Shot Audio and Speech Evaluation via Natural Language Instructions,zhang2026jastinaligni
+5,VIBE: Voice-Induced Open-ended Bias Evaluation for Large Audio-Language Models via Real-World Speech,lin2026vibevoiceind
+6,Do Audio Language Models Use Paralinguistic Evidence? Counterfactual Audits for Response Evaluation,miller2026doaudiolangu
+7,"Bias in the Ear of the Listener: Assessing Sensitivity in Audio Language Models Across Linguistic, Demographic, and Positional Variations (BiasInEar)",wei2026biasintheear
+8,The Voice Behind the Words: Quantifying Intersectional Bias in SpeechLLMs,satish2026thevoicebehi
+9,From Seeing it to Experiencing it: Interactive Evaluation of Intersectional Voice Bias in Human-AI Speech Interaction,satish2026fromseeingit
+10,Evaluating Bias in Spoken Dialogue LLMs for Real-World Decisions and Recommendations (FairDialogue),wu2025evaluatingbi
+11,Audio-Aware Large Language Models as Judges for Speaking Styles,chiang2025audioawarela
+12,Audio Large Language Models Can Be Descriptive Speech Quality Evaluators,chen2025audiolargela
+13,Bias Analysis of L2 Speaking Assessment Systems Using Concept Activation Vectors,labroo2026biasanalysis
+14,Speak Your Mind: The Speech Continuation Task as a Probe of Voice-Based Model Bias,satish2025speakyourmin
+15,Do Bias Benchmarks Generalise? Evidence from Voice-based Evaluation of Gender Bias in SpeechLLMs,satish2025dobiasbenchm
+16,Acoustic-based Gender Differentiation in Speech-aware Language Models,choi2025acousticbase
+17,"Interpretable, Fairly Evaluated Automated L2 Speaking Assessment that Beats the Single-Human Ceiling",uehara2026interpretabl
+18,Assessment of L2 Oral Proficiency using Speech Large Language Models,ma2025assessmentof
+19,Evaluating Speech-to-Text x LLM x Text-to-Speech Combinations for AI Interview Systems,allbert2025evaluatingsp
+20,Integrating Psychometrics and Computing Perspectives on Bias and Fairness in Affective Computing: A Case Study of Automated Video Interviews,booth2023integratingp
+26,Position: Towards Responsible Evaluation for Text-to-Speech,yang2025positiontowa
+27,Pairwise Evaluation of Accent Similarity in Speech Synthesis,zhong2025pairwiseeval
+28,CodecMOS-Accent: A MOS Benchmark of Resynthesized and TTS Speech from Neural Codecs Across English Accents,huang2026codecmosacce
+29,Scalable Controllable Accented TTS,xinyuan2025scalablecont
+30,VocalBench-DF: A Benchmark for Evaluating Speech LLM Robustness to Disfluency,liu2025vocalbenchdf
+31,Investigating Human-Model Discrepancies in Speech Quality Assessment via Acoustic and Prosodic Perturbations,takagi2026investigatin
+32,Should We Type or Talk to LLM Agents? A Comprehensive Study of Voice and Keyboard Input Perturbations (HIVE),hu2026shouldwetype
+35,MOS-Bias: From Hidden Gender Bias to Gender-Aware Speech Quality Assessment,ren2026mosbiasfromh
+21,Do LLM Decoders Listen Fairly? Benchmarking How Language Model Priors Shape Bias in Speech Recognition,ginjala2026doLLMdecoders
+23,VoiceAgentBench: Are Voice Assistants ready for agentic tasks?,jain2025voiceagentbench
+25,MedVoiceBias: A Controlled Study of Audio LLM Behavior in Clinical Decision-Making,tam2025medvoicebias
+34,Prior over Evidence: Stereotype-Driven Diagnosis in LLM-Based L2 Pronunciation Feedback,wang2026priorongevidence
+23,Racial disparities in automated speech recognition,koenecke2020racial
+24,Reverse Linguistic Stereotyping,kang2009reverse
+33,L2-ARCTIC: A Non-native English Speech Corpus,zhao2018l2arctic

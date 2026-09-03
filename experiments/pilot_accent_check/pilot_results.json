@@ -1,0 +1,50 @@
+{
+  "us_m": {
+    "accent": "American",
+    "accent_confidence": "high",
+    "gender": "male",
+    "natural": "yes"
+  },
+  "us_f": {
+    "accent": "American",
+    "accent_confidence": "high",
+    "gender": "female",
+    "natural": "yes"
+  },
+  "uk_m": {
+    "accent": "British",
+    "accent_confidence": "high",
+    "gender": "male",
+    "natural": "yes"
+  },
+  "uk_f": {
+    "accent": "British",
+    "accent_confidence": "high",
+    "gender": "female",
+    "natural": "yes"
+  },
+  "in_m": {
+    "accent": "Indian",
+    "accent_confidence": "high",
+    "gender": "male",
+    "natural": "yes"
+  },
+  "in_f": {
+    "accent": "Indian",
+    "accent_confidence": "high",
+    "gender": "female",
+    "natural": "yes"
+  },
+  "ng_m": {
+    "accent": "Nigerian",
+    "accent_confidence": "high",
+    "gender": "male",
+    "natural": "yes"
+  },
+  "ng_f": {
+    "accent": "Nigerian",
+    "accent_confidence": "high",
+    "gender": "female",
+    "natural": "yes"
+  }
+}
