@@ -209,5 +209,28 @@ checkpoint gates. Delivered:
   scoped and budgeted in `EXPERIMENT_PLAN.md` / `MISSION.md`; none were
   silently dropped.
 
+### Batch 10 — Published: public GitHub repo + Pages (2026-09-03)
+User explicitly requested this (a visible, hard-to-reverse action, confirmed
+before proceeding). Steps taken, not the literal bare-README snippet given:
+- Wrote `.gitignore` **before** the first `git add` (excludes `.env`, all raw
+  audio in `experiments/clips/` (403MB, regenerable), `Agent Skills/` internal
+  tooling data, the predecessor team's PDF in `reference/`, OS/LaTeX cruft).
+- Scanned every staged file for leaked secrets before committing; the only
+  matches were code referencing env-var *names* (`GEMINI_API_KEY=` as a
+  string in a config parser) and one coincidental text match in
+  `lit_review.csv` ("...as-instrument..."). No real key values were staged.
+  Confirmed `.env` itself was never staged.
+- Wrote a real `README.md` (the user's snippet only echoed a title).
+- `git init` -> commit -> `git branch -M main` -> pushed to the
+  already-existing `Abraar237/speaker-identity-bias` repo (public, confirmed).
+- Enabled GitHub Pages via `gh api`, serving from `main` branch's `/docs`
+  folder (copied from `site/index.html`, matching this project's own
+  documented folder-layout convention from MISSION.md).
+
+**Live links:**
+- Repo: https://github.com/Abraar237/speaker-identity-bias
+- Site: https://abraar237.github.io/speaker-identity-bias/ (building at time
+  of push; GitHub Pages typically finishes within 1-2 minutes)
+
 *(This file will keep growing batch-by-batch as CP3 executes — check back here for
 the latest status without needing to re-read the whole conversation.)*

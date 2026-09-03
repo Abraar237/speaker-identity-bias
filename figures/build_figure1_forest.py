@@ -28,7 +28,7 @@ def main():
 
     fig, ax = plt.subplots(figsize=(6.3, 3.0))
     style.strip_frame(ax)
-    style.eyebrow(ax, "Axis A · accent shift vs US baseline, gender-matched")
+    style.eyebrow(ax, "Accent shift vs US baseline, gender-matched")
 
     y = 0
     yticks, yticklabels = [], []
@@ -42,7 +42,7 @@ def main():
             mean = entry["mean_shift"]
             p = entry["p_sign_flip"]
             sig = p < 0.01
-            ax.plot([lo, hi], [y, y], color=color, lw=2.2, solid_capstyle="round",
+            ax.plot([lo, hi], [y, y], color=color, lw=3.0 if sig else 2.2, solid_capstyle="round",
                     alpha=1.0 if sig else 0.55, zorder=3)
             ax.scatter([mean], [y], color=color, s=85 if sig else 55,
                        edgecolor=style.PALETTE["surface"], linewidth=1.2, zorder=4)
@@ -57,6 +57,10 @@ def main():
             y -= 1
         y -= 0.4
 
+    ax.annotate("the one significant penalty:\n\u22122.5 on identical words",
+                xy=(-2.5, -2.35), xytext=(-5.9, -4.4), fontsize=8.6,
+                color=style.PALETTE["ink2"], ha="left",
+                arrowprops=dict(arrowstyle="-", color=style.PALETTE["faint"], lw=0.8))
     ax.axvline(0, color=style.PALETTE["faint"], lw=1.0, ls=(0, (4, 3)), zorder=1)
     ax.text(0, y + 0.2, "no shift", color=style.PALETTE["faint"], fontsize=8,
             ha="center", va="top")
@@ -68,7 +72,7 @@ def main():
     ax.set_yticklabels(list(accent_positions.keys()), fontsize=9.5, color=style.PALETTE["ink2"])
 
     ax.set_xlabel("score shift, accent minus US baseline (0-100 scale)", fontsize=9.5)
-    ax.set_xlim(-6, 9)
+    ax.set_xlim(-6.2, 4.6)
     ax.set_ylim(y - 0.3, 1.3)
     ax.set_yticks(ax.get_yticks())
 

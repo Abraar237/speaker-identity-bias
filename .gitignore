@@ -31,3 +31,9 @@ paper/page*.png
 
 # Redundant intermediate (kept: figures/*.png; not kept: base64 dump used only for site build)
 figures/figure1_b64.txt
+
+# Film build internals — renders are kept; toolchain and intermediates are not
+video/film/remotion/node_modules/
+video/film/remotion/out/
+video/film/audio/*.wav
+video/film/final_v2.mp4

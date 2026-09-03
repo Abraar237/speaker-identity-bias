@@ -1,0 +1,18 @@
+{
+  "name": "voice-judge-film",
+  "private": true,
+  "scripts": {
+    "render": "remotion render"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.245",
+    "@remotion/google-fonts": "4.0.245",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.245",
+    "roughjs": "^4.6.6"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18"
+  }
+}

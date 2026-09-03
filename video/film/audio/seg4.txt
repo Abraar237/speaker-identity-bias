@@ -1,0 +1,1 @@
+Here's the part that should worry you more. We ran the exact same audio past Gemini's own sibling model, 3.6 Flash. It scored the two accents the same. Same company, same audio, and the two models disagree.

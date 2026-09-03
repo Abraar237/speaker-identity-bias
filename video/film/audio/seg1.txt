@@ -1,0 +1,1 @@
+Right now, an AI is listening to someone's interview answer and giving it a score. It's supposed to grade what they said. But does it also grade how they sound?

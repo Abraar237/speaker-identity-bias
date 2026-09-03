@@ -1,0 +1,1 @@
+One finding, so far, is solid: which audio judge you pick is not a neutral choice, and grading from a transcript is a real, tested fix, not just a guess. If you're using an AI to grade a human voice today, that's worth checking before you trust the score.

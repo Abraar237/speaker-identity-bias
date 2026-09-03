@@ -1,0 +1,1 @@
+So we went looking for where the penalty actually lives. We graded the same content three ways: from the audio, from the judge's own transcript of that audio, and from the original clean text. The moment the model only sees words, the penalty disappears.

@@ -1,0 +1,67 @@
+<!doctype html><meta charset="utf-8">
+<style>
+  body { margin:0; background:#ffffff; width:1560px; font-family:'Times New Roman',serif; }
+  .stage { position:relative; width:1560px; height:700px; }
+  .card { position:absolute; border-radius:10px; border:1.6px solid; padding:10px 14px; box-sizing:border-box; text-align:center; }
+  .ctitle { font-style:italic; font-weight:bold; font-size:19px; margin-bottom:6px; }
+  .ctext { font-size:20px; color:#16130d; }
+  .sub { font-size:16px; color:#6d665a; margin-top:6px; }
+  svg.arrows { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+  .outrow { position:absolute; width:360px; height:60px; border:1.4px solid #b9b2a4; border-radius:9px;
+            display:flex; align-items:center; justify-content:space-between; padding:0 16px; box-sizing:border-box; background:#fff; }
+  .oname { font-size:19px; color:#16130d; display:flex; align-items:center; gap:9px; }
+  .oname img { height:30px; width:auto; }
+  .oval  { font-size:20px; font-weight:bold; }
+  .note { position:absolute; font-size:15.5px; color:#6d665a; text-align:center; }
+  .eyeb { position:absolute; font-style:italic; font-size:18px; color:#6d665a; }
+  .wave { display:inline-block; letter-spacing:2px; font-size:24px; font-weight:bold; }
+</style>
+<div class="stage">
+  <svg class="arrows">
+    <defs><marker id="m" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#6d665a"/></marker>
+      <marker id="mg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L7,3 L0,6 z" fill="#b9b2a4"/></marker></defs>
+    <line x1="288" y1="290" x2="360" y2="122" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="288" y1="320" x2="360" y2="262" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="288" y1="350" x2="360" y2="402" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="288" y1="380" x2="360" y2="542" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="778" y1="115" x2="860" y2="280" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="778" y1="255" x2="860" y2="310" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="778" y1="395" x2="860" y2="345" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="778" y1="535" x2="860" y2="380" stroke="#6d665a" stroke-width="2" marker-end="url(#m)"/>
+    <line x1="1066" y1="330" x2="1136" y2="180" stroke="#b9b2a4" stroke-width="1.8" marker-end="url(#mg)"/>
+    <line x1="1066" y1="330" x2="1136" y2="330" stroke="#b9b2a4" stroke-width="1.8" marker-end="url(#mg)"/>
+    <line x1="1066" y1="330" x2="1136" y2="480" stroke="#b9b2a4" stroke-width="1.8" marker-end="url(#mg)"/>
+  </svg>
+
+  <div class="card" style="left:30px; top:245px; width:258px; height:190px; background:#f2f0ea; border-color:#b9b2a4;">
+    <div class="ctitle" style="color:#6d665a;">one frozen spoken answer</div>
+    <div class="ctext">&ldquo;Well, nuclear fission is basically&hellip;&rdquo;</div>
+    <div class="sub">identical words, every condition<br>24 items, medium quality band</div>
+  </div>
+
+  <div class="card" style="left:363px; top:70px;  width:415px; height:92px; background:#e8eff5; border-color:#155e8c;">
+    <div class="ctitle" style="color:#155e8c;">American English</div>
+    <div class="ctext"><span class="wave" style="color:#155e8c;">&#9836; ~~~~~~~~~~</span> <span class="sub">male + female voice</span></div></div>
+  <div class="card" style="left:363px; top:210px; width:415px; height:92px; background:#f7ece1; border-color:#c0641a;">
+    <div class="ctitle" style="color:#c0641a;">British English</div>
+    <div class="ctext"><span class="wave" style="color:#c0641a;">&#9836; ~~~~~~~~~~</span> <span class="sub">male + female voice</span></div></div>
+  <div class="card" style="left:363px; top:350px; width:415px; height:92px; background:#f7e4ee; border-color:#b3006b;">
+    <div class="ctitle" style="color:#b3006b;">Indian English</div>
+    <div class="ctext"><span class="wave" style="color:#b3006b;">&#9836; ~~~~~~~~~~</span> <span class="sub">male + female voice</span></div></div>
+  <div class="card" style="left:363px; top:490px; width:415px; height:92px; background:#e7f2ec; border-color:#1c7a55;">
+    <div class="ctitle" style="color:#1c7a55;">Nigerian English</div>
+    <div class="ctext"><span class="wave" style="color:#1c7a55;">&#9836; ~~~~~~~~~~</span> <span class="sub">male + female voice</span></div></div>
+
+  <div class="card" style="left:863px; top:268px; width:200px; height:130px; background:#ffffff; border-color:#16130d;">
+    <div class="ctitle" style="color:#16130d;">audio-LLM judge</div>
+    <div class="sub" style="color:#16130d; font-size:17px;">0&ndash;100 rubric<br>one clip per call<br>blind to the study</div>
+  </div>
+
+  <div class="eyeb" style="left:1140px; top:118px;">measured shift vs. American accent</div>
+  <div class="outrow" style="left:1140px; top:150px;"><span class="oname"><img src="logos/Gemini_icon.png">Gemini 3.1 Pro</span><span class="oval" style="color:#b3006b;">&minus;2.5 Indian*</span></div>
+  <div class="outrow" style="left:1140px; top:300px;"><span class="oname"><img src="logos/Gemini_icon.png">Gemini 3.6 Flash</span><span class="oval" style="color:#1c7a55;">&asymp; 0</span></div>
+  <div class="outrow" style="left:1140px; top:450px; border-style:dashed;"><span class="oname">transcript grading</span><span class="oval" style="color:#1c7a55;">penalty gone</span></div>
+  <div class="note" style="left:1140px; top:528px; width:360px;">*p=0.005 on identical words; the penalty lives in the acoustic channel and disappears when the same judge grades a transcript instead.</div>
+</div>

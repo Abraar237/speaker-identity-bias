@@ -1,0 +1,1 @@
+Then we asked two AI judges to grade every version, one clip at a time, never told what we were testing. Gemini 3.1 Pro scored the Indian accented version two and a half points lower than the identical American accented answer. That gap is real: the odds of seeing it by chance are about one in two hundred.
