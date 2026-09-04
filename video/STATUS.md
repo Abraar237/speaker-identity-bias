@@ -12,3 +12,7 @@
 - [x] Stage 3c: whisper alignment done; music bed copied
 - [x] Stage 4: VISUALS — 7 Remotion scenes built from real analysis.json numbers (S1 hook, S2 eight voices, S3 verdict -2.5/p=0.005, S4 two judges, S5 decomposition aha, S6 honest nulls + Nigerian reversal, S7 end card)
 - [~] Stage 6: RENDER — running (film composition, 1920x1080/60fps)
+
+- [x] Stage 3 (REDONE): narration regenerated with ElevenLabs Matilda (XrExE9yKIg1WjnnlVkGX), with-timestamps alignment (no whisper needed); edge-tts files kept as .edge.bak
+- [x] Stage 6 (REDONE): re-render at new durations (DUR updated in timeline.ts); 7845 frames
+- [x] Stage 7: remaster -13.9 LUFS / -0.9 dBTP; final.mp4 2:10.8; thumb regenerated

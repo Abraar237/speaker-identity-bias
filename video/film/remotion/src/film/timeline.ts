@@ -8,7 +8,7 @@ import a6 from "./seg6.align.json";
 import a7 from "./seg7.align.json";
 
 // measured durations of seg1..seg7 wavs (loudnormed, 44.1k)
-const DUR = [11.76, 14.81, 21.82, 17.09, 17.98, 28.3, 17.59];
+const DUR = [9.66, 13.56, 20.06, 14.26, 16.49, 25.36, 17.23];
 const LEAD = 1.4; // opening breath before seg1
 const GAP = 1.3; // gap between scenes; cuts land here
 const TAIL = 3.6; // end-card hold

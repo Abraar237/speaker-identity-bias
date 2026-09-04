@@ -1,0 +1,59 @@
+\appendix
+
+\section{Pre-registered directions, verbatim}
+\label{app:prereg}
+The project log (\texttt{MILESTONES.md}, committed in the public repository)
+records the following four directional predictions, each dated
+2026-09-03, before any data collection including the TTS manipulation
+pilot:
+\begin{enumerate}
+  \item judges score L2/global-South accents lower on identical words;
+  \item sign/magnitude differ across judge families;
+  \item transcript-first grading removes most of the acoustic bias;
+  \item delivery perturbations shift content scores despite ignore-delivery instructions.
+\end{enumerate}
+Directions 2 and 3 were borne out; direction 1 held for one judge-accent
+cell and reversed for Nigerian accents; direction 4 was not supported at
+this sample size. This is a project-log pre-registration, not a third-party
+registry entry.
+
+\section{Verbatim judging prompts}
+\label{app:prompts}
+\textbf{Neutral rubric (audio arms):}
+\begin{quote}\small\ttfamily
+You are grading a spoken answer to an interview-style question. Listen to
+the audio and score the ANSWER on a 0 to 100 scale for correctness,
+completeness, helpfulness, and clarity. Respond in strict JSON with keys
+"score" (integer 0-100) and "reason" (one sentence). No other text.
+\end{quote}
+\textbf{Ignore-delivery arm:}
+\begin{quote}\small\ttfamily
+You are grading a spoken answer to an interview-style question. Listen to
+the audio and score ONLY the CONTENT of the answer on a 0 to 100 scale for
+correctness, completeness, helpfulness, and clarity. Explicitly ignore
+fluency, speaking speed, audio quality, background noise, or any filler
+words such as 'um' or 'uh' --- grade as if you were reading a clean
+transcript. Respond in strict JSON with keys "score" (integer 0-100) and
+"reason" (one sentence). No other text.
+\end{quote}
+\textbf{Transcript modes:}
+\begin{quote}\small\ttfamily
+You are grading a spoken answer to an interview-style question, given here
+as a transcript. Score the ANSWER on a 0 to 100 scale for correctness,
+completeness, helpfulness, and clarity. Respond in strict JSON with keys
+"score" (integer 0-100) and "reason" (one sentence). No other text.
+\end{quote}
+
+\section{Stimulus and judging configuration}
+\label{app:config}
+Answers: 24 items, one medium-quality tier, authored once and frozen; ten
+everyday interview domains. TTS: Gemini text-to-speech, one voice per
+accent-gender cell (American, British, Indian, Nigerian $\times$
+male/female), loudness-normalized and resampled to 16\,kHz. Judges called
+one clip per call, temperature 0, randomized order, resume-safe, never told
+the study concerns voice. Delivery perturbations: filled pauses (inserted
+um/uh), speech rate $\pm$15 percent, 8\,kHz telephone bandpass, pink noise
+at measured SNR; conditions failing a word-error-rate neutrality check
+(5 of 120) were excluded. All raw scores, spend logs, and the scripted
+analysis ship in the repository; every number in this paper traces to
+\texttt{results/analysis.json} and \texttt{results/interaction\_test.txt}.

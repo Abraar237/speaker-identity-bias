@@ -7,7 +7,7 @@ interview-style answers fixed and render each one in four accents (American,
 British, Indian, and Nigerian English) and two speaker genders using
 text-to-speech, then score every clip with two audio-input judges, Gemini 3.1
 Pro and Gemini 3.6 Flash, one clip per call, temperature zero, blind to the
-purpose of the study. Two findings are co-equal. First, the score can move with the voice: Gemini 3.1 Pro
+purpose of the study. Two findings share the headline. First, the score can move with the voice: Gemini 3.1 Pro
 scores Indian-accented answers 2.5 points lower than the identical answer in
 an American accent, on a 0 to 100 scale (95\% CI $-4.06$ to $-0.94$,
 $p=0.005$, $d_z=-0.44$), the only one of the six accent-judge comparisons to
@@ -342,19 +342,28 @@ means the accent scored higher than the American baseline. Only the Gemini
 
 \begin{figure}[t]
   \centering
+  \includegraphics[width=0.95\textwidth]{assets/fig_decomp_diagram.png}
+  \caption{\textbf{The decomposition design.} One Indian-accented answer graded three ways by the same judge; only the route that hears sound shows a penalty. Numbers from Table~\ref{tab:decomp}.}
+  \label{fig:decomproutes}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
   \includegraphics[width=0.72\textwidth]{assets/figure2_decomposition.png}
   \caption{\textbf{The penalty lives in the acoustic channel.} The Gemini 3.1 Pro Indian-accent shift under three grading modes; only end-to-end audio shows a significant penalty.}
   \label{fig:decomp}
 \end{figure}
 
 Table~\ref{tab:decomp} traces the Gemini 3.1 Pro Indian-accent penalty across
-grading modes. The penalty is present and significant when the judge hears
-audio ($-2.50$, $p=0.006$), reverses in sign and loses significance when the
-judge grades its own transcript of the identical audio ($+1.88$, $p=0.14$),
-and is not significant when the judge grades the frozen gold transcript
-($-0.83$, $p=0.51$). This pattern is consistent with the bias living in the
-acoustic channel specifically, not in a general dispreference for the
-content once the accent is described in words. Gemini 3.6 Flash, which
+grading modes: $-2.50$ hearing audio, $+1.88$ grading its own transcript of
+the identical audio, $-0.83$ grading the frozen gold transcript. Because a
+difference in significance is not a significant difference, we test the
+accent-by-mode interaction directly on within-item paired differences: the
+audio-mode shift differs from the own-transcript shift by $-6.04$ points
+(95\% CI $[-8.5, -3.5]$, sign-flip $p = 4 \times 10^{-4}$, $n{=}24$) and from
+the gold-transcript shift by $-3.33$ ($[-5.8, -0.8]$, $p = 0.028$). The
+penalty is significantly larger in the acoustic channel than in either
+transcript channel, not merely significant in one and not the other. Gemini 3.6 Flash, which
 showed no significant audio-mode effect to begin with, shows a
 non-significant shift under its own transcript ($-4.25$, $p=0.17$) and under
 the gold transcript ($+0.83$, $p=0.36$); we do not read a channel story into
@@ -364,13 +373,16 @@ a judge that showed no effect to decompose.
 \centering
 \small
 \caption{Decomposition of the Indian-accent shift by grading mode, Gemini
-3.1 Pro, $n=24$ paired comparisons per mode.}
+3.1 Pro. Transcript modes: $n{=}24$ paired comparisons (12 items $\times$ 2
+genders). The audio row reproduces the Table~\ref{tab:axisa} Axis-A cell
+($n{=}48$) for reference; interaction tests in the text use the 24
+item-gender pairs common to all three modes.}
 \label{tab:decomp}
 \begin{tabular}{lrrr}
 \toprule
 Mode & Mean shift & 95\% CI & $p$ \\
 \midrule
-Audio            & \textbf{$-2.50$} & [$-4.06$, $-0.94$] & \textbf{0.006} \\
+Audio (from Table~\ref{tab:axisa}) & \textbf{$-2.50$} & [$-4.06$, $-0.94$] & \textbf{0.005} \\
 Own transcript   & $+1.88$ & [$0.00$, $3.96$]   & 0.14 \\
 Gold transcript  & $-0.83$ & [$-2.50$, $0.83$]  & 0.51 \\
 \bottomrule
@@ -379,6 +391,13 @@ Gold transcript  & $-0.83$ & [$-2.50$, $0.83$]  & 0.51 \\
 
 \subsection{Delivery (Axis B)}
 \label{sec:delivery}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\textwidth]{assets/fig_delivery_diagram.png}
+  \caption{\textbf{The five delivery perturbations.} Each changes how the answer sounds without changing the words or the accent; all effects are null at this sample size (Figure~\ref{fig:delivery}).}
+  \label{fig:deliverydesign}
+\end{figure}
 
 \begin{figure}[t]
   \centering
@@ -399,6 +418,25 @@ observed intervals here span both directions of zero in every cell.
 
 \section{Limitations}
 \label{sec:limitations}
+
+\textbf{One synthetic voice per accent-gender cell.} Each accent-gender cell
+is rendered by a single TTS voice, so accent is aliased with everything else
+that voice carries: timbre, prosodic habits, and the synthesis engine's
+rendering quality for that accent. Our effects are therefore
+\emph{voice-level} findings; reading them as accent-population claims
+requires multiple voices per cell, which we did not run. The 8-clip
+manipulation pilot found all renderings natural and correctly classifiable,
+and the same engine renders every accent, but a quality gradient across
+accent settings inside one engine cannot be excluded.
+
+\textbf{The rubric scores clarity.} Correctness, completeness, helpfulness,
+and clarity are the four rubric dimensions, and clarity is a property of the
+signal as heard, so part of any acoustic-channel penalty could be a
+legitimate clarity judgment rather than speaker-identity bias. The
+predecessor script-bias study found exactly this structure (a majority
+clarity component with a significant residue on content dimensions); a
+per-dimension decomposition on the audio arm is the analogous next
+experiment here.
 
 \textbf{Sample size.} The accent and delivery arms use 24 items under a
 \$20 compute budget, smaller than the 150-item design of the predecessor

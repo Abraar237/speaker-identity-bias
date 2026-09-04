@@ -1,0 +1,5 @@
+audio: mean -2.50 n=48
+own_transcript: mean +1.88 n=24
+gold_transcript: mean -0.83 n=24
+INTERACTION audio vs own_transcript: diff-of-diffs -6.04 CI[-8.54,-3.54] p=0.0004 n=24
+INTERACTION audio vs gold_transcript: diff-of-diffs -3.33 CI[-5.83,-0.83] p=0.0280 n=24
