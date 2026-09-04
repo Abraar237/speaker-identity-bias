@@ -7,8 +7,8 @@ import {wordTime} from "../timeline";
 export const S7End: React.FC<{audioStart: number}> = ({audioStart}) => {
   const frame = useCurrentFrame();
   const t = (sec: number) => audioStart + secToFrame(sec);
-  const fixAt = t(wordTime(6, "transcript") || 5.0);
-  const cardAt = t(wordTime(6, "score") || 15.5);
+  const fixAt = t(wordTime(11, "transcript") || 5.0);
+  const cardAt = t(wordTime(11, "score") || 15.5);
   const cardIn = interpolate(frame, [cardAt, cardAt + 30], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
   return (
     <Canvas>

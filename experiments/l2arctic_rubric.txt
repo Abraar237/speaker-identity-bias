@@ -1,0 +1,1 @@
+You are grading a short read-aloud recording for a speech-quality benchmark. Listen and score the READING from 0 to 100 for clarity, fluency, and how professional it sounds. Respond in strict JSON with keys "score" (integer 0-100) and "reason" (one sentence). No other text.

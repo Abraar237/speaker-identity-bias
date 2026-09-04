@@ -22,8 +22,8 @@ def setup():
         "figure.facecolor": PALETTE["surface"],
         "axes.facecolor": PALETTE["surface"],
         "savefig.facecolor": PALETTE["surface"],
-        "font.family": "sans-serif",
-        "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"],
+        "font.family": "serif",
+        "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
         "text.color": PALETTE["ink"],
         "axes.edgecolor": PALETTE["rule"],
         "axes.labelcolor": PALETTE["muted"],
@@ -37,10 +37,10 @@ def setup():
 def eyebrow(ax, text, x=0.0, y=1.06):
     ax.text(x, y, text.upper(), transform=ax.transAxes, fontsize=9,
              color=PALETTE["muted"], ha="left", va="bottom",
-             fontweight="medium", family="sans-serif")
+             fontweight="medium", family="serif")
     ax.text(x, y, text.upper(), transform=ax.transAxes, fontsize=9,
              color=PALETTE["muted"], ha="left", va="bottom", alpha=0,
-             fontweight="medium", family="sans-serif")
+             fontweight="medium", family="serif")
 
 
 def strip_frame(ax):

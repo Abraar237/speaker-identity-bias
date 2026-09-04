@@ -37,3 +37,9 @@ video/film/remotion/node_modules/
 video/film/remotion/out/
 video/film/audio/*.wav
 video/film/final_v2.mp4
+
+# L2-ARCTIC raw corpus — CC BY-NC 4.0, registration-gated; do NOT re-mirror.
+# Derived 16kHz judged clips are fine to publish; raw archives are not.
+experiments/l2arctic/raw/
+experiments/l2arctic/*.zip
+experiments/l2arctic/*.tar.bz2

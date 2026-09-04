@@ -1,0 +1,6 @@
+L2-ARCTIC v5.0 registered download (Abraar, vizz.vizuara.ai, 2026-09-04)
+ALL-IN-ONE: https://drive.google.com/file/d/1ciCw_ttbw7a9r7d5DZzTJwoZq5rQB3TA/view?usp=sharing
+PROMPTS: https://drive.google.com/file/d/1Nlv_p7_daDY4hyDJv3Age5NSFxM4H9pF/view?usp=sharing
+LICENSE: https://drive.google.com/file/d/1yxz54l1uck6PT_C0XJZGWD39f_88iMve/view?usp=sharing
+README.md: https://drive.google.com/file/d/1pYVbTNoAYByXSvflo1EIUi8QtlNMCIhE/view?usp=sharing
+Citation: zhao2018l2arctic (Interspeech 2018) - already in refs.bib

@@ -75,3 +75,58 @@ credit line.
 - Music bed: inspiring, understated, per `music_prompt.txt` convention;
   duck under every narration segment, never under the silence in scene 6's
   honest-limitation beat (let that one breathe).
+
+
+## Extended cut (v3, ~4:30) — segments 8-12 added 2026-09-04
+
+Segs 1-6 unchanged. Old seg7 closing replaced by five new segments plus a
+rewritten closing (all Matilda, same recipe):
+
+**seg7 — the third family (31.1s).** "At this point you might ask: maybe that's
+just how Gemini models hear the world. Fair question. So we brought in a third
+judge from a completely different family: Qwen2-Audio, an open-weight model
+that anyone can download and run. It listened to the exact same one hundred
+ninety-two clips. And it did the opposite. It scored every non-American accent
+higher than the American one: British up nearly three points, Nigerian up two
+point three, Indian up two."
+
+**seg8 — three directions (20.6s).** "Line the three judges up and the picture
+gets strange. One family penalises an accent. One doesn't react at all. And one
+rewards every accent it hears. Same audio, same words, three different
+verdicts. So the direction of the bias is not a property of the voice. It's a
+property of the judge you happened to pick."
+
+**seg9 — the interaction test (22.3s).** "We also want to be careful with our
+own statistics. It's tempting to say the penalty is significant with audio and
+not significant with transcripts, case closed. But a difference in significance
+is not a significant difference. So we tested the difference itself. The audio
+penalty is six points larger than the transcript one, and that gap has odds of
+about one in twenty-five hundred."
+
+**seg10 — nine tests (23.7s).** "One more honesty check. Across the three
+judges we ran nine accent tests in total, and if you run enough tests,
+something will look significant by pure luck. So we corrected for all nine.
+Three results survive: the Pro penalty on Indian accents, and Qwen's reward for
+British and for Nigerian voices. Everything else, we treat as noise."
+
+**seg11 — what would change our mind (25.0s).** "What would change our mind?
+Two experiments, running right now. Every accent you've heard so far came from
+a single synthetic voice, so we're re-running the whole study with several
+different voices for every accent. And we've just obtained recordings of
+twenty-four real people, from six different language backgrounds, reading the
+very same sentences. Real human voices, not synthetic ones."
+
+**seg12 — closing (28.0s).** "So here's where we land, for now. If you're using
+an AI to grade a human voice — a job interview, an oral exam, a support call —
+which judge you pick is not a neutral engineering choice. It can quietly decide
+who sounds better. Grading from a transcript is a real, tested fix for the one
+penalty we found, not just a guess. Because a score should measure what
+somebody said. Never who they sound like."
+
+Scene map: S8ThirdFamily (flat up-bars echoing the site GIFs), S9ThreeDirections
+(three judge cards, down/flat/up), S10Interaction (two mini bars + gap card,
+"a difference in significance is not a significant difference"), S11NineTests
+(3x3 p-value grid, three cells survive BH), S12InProgress (multi-voice +
+24-real-speakers tiles, pulsing "running now"), then the original end card.
+The real-speech L2-ARCTIC results scene was SKIPPED: results file not present
+at script time.

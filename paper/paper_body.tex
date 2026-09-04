@@ -300,14 +300,14 @@ identical American-accented answer ($p=0.005$, $d_z=-0.44$), while the same
 comparison under Gemini 3.6 Flash is indistinguishable from zero ($-0.04$,
 $p=1.0$). The third family reverses the sign entirely: Qwen2-Audio-7B
 scores \emph{every} non-American accent higher than the American rendering
-of the identical words (UK $+2.92$, CI $[+0.83, +5.00]$, $p=0.012$; Indian
-$+1.98$, $[+0.31, +3.75]$, $p=0.042$; Nigerian $+2.29$, $[+0.73, +4.06]$,
-$p=0.016$; $n{=}48$ each, $d_z$ $0.32$ to $0.39$), though its absolute
+of the identical words (UK $+2.92$, CI $[+0.94, +5.00]$, $p=0.011$; Indian
+$+1.98$, $[+0.21, +3.75]$, $p=0.044$; Nigerian $+2.29$, $[+0.73, +4.06]$,
+$p=0.014$; $n{=}48$ each, $d_z$ $0.32$ to $0.39$), though its absolute
 scores cluster on a coarse four-value grid around 75, so these shifts ride
 a blunt scale. Across the now nine accent-judge tests, Benjamini-Hochberg
 at $q=0.05$ retains three cells: the Pro Indian penalty and the Qwen2-Audio
 UK and Nigerian inflations (ranks one through three; the Qwen2-Audio Indian
-cell at $p=0.042$ does not survive). One family penalises an accent, one is
+cell at $p=0.044$ does not survive). One family penalises an accent, one is
 null, one rewards every non-American voice: the speaker-identity axis is
 real and its \emph{direction} is a property of the judge, the same
 sign-opposite-across-families structure the predecessor study found for
@@ -322,8 +322,7 @@ scoring the female voice 3.25 points higher ($p=0.12$).
 \begin{table}[t]
 \centering
 \small
-\caption{Score shift, non-American accent minus American accent, same item
-and gender ($n=48$ paired comparisons per cell). Bold marks $p<0.01$.}
+\caption{Accent shift versus the gender-matched American baseline, three judges, $n=48$ paired comparisons per cell. Bold marks the three cells that survive Benjamini-Hochberg correction across all nine tests. Qwen2-Audio's absolute scores fall on a coarse four-value grid around 75, so its shifts ride a blunt scale.}
 \label{tab:axisa}
 \begin{tabular}{lrrr}
 \toprule
@@ -338,6 +337,11 @@ Nigerian& $+1.04$ & [$-0.52$, $2.60$]  & 0.26 \\
 UK      & $-1.08$ & [$-3.90$, $1.92$]  & 0.49 \\
 Indian  & $-0.04$ & [$-2.85$, $2.73$]  & 1.00 \\
 Nigerian& $+0.23$ & [$-2.60$, $3.08$]  & 0.89 \\
+\midrule
+\multicolumn{4}{l}{\emph{Qwen2-Audio-7B (open weight)}} \\
+UK      & \textbf{$+2.92$} & [$+0.94$, $+5.00$] & \textbf{0.011} \\
+Indian  & $+1.98$ & [$+0.21$, $+3.75$] & 0.044 \\
+Nigerian& \textbf{$+2.29$} & [$+0.73$, $+4.06$] & \textbf{0.014} \\
 \bottomrule
 \end{tabular}
 \end{table}

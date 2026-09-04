@@ -16,3 +16,13 @@
 - [x] Stage 3 (REDONE): narration regenerated with ElevenLabs Matilda (XrExE9yKIg1WjnnlVkGX), with-timestamps alignment (no whisper needed); edge-tts files kept as .edge.bak
 - [x] Stage 6 (REDONE): re-render at new durations (DUR updated in timeline.ts); 7845 frames
 - [x] Stage 7: remaster -13.9 LUFS / -0.9 dBTP; final.mp4 2:10.8; thumb regenerated
+
+- [x] EXTENDED CUT (v3, 2026-09-04): five new segments (7-11) + rewritten closing (seg12),
+  all Matilda with-timestamps narration; new scenes S8ThirdFamily (Qwen2-Audio up-bars),
+  S9ThreeDirections (three judge cards), S10Interaction (difference-of-differences),
+  S11NineTests (BH grid, 3 survive), S12InProgress (multi-voice + 24-real-speakers tiles);
+  music bed self-crossfaded to 456s (music_bed_ext.mp3); L2-ARCTIC results scene SKIPPED
+  (summary file not present at script time).
+- [x] RENDER v3: 16,242 frames, 1920x1080/60fps -> mastered **-14.0 LUFS / -1.0 dBTP**,
+  final.mp4 **4:30.8** (18.8MB pre-master), thumb.png regenerated; QA: seam luma 234-244
+  (no black frames), A/V duration delta 0.1s, all 20 word-timing needles resolved non-zero.

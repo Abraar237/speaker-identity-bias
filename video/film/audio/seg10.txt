@@ -1,0 +1,1 @@
+One more honesty check. Across the three judges we ran nine accent tests in total, and if you run enough tests, something will look significant by pure luck. So we corrected for all nine. Three results survive: the Pro penalty on Indian accents, and Qwen's reward for British and for Nigerian voices. Everything else, we treat as noise.

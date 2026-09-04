@@ -8,6 +8,11 @@ import {S4TwoJudges} from "./scenes/S4TwoJudges";
 import {S5Decomp} from "./scenes/S5Decomp";
 import {S6Honest} from "./scenes/S6Honest";
 import {S7End} from "./scenes/S7End";
+import {S8ThirdFamily} from "./scenes/S8ThirdFamily";
+import {S9ThreeDirections} from "./scenes/S9ThreeDirections";
+import {S10Interaction} from "./scenes/S10Interaction";
+import {S11NineTests} from "./scenes/S11NineTests";
+import {S12InProgress} from "./scenes/S12InProgress";
 
 const musicVolume = (frame: number): number => {
   let v = 0.3;
@@ -25,13 +30,13 @@ const musicVolume = (frame: number): number => {
   return v * fadeIn * fadeOut;
 };
 
-const SCENES = [S1Hook, S2EightVoices, S3Verdict, S4TwoJudges, S5Decomp, S6Honest, S7End];
+const SCENES = [S1Hook, S2EightVoices, S3Verdict, S4TwoJudges, S5Decomp, S6Honest, S8ThirdFamily, S9ThreeDirections, S10Interaction, S11NineTests, S12InProgress, S7End];
 
 export const Film: React.FC = () => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill>
-      <Audio src={staticFile("audio/music_bed.mp3")} volume={musicVolume(frame) as unknown as number} />
+      <Audio src={staticFile("audio/music_bed_ext.mp3")} volume={musicVolume(frame) as unknown as number} />
       {SEGS.map((seg, i) => {
         const Scene = SCENES[i] as React.FC<{audioStart: number; durSec?: number}>;
         return (

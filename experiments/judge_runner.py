@@ -143,6 +143,8 @@ def main():
     ap.add_argument("--model", required=True, choices=["gemini-3.6-flash", "gemini-3.1-pro-preview"])
     ap.add_argument("--out", required=True)
     ap.add_argument("--prompt-arm", default="neutral", choices=["neutral", "ignore-delivery"])
+    ap.add_argument("--rubric-file", default=None,
+                    help="optional path to a plain-text rubric that overrides the prompt-arm rubric")
     ap.add_argument("--seed", type=int, default=42)
     args = ap.parse_args()
 
@@ -151,6 +153,8 @@ def main():
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     rubric = RUBRIC_IGNORE_DELIVERY if args.prompt_arm == "ignore-delivery" else RUBRIC_NEUTRAL
+    if args.rubric_file:
+        rubric = pathlib.Path(args.rubric_file).read_text().strip()
 
     wavs = sorted(clips_dir.glob("*.wav"))
     rng = random.Random(args.seed)
