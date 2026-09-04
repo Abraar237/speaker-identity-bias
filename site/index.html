@@ -210,7 +210,7 @@ li { margin-bottom: 8px; }
   <section id="film">
     <h2>Watch the film</h2>
     <div class="filmwrap">
-      <video controls preload="auto" poster="assets/thumb.png" playsinline src="assets/final.mp4"></video>
+      <video controls preload="auto" poster="assets/thumb.png?v=2" playsinline src="assets/final.mp4?v=2"></video>
       <div class="filmcap">Does the Voice Change the Grade? The two-minute film: one frozen answer, four accents, and the judge that hears a difference.</div>
     </div>
   </section>
@@ -272,7 +272,7 @@ li { margin-bottom: 8px; }
     <p>Each answer was rendered with a text-to-speech model in four accents, American, British, Indian, and Nigerian English, crossed with two speaker genders, for 192 clips. We checked the accent actually came through before running the study: a separate blind classifier correctly named the intended accent and gender in 8 of 8 test clips. Two judges scored every clip: Gemini 3.6 Flash and Gemini 3.1 Pro, one clip per call, in random order, temperature zero, never told the study concerned voice.</p>
     <div class="fig">
       <div class="gifnote">animated concept card</div>
-      <img src="assets/gifs/same-words-different-voice.gif" alt="One frozen answer fans out into four accented voices, all flow into one audio judge; the Indian accent shifts minus 2.5 points, p equals 0.005, while Nigerian trends plus 1.0">
+      <img src="assets/gifs/same-words-different-voice.gif?v=2" alt="One frozen answer fans out into four accented voices, all flow into one audio judge; the Indian accent shifts minus 2.5 points, p equals 0.005, while Nigerian trends plus 1.0">
       <figcaption>One answer, four voices, one blind judge. The score shifts are the real measured numbers.</figcaption>
     </div>
   </section>
@@ -293,7 +293,7 @@ li { margin-bottom: 8px; }
     <p>Neither judge shows a significant British-accent effect. Both judges trend toward scoring the Nigerian accent <em>higher</em>, not lower, the opposite of what we predicted before collecting any data. Neither reaches significance at this sample size, but we report the reversal exactly as we found it.</p>
     <div class="fig">
       <div class="gifnote">animated concept card</div>
-      <img src="assets/gifs/two-judges-two-verdicts.gif" alt="The same Indian-accented clip flows to two judge boxes: Gemini 3.1 Pro shows a minus 2.5 penalty at p equals 0.005, Gemini 3.6 Flash shows no penalty">
+      <img src="assets/gifs/two-judges-two-verdicts.gif?v=2" alt="The same Indian-accented clip flows to two judge boxes: Gemini 3.1 Pro shows a minus 2.5 penalty at p equals 0.005, Gemini 3.6 Flash shows no penalty">
       <figcaption>Same audio, same rubric, same company, opposite conclusions.</figcaption>
     </div>
   </section>
@@ -313,7 +313,7 @@ li { margin-bottom: 8px; }
     <p>That's exactly the pattern. The penalty is real and significant when Gemini 3.1 Pro hears the audio. It flips sign and loses significance the moment the same content is graded as text, whether that text comes from the judge's own transcription or from the ground truth. For the one bias we found, the practical fix, grade from a transcript, is not just a plausible idea. It's a tested one.</p>
     <div class="fig">
       <div class="gifnote">animated concept card</div>
-      <img src="assets/gifs/bias-lives-in-the-audio-channel.gif" alt="One Indian-accented answer graded three ways: hearing the audio gives minus 2.5 significant, reading its own transcript gives plus 1.9 not significant, reading the gold transcript gives minus 0.8 not significant">
+      <img src="assets/gifs/bias-lives-in-the-audio-channel.gif?v=2" alt="One Indian-accented answer graded three ways: hearing the audio gives minus 2.5 significant, reading its own transcript gives plus 1.9 not significant, reading the gold transcript gives minus 0.8 not significant">
       <figcaption>Take away the sound and the penalty disappears; both transcript routes grade the same content clean.</figcaption>
     </div>
   </section>
