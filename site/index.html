@@ -187,7 +187,7 @@ li { margin-bottom: 8px; }
     <span>
       <a href="#film" class="hidesm">The film</a>
       <a href="https://github.com/Abraar237/speaker-identity-bias">Code</a>
-      <a href="paper.pdf?v=2" class="pill" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+      <a href="paper.pdf?v=3" class="pill" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
         <svg width="14" height="14" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h9l5 5v15H4z"/><path d="M13 2v5h5M7 12h6M7 16h6"/></svg>
         Paper (PDF)</a>
       <span class="pill">Draft &middot; pre-CP4 review</span>
@@ -269,7 +269,7 @@ li { margin-bottom: 8px; }
     <p>We authored 24 interview-style question-and-answer pairs across ten everyday domains: science, history, cooking, health, technology, culture, geography, personal finance, daily-life advice, and education. Each answer was written once, by a text model, then frozen. It never changes again.</p>
     <p>Every answer targets a medium quality band on purpose. A judge can't move a score that already sits at 95 out of 100, or at 15. Our first attempt at this got it wrong: a prompt asking for a merely "shallow" answer produced text a real judge scored at a mean of 94.3, a ceiling with no room for any bias to move it. We caught this before collecting any of the results below, rewrote the prompt to require specific, checkable weaknesses (answering only part of the question, hedging, one clear gap, a weak ending), and validated the new prompt against the real judge before regenerating the bank. The corrected 24 items scored a mean of 61.3, with real spread from 20 to 90.</p>
     <figure>
-      <img src="assets/fig_teaser.png" alt="Study design: one frozen answer rendered in four accents and two genders, 192 clips, scored blind by two audio judges">
+      <img src="assets/fig_teaser.png?v=3" alt="Study design: one frozen answer rendered in four accents and two genders, 192 clips, scored blind by two audio judges">
       <figcaption><strong>The design in one picture.</strong> One frozen answer, eight voices, two blind audio judges; any score gap can only come from the voice.</figcaption>
     </figure>
     <p>Each answer was rendered with a text-to-speech model in four accents, American, British, Indian, and Nigerian English, crossed with two speaker genders, for 192 clips. We checked the accent actually came through before running the study: a separate blind classifier correctly named the intended accent and gender in 8 of 8 test clips. Two judges scored every clip: Gemini 3.6 Flash and Gemini 3.1 Pro, one clip per call, in random order, temperature zero, never told the study concerned voice.</p>
@@ -289,7 +289,7 @@ li { margin-bottom: 8px; }
       <div class="stat"><p class="label">Significance</p><p class="value">p = 0.005</p></div>
     </div>
     <figure>
-      <img src="assets/figure1_accent_forest.png" alt="Score shift by accent and judge with 95 percent bootstrap confidence intervals; only Gemini 3.1 Pro on the Indian accent is significant at minus 2.5" alt="Forest plot of accent score shifts by judge">
+      <img src="assets/figure1_accent_forest.png?v=3" alt="Score shift by accent and judge with 95 percent bootstrap confidence intervals; only Gemini 3.1 Pro on the Indian accent is significant at minus 2.5" alt="Forest plot of accent score shifts by judge">
       <figcaption><strong>Score shift by accent and judge</strong>, 95% bootstrap confidence intervals, 48 paired comparisons per interval. Right of the dashed line means the accent scored higher than the American baseline. Only the Gemini 3.1 Pro &times; Indian interval (highlighted) excludes zero at p &lt; 0.01.</figcaption>
     </figure>
     <p>Gemini 3.6 Flash shows no such penalty on the identical comparison: a mean shift of &minus;0.04 points, indistinguishable from zero. Two models built by the same company, hearing the identical audio, disagree about whether an accent changes the score.</p>
@@ -310,7 +310,7 @@ li { margin-bottom: 8px; }
       <div class="stat"><p class="label">Gold transcript</p><p class="value">&minus;0.83 (p=0.51)</p></div>
     </div>
     <figure>
-      <img src="assets/figure2_decomposition.png" alt="Three grading channels for the same Indian-accented items: audio minus 2.5 significant, own transcript plus 1.88 not significant, gold transcript minus 0.83 not significant">
+      <img src="assets/figure2_decomposition.png?v=3" alt="Three grading channels for the same Indian-accented items: audio minus 2.5 significant, own transcript plus 1.88 not significant, gold transcript minus 0.83 not significant">
       <figcaption><strong>The decomposition arm</strong>, Gemini 3.1 Pro, Indian vs American accent, 24 paired items per channel. Only the audio channel keeps the penalty.</figcaption>
     </figure>
     <p>That's exactly the pattern. The penalty is real and significant when Gemini 3.1 Pro hears the audio. It flips sign and loses significance the moment the same content is graded as text, whether that text comes from the judge's own transcription or from the ground truth. For the one bias we found, the practical fix, grade from a transcript, is not just a plausible idea. It's a tested one.</p>
@@ -325,7 +325,7 @@ li { margin-bottom: 8px; }
     <h2>Five ways to sound different: no verdict yet</h2>
     <p>Accent wasn't the only thing we changed. Using one fixed voice, we tested five delivery changes on the same 24 answers: filled pauses ("um," "uh"), speaking faster or slower, an 8kHz telephone-quality rendering, and background noise. We ran every condition under a plain rubric and again under an explicit instruction to ignore delivery and grade only the content.</p>
     <figure>
-      <img src="assets/figure3_delivery.png" alt="Five delivery perturbations, filled pauses, faster, slower, telephone codec, background noise, none significant for either judge, wide confidence intervals">
+      <img src="assets/figure3_delivery.png?v=3" alt="Five delivery perturbations, filled pauses, faster, slower, telephone codec, background noise, none significant for either judge, wide confidence intervals">
       <figcaption><strong>Delivery arm</strong>, five perturbations, two judges, two instruction arms; every interval crosses zero at this sample size.</figcaption>
     </figure>
     <p>None of the five conditions moved the score by a significant amount, under either judge, under either instruction. We read this as inconclusive, not as proof that delivery never leaks into a grade. Twenty-four items is a small sample for five conditions at once, and every confidence interval we measured here span both directions of zero. A larger run is the direct next step.</p>
@@ -356,7 +356,7 @@ li { margin-bottom: 8px; }
     <h2>Paper, data, and code</h2>
     <p>The full paper carries the method, the statistics, and the honest limitations in detail. Every number on this page traces to <code>results/analysis.json</code>, produced by one scripted analysis pass over the raw judgment logs.</p>
     <ul>
-      <li><a href="paper.pdf?v=2">Read the paper (PDF)</a></li>
+      <li><a href="paper.pdf?v=3">Read the paper (PDF)</a></li>
       <li><a href="https://github.com/Abraar237/speaker-identity-bias">Code, clips manifest, and per-call judgment logs on GitHub</a></li>
     </ul>
   </section>
