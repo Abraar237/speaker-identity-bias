@@ -1,0 +1,91 @@
+{
+ "title": "Does the Voice Change the Grade? A Causal Audit of Speaker-Identity Bias in Audio-LLM Judges",
+ "paper_type": "analysis (controlled causal audit / empirical study)",
+ "summary": "The authors author 24 interview-style question-answer pairs, freeze the text, and render each answer with a Gemini TTS model in four accents (American, British, Indian, Nigerian) crossed with two speaker genders, producing 192 clips. Two audio-input judges (Gemini 3.1 Pro and Gemini 3.6 Flash) score every clip on a 0-100 rubric at temperature zero, one clip per call, blind to the study's purpose. Across six accent-judge comparisons, exactly one is significant: Gemini 3.1 Pro scores Indian-accented renderings 2.50 points lower than the identical American-accented rendering (95% CI [-4.06, -0.94], p=0.005, d_z=-0.44), surviving Benjamini-Hochberg correction at rank 1; Gemini 3.6 Flash shows no such effect (-0.04, p=1.00). A decomposition arm regrades the same content as end-to-end audio, as the judge's own transcript, and as the frozen gold transcript, and finds the penalty present only in the audio route (audio-vs-own-transcript interaction -6.04, p=4e-4, n=24). A second axis of five delivery perturbations (filled pauses, +/-15% speed, 8kHz codec, pink noise) under two prompt arms returns null everywhere, which the authors explicitly label inconclusive rather than evidence of no effect.",
+ "central_claim": "When the words are held byte-identical and only the rendering voice changes, an audio-input LLM judge's content score can shift with the speaker's accent (2.5/100 for Gemini 3.1 Pro on Indian-accented speech), the shift is judge-specific rather than a property of audio judging in general, and it is localized to the acoustic channel because grading the same content from a transcript removes it.",
+ "strengths": [
+  "The core manipulation is the right one and is executed cleanly: text is frozen and identical by construction across accent conditions, so a within-item, gender-matched paired difference has an unusually tight causal interpretation compared to the observational fairness audits it is positioned against (Uehara 2026; Ginjala et al. 2026; Koenecke et al. 2020).",
+  "The related-work delineation in Section 2 is unusually careful and, as far as I can check, correct: it names the specific design feature that keeps each of ~20 adjacent papers from answering this question (Satish et al.'s judge is text-only and voice-blind; Wei et al.'s model is the test-taker not the judge; Jeon et al. ask whether the judge can detect the attribute rather than whether it leaks; Miller et al. vary delivery not identity). This is a genuinely uncovered intersection.",
+  "Negative and reversed results are reported rather than buried. Nigerian accents trend positive (+1.04 Pro, +0.23 Flash), the opposite of pre-registered direction 1, and the paper says so in the abstract. Appendix A lists all four pre-registered directions and scores itself 2/4 held, 1 partially reversed, 1 unsupported.",
+  "The delivery-axis nulls are correctly characterized. Section 4.3 and Figure 6 say every interval spans zero at n=21-24 and label the arm inconclusive at this sample size rather than claiming delivery does not leak into the score. This is the right epistemic move and most submissions get it wrong.",
+  "The design-failure narration in Section 3.1 (first answer bank scored 94.3/100 with a ceiling that left no headroom, diagnosed before any reported results, prompt rewritten, bank regenerated to mean 61.3, SD 17.0) is exactly the kind of disclosure that makes the rest of the pipeline credible.",
+  "Process controls are present and specific: an 8-of-8 blind accent/gender manipulation check, loudness normalization and 16 kHz resampling, a >5% WER neutrality gate on perturbed clips that excluded 5 of 120 conditions, and a documented debugging of the transcription gate itself (28 of 33 initial failures were transcriber hallucination, not audio degradation).",
+  "The decomposition arm tests the interaction directly rather than committing the 'difference in significance is a significant difference' error, and says so in Section 4.2. Verbatim prompts appear in Appendix B and every number is claimed to trace to results/analysis.json."
+ ],
+ "weaknesses": [
+  {
+   "text": "FATAL FOR THE HEADLINE CLAIM AS STATED: accent is confounded with voice identity at n=1. Each accent-gender cell is rendered by exactly one TTS voice, so 'Indian accent' is a single stimulus, not a sample from a population of Indian-accented speech. The paired test treats the 24 items as the unit of replication, but the treatment was applied once, at the voice level. This is the classic language-as-fixed-effect fallacy: the reported CI [-4.06, -0.94] is the uncertainty in how one judge treats one synthetic voice, not the uncertainty in how it treats an accent, and no widening of n over items can fix it. Every competing explanation lives in that single voice -- synthesis artifact rate, timbre, speaking rate, prosodic idiosyncrasy, and Gemini TTS's own rendering quality gradient across accent style instructions. Section 5 concedes 'our effects are therefore voice-level findings,' but the title, abstract, Figure 1, and conclusion all speak in accent terms. The paper's central sentence is not supported by its own design.",
+   "severity": "fatal"
+  },
+  {
+   "text": "The evidence base is one significant cell out of six accent-judge tests, at 2.5 points on a 0-100 scale, sitting at p=0.005 against a rank-1 BH threshold of 0.0083. It is one small perturbation away from null. Meanwhile the sibling model on the identical comparison gives -0.04 (p=1.00), the two other accents are null under both judges, the gender effect is null, and all twenty delivery cells are null. A skeptical reading of the same table is 'one of roughly thirty tests came back positive at the edge of correction, from a single-voice manipulation, on one model.' The paper's honesty about the nulls is a strength; it also leaves the positive claim resting on almost nothing.",
+   "severity": "fatal"
+  },
+  {
+   "text": "The multiple-comparison family is drawn post hoc and too narrowly. BH is applied to six accent tests, but the study runs at minimum six accent, two gender, six decomposition-mode, and twenty delivery-condition tests. Correcting only the family that contains the surviving result, while the nulls elsewhere are exempted, is the forking-paths problem the correction was meant to prevent. Under BH across the full test set the Indian-Pro cell would very likely not survive.",
+   "severity": "major"
+  },
+  {
+   "text": "The gold-transcript arm cannot show anything and is presented as if it could. The frozen gold transcript is byte-identical across the American and Indian conditions by construction, so the measured -0.83 shift (CI [-2.50, 0.83]) is pure API nondeterminism at temperature zero -- it is a noise-floor estimate, not a test of whether transcript-first grading removes bias. The abstract's 'grading from the frozen gold transcript also erases it' is therefore a tautology dressed as a finding. Only the own-transcript arm (+1.88) is informative, because ASR output can genuinely differ by accent, and that arm is a single non-significant cell at n=24. Incidentally, the same nondeterminism estimate implies the reported within-condition noise is non-trivial relative to the 2.5-point headline effect, which the paper never confronts.",
+   "severity": "major"
+  },
+  {
+   "text": "The rubric scores clarity, and clarity is a legitimate property of the acoustic signal. Section 5 admits this, but the fix was available and not applied: the ignore-delivery prompt arm was built and run only on Axis B (delivery), never on Axis A (accent). Running the accent comparison under the ignore-delivery rubric, or scoring the four rubric dimensions separately, would separate speaker-identity bias from a defensible clarity judgment. Without it, the paper's one positive result is compatible with the judge behaving correctly under its own instructions.",
+   "severity": "major"
+  },
+  {
+   "text": "Same-vendor circularity runs through the whole pipeline: the stimuli are generated by Gemini TTS, the accent manipulation check is performed by a Gemini classifier, and both judges are Gemini. A Gemini judge penalizing a Gemini TTS rendering could reflect shared representational quirks or a per-accent synthesis quality gradient in the generator rather than judge bias. The paper flags the classifier circularity but not the generator-judge coupling, and the two-judge disagreement it uses as evidence of judge-specificity is a within-vendor comparison that cannot rule out either alternative.",
+   "severity": "major"
+  },
+  {
+   "text": "Generality is thin even by analysis-paper standards: 2 judges from 1 vendor, 1 TTS engine, 24 items, 8 voices total, 1 call per clip (no repeated sampling, so judge stochasticity is never estimated within condition), no open-weight judge, no OpenAI judge, no human-listener anchor, and no real recorded speech. The paper states a $20 compute budget. A reviewer will read the design as power-limited by choice, and Section 5 concedes the British/Nigerian/delivery nulls may simply be underpowered.",
+   "severity": "major"
+  },
+  {
+   "text": "Consequence is never quantified. If the effect is real, 2.5 points on 0-100 is asserted to matter for oral exams and interview screening, but no analysis connects it to any decision boundary -- no pass/fail threshold, no ranking-flip rate, no simulated shortlist to show how often a 2.5-point shift changes an outcome. Given a bank SD of 17.0, a 2.5-point shift is ~0.15 SD; the paper needs to argue why that is deployment-relevant rather than assume it.",
+   "severity": "major"
+  },
+  {
+   "text": "The pre-registration is a self-authored MILESTONES.md in the authors' own repository, dated one day before data collection, with no third-party timestamp. The authors say so plainly, which is to their credit, but it provides no external guarantee against post hoc revision, and the outcome (1 of 4 directions held, in one of six cells, with a partial reversal) is what an unregistered exploratory study would also look like.",
+   "severity": "minor"
+  },
+  {
+   "text": "The background-noise condition uses synthesized pink noise as a stand-in for multi-talker babble, which is a substantively different masker (steady spectral masking vs. informational masking). Since this arm is null anyway the practical cost is low, but the perturbation battery is weaker than the abstract's 'background noise' implies.",
+   "severity": "minor"
+  },
+  {
+   "text": "The abstract enumerates 'First... Second... Fourth' with no third item, which is a straightforward proofreading miss in the paper's most-read paragraph. Related: Section 2's Significance paragraph and Section 6 both use 'yes, for that judge, on that accent' hedging that is correct but makes the contribution statement hard to extract on a first pass.",
+   "severity": "minor"
+  }
+ ],
+ "missing_experiment": "Multiple distinct voices per accent-gender cell -- ideally real human recordings of the same frozen text (the L2-ARCTIC corpus the authors already scoped, or 4-6 additional TTS voices per cell as a same-week fallback), analyzed with voice as a random effect. Without it the paper cannot distinguish 'this judge penalizes Indian-accented speech' from 'this judge penalizes this one synthetic voice,' and every reviewer will name this first. A close second, and far cheaper: rerun the Axis A accent comparison under the ignore-delivery rubric that already exists, plus per-dimension rubric scores, to separate a clarity judgment from a content-score bias.",
+ "format_audit": {
+  "ablation_table": "present",
+  "teaser_figure": "absent",
+  "error_bars": "present",
+  "pages": 12,
+  "verdict_vs_norms": "Well below ICLR norms on every density axis: 12 pages vs a median of 25, 6 figures vs a mean of 11.5, 2 tables vs a mean of 8.7, and the main results occupy roughly four pages. Table 2's grading-mode decomposition serves the ablation-table function (56.8% of accepted papers have one) and error bars are present throughout Figures 2, 4, and 6, which puts the paper ahead of the 40.2% norm and squarely in the honest-uncertainty minority. Figure 1 is a design schematic on page 2, not a page-1 teaser, so it misses that convention, though only 10.6% of accepted papers use one. The figures are clean and well-annotated but the overall volume of evidence reads as a workshop paper rather than a main-track ICLR submission, and the stated $20 compute budget makes that impression concrete rather than stylistic."
+ },
+ "venue_fit": {
+  "verdict": "good",
+  "reasoning": "Topic fit is solid: audio-LLM judges sit inside the LLM-as-judge, LLM safety/fairness, and vision-language/multimodal clusters that make up a large share of recent ICLR programs, and controlled behavioral audits of deployed model behavior are a recognized ICLR genre. Style fit is weaker -- ICLR analysis papers that succeed typically span several model families and vendors and carry enough evidence to survive an adversarial rebuttal, and this one is a small, single-vendor, single-voice-per-cell study with one significant cell. The framing, the honesty about nulls, and the related-work positioning are all at ICLR standard; the empirical mass is not."
+ },
+ "scores": {
+  "rigor": 3,
+  "novelty": 4,
+  "clarity_impact": 4,
+  "confidence_1to5": 4
+ },
+ "avg_score": 3.7,
+ "accept_probability_pct": 3,
+ "calibration_note": "Average 3.7 falls in the 3.5-4.0 band, historically ~2.3% accepted at ICLR (n=2010); I round to 3% because the writing quality, honest null reporting, and careful related-work delineation would likely earn one champion reviewer, but the single-voice-per-accent confound is the kind of objection that survives rebuttal and caps the ceiling -- at IJCAI or AAAI this would shift one band down to ~1%, and at borderline the AC's read of 'clean design, thin evidence' is worth roughly a full point of noise in either direction.",
+ "what_would_move_to_accept": [
+  "Break the voice/accent confound: 4-6 voices per accent-gender cell, or real human recordings of the frozen text (L2-ARCTIC), analyzed with a mixed-effects model treating voice and item as crossed random effects. This is the difference between a voice-level anecdote and an accent-level claim, and no other change substitutes for it. Effort: 1-3 weeks including the corpus registration step already in progress; TTS-only fallback is ~2 days and a few hundred dollars.",
+  "Add a third and fourth judge family from outside Google -- one frontier (GPT-4o-audio class) and one open-weight (Qwen-Audio class). The paper's second-most-interesting claim, that judge choice is not a neutral engineering decision, currently rests on two siblings from one vendor and cannot support it. Effort: ~1 week, modest compute.",
+  "Rerun Axis A under the ignore-delivery rubric and report per-dimension scores (correctness/completeness/helpfulness/clarity separately). If the accent penalty survives an explicit instruction to ignore delivery and appears on correctness rather than only clarity, the finding becomes much harder to dismiss; if it does not, that is a publishable and more honest result. Effort: ~2 days, cheap -- the prompt already exists in Appendix B.",
+  "Fix the statistics: pre-declare and correct over the full family of tests, replace the tautological gold-transcript arm with a stated nondeterminism noise floor (repeat calls per condition, report within-condition SD), and re-derive the headline under the corrected family. Effort: ~3 days including the repeat-call collection.",
+  "Scale the item bank to 100-150 items with a reported power analysis, so the British, Nigerian, gender, and delivery nulls become informative bounds rather than 'inconclusive.' A tight null with a stated minimum detectable effect is a real contribution; a wide null is not. Effort: ~1 week, still inexpensive.",
+  "Add a decision-relevance analysis: given the observed effect and score distribution, how often does the accent shift flip a pass/fail decision or a top-k shortlist under realistic thresholds? Effort: ~1 day of analysis on data already collected, and it converts the 2.5-point number from a curiosity into a stake.",
+  "Grow the paper to ICLR scale (20-25 pages) with the added arms, a human-listener comparison anchoring the judge against the Kang and Rubin reverse-linguistic-stereotyping precedent the paper already cites, and qualitative analysis of the judges' one-sentence reasons across accent conditions. Effort: folded into the above."
+ ]
+}

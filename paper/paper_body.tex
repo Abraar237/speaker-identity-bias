@@ -363,7 +363,12 @@ audio-mode shift differs from the own-transcript shift by $-6.04$ points
 (95\% CI $[-8.5, -3.5]$, sign-flip $p = 4 \times 10^{-4}$, $n{=}24$) and from
 the gold-transcript shift by $-3.33$ ($[-5.8, -0.8]$, $p = 0.028$). The
 penalty is significantly larger in the acoustic channel than in either
-transcript channel, not merely significant in one and not the other. Gemini 3.6 Flash, which
+transcript channel, not merely significant in one and not the other. One
+framing caution: the gold-transcript arm is a sanity check, not evidence.
+The frozen gold transcript is identical across accents by construction, so
+a null there is guaranteed if the judge behaves deterministically; the
+informative contrast is audio versus the judge's \emph{own} transcript of
+the accented audio, which carries whatever the recognizer heard. Gemini 3.6 Flash, which
 showed no significant audio-mode effect to begin with, shows a
 non-significant shift under its own transcript ($-4.25$, $p=0.17$) and under
 the gold transcript ($+0.83$, $p=0.36$); we do not read a channel story into

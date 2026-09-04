@@ -1,181 +1,101 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
-import { RoughRect, RoughPath, ArrowHead } from "./lib/Rough";
-import { FlowDots } from "./lib/FlowDots";
-import { Gear } from "./lib/Icons";
-import { Cubic, cubicD } from "./lib/bezier";
 import {
-  PAPER, CARD, INK, MUTED, SLATE, SLATE_SOFT, MAGENTA, MAGENTA_SOFT,
-  WARM, WARM_SOFT, VIRGIL, Txt, loadGifFonts, fillCycle,
-} from "./shared";
+  PAGE, INK, INK2, MUTED, FAINT, GRID, HOT, GOOD, GREY,
+  SANS, MONO, growth, fadeAlpha, T, Card, ReplayPill, Swatch, fmt,
+} from "./flat";
 
-const GOOD = "#1c7a55";
-const GOOD_SOFT = "#ddeee6";
+// Horizontal delta-bar chart: score shift vs the American baseline,
+// Gemini 3.1 Pro, numbers from results/analysis.json (axis_a).
+const ROWS = [
+  { label: "American", shift: 0.0, color: GREY, tag: "baseline", strong: false },
+  { label: "British", shift: -0.4, color: GREY, tag: "", strong: false },
+  { label: "Indian", shift: -2.5, color: HOT, tag: "p = 0.005", strong: true },
+  { label: "Nigerian", shift: +1.0, color: GOOD, tag: "", strong: false },
+];
 
-// four voice chips -> judge
-const mk = (x0: number, y0: number, x1: number, y1: number): Cubic => ({
-  p0: { x: x0, y: y0 },
-  p1: { x: x0, y: y0 + 60 },
-  p2: { x: x1, y: y1 - 70 },
-  p3: { x: x1, y: y1 },
-});
-const pUS = mk(160, 452, 470, 560);
-const pUK = mk(415, 452, 510, 560);
-const pIN = mk(665, 452, 570, 560);
-const pNG = mk(920, 452, 610, 560);
-
-// tiny hand-drawn waveform squiggle
-const wave = (cx: number, cy: number, seed: number, color: string) => (
-  <RoughPath
-    d={`M ${cx - 52} ${cy} q 6 -16 13 0 q 7 18 14 0 q 6 -24 13 0 q 7 20 14 0 q 6 -14 13 0 q 7 16 14 0 q 6 -20 13 0 q 7 14 14 0`}
-    stroke={color}
-    seed={seed}
-    strokeWidth={2.6}
-  />
-);
-
-const PERIOD = 120;
-const OFFSET = 40;
-
-// delta bar around a zero line: half-width 190 covers +-3 points
-const DeltaRow: React.FC<{
-  y: number; label: string; shift: number; color: string; cyc: number;
-  strong?: boolean; note?: string;
-}> = ({ y, label, shift, color, cyc, strong = false, note }) => {
-  const zero = 560;
-  const scale = 190 / 3; // px per point
-  const w = Math.abs(shift) * scale * cyc;
-  const val = (shift * cyc).toFixed(1);
-  return (
-    <>
-      <Txt x={120} y={y - 15} size={strong ? 25 : 22} w={250} color={strong ? color : INK}>
-        {label}
-      </Txt>
-      <svg width={1080} height={1080} style={{ position: "absolute", inset: 0 }}>
-        <rect
-          x={shift >= 0 ? zero : zero - w}
-          y={y - 13}
-          width={Math.max(w, 1)}
-          height={26}
-          fill={color}
-          opacity={strong ? 0.9 : 0.55}
-          rx={3}
-        />
-      </svg>
-      <Txt
-        x={shift >= 0 ? zero + 200 : zero - 320}
-        y={y - 15}
-        size={strong ? 27 : 22}
-        w={120}
-        align={shift >= 0 ? "left" : "right"}
-        color={strong ? color : MUTED}
-      >
-        {shift >= 0 ? `+${val}` : val}
-      </Txt>
-      {note ? (
-        <Txt x={880} y={y - 12} size={18} w={180} color={strong ? color : MUTED}>
-          {note}
-        </Txt>
-      ) : null}
-    </>
-  );
-};
+const ZERO_X = 560;        // px of shift == 0
+const PX_PER_PT = 82;      // +-3 pts spans +-246 px
+const ROW_Y0 = 420;
+const ROW_H = 118;
+const BAR_H = 34;
 
 export const SameWordsDifferentVoice: React.FC = () => {
-  loadGifFonts();
   const frame = useCurrentFrame();
-  const cyc = fillCycle(frame + OFFSET, PERIOD);
+  const g = growth(frame);
+  const a = fadeAlpha(frame);
 
   return (
-    <AbsoluteFill style={{ background: PAPER }}>
-      <svg width={1080} height={1080} style={{ position: "absolute", inset: 0 }}>
-        {/* frozen answer card */}
-        <RoughRect x={240} y={128} w={600} h={120} fill={CARD} stroke={INK} seed={21} />
+    <AbsoluteFill style={{ background: PAGE }}>
+      <Card>
+        <T x={60} y={52} size={46} color={INK} weight={700} w={800}>
+          Same words, different voice
+        </T>
+        <T x={60} y={116} size={25} color={MUTED} w={860}>
+          one spoken answer, four accents, identical words · scored by an audio judge
+        </T>
 
-        {/* four voice chips */}
-        <RoughRect x={60} y={330} w={200} h={122} fill={SLATE_SOFT} stroke={SLATE} seed={22} />
-        <RoughRect x={315} y={330} w={200} h={122} fill={WARM_SOFT} stroke={WARM} seed={23} />
-        <RoughRect x={565} y={330} w={200} h={122} fill={MAGENTA_SOFT} stroke={MAGENTA} seed={24} />
-        <RoughRect x={820} y={330} w={200} h={122} fill={GOOD_SOFT} stroke={GOOD} seed={25} />
-        {wave(160, 424, 26, SLATE)}
-        {wave(415, 424, 27, WARM)}
-        {wave(665, 424, 28, MAGENTA)}
-        {wave(920, 424, 29, GOOD)}
+        <Swatch x={60} y={186} color={GREY} label="no reliable shift" w={300} />
+        <Swatch x={360} y={186} color={HOT} label="significant shift" w={300} />
+        <Swatch x={660} y={186} color={GOOD} label="trend, not significant" w={330} />
 
-        {/* card -> chips fan lines (static) */}
-        <RoughPath d="M 420 250 L 175 322" stroke={MUTED} seed={30} strokeWidth={1.8} />
-        <RoughPath d="M 500 250 L 420 322" stroke={MUTED} seed={31} strokeWidth={1.8} />
-        <RoughPath d="M 590 250 L 660 322" stroke={MUTED} seed={32} strokeWidth={1.8} />
-        <RoughPath d="M 665 250 L 905 322" stroke={MUTED} seed={33} strokeWidth={1.8} />
+        <T x={60} y={252} size={22} color={MUTED} w={800}>
+          score shift vs the American baseline · Gemini 3.1 Pro · 0–100 scale
+        </T>
 
-        {/* chips -> judge flows */}
-        <path d={cubicD(pUS)} stroke={SLATE} strokeWidth={2} opacity={0.3} fill="none" />
-        <path d={cubicD(pUK)} stroke={WARM} strokeWidth={2} opacity={0.3} fill="none" />
-        <path d={cubicD(pIN)} stroke={MAGENTA} strokeWidth={2} opacity={0.35} fill="none" />
-        <path d={cubicD(pNG)} stroke={GOOD} strokeWidth={2} opacity={0.3} fill="none" />
-        <ArrowHead x={470} y={560} angle={1.35} color={SLATE} />
-        <ArrowHead x={510} y={560} angle={1.5} color={WARM} />
-        <ArrowHead x={570} y={560} angle={1.75} color={MAGENTA} />
-        <ArrowHead x={610} y={560} angle={1.9} color={GOOD} />
-        <FlowDots path={pUS} color={SLATE} nDots={2} period={80} radius={5} />
-        <FlowDots path={pUK} color={WARM} nDots={2} period={80} radius={5} phase={0.25} />
-        <FlowDots path={pIN} color={MAGENTA} nDots={3} period={80} radius={5.6} phase={0.5} />
-        <FlowDots path={pNG} color={GOOD} nDots={2} period={80} radius={5} phase={0.75} />
+        {/* gridlines and axis numerals, static from frame 0 */}
+        {[-3, -2, -1, 0, 1, 2, 3].map((v) => {
+          const x = ZERO_X + v * PX_PER_PT;
+          return (
+            <React.Fragment key={v}>
+              <div style={{ position: "absolute", left: x, top: 320,
+                width: v === 0 ? 2 : 1, height: 500,
+                background: v === 0 ? INK2 : GRID }} />
+              <T x={x - 30} y={836} size={20} color={FAINT} w={60}
+                 align="center" font={MONO}>{v === 0 ? "0" : fmt(v, 0)}</T>
+            </React.Fragment>
+          );
+        })}
 
-        {/* judge card */}
-        <RoughRect x={400} y={556} w={280} h={130} fill={CARD} stroke={INK} seed={34} strokeWidth={2.8} />
-        <Gear cx={452} cy={620} r={28} period={120} color={INK} />
+        {ROWS.map((r, i) => {
+          const y = ROW_Y0 + i * ROW_H;
+          const w = Math.abs(r.shift) * PX_PER_PT * g;
+          const barX = r.shift < 0 ? ZERO_X - w : ZERO_X;
+          const val = r.shift * g;
+          const valX = r.shift < 0 ? ZERO_X - w - 118 : ZERO_X + w + 14;
+          return (
+            <React.Fragment key={r.label}>
+              <T x={60} y={y + 2} size={26} color={r.strong ? r.color : INK2}
+                 weight={r.strong ? 700 : 500} w={220}>{r.label}</T>
+              {r.shift !== 0 && (
+                <div style={{ position: "absolute", left: barX, top: y - 2,
+                  width: Math.max(w, 2), height: BAR_H, background: r.color,
+                  borderRadius: 4, opacity: a }} />
+              )}
+              <T x={valX} y={y} size={27} color={r.strong ? r.color : INK2}
+                 font={MONO} weight={r.strong ? 700 : 500} w={104}
+                 align={r.shift < 0 ? "right" : "left"} opacity={a}>
+                {fmt(val)}
+              </T>
+              {r.tag && (
+                <T x={r.strong ? 60 : ZERO_X + 70} y={y + 34} size={21}
+                   color={r.strong ? r.color : MUTED} w={220}
+                   font={r.strong ? MONO : SANS} opacity={a}>
+                  {r.tag}
+                </T>
+              )}
+            </React.Fragment>
+          );
+        })}
 
-        {/* zero line for delta rows */}
-        <line x1={560} y1={742} x2={560} y2={1000} stroke={MUTED} strokeWidth={2} strokeDasharray="6 6" />
-      </svg>
-
-      <Txt x={40} y={24} size={46} w={1000} align="center" color={INK}>
-        Same words, different voice
-      </Txt>
-      <Txt x={40} y={86} size={24} w={1000} align="center" color={MUTED}>
-        one spoken answer, four accents, scored blind by an audio judge
-      </Txt>
-
-      <Txt x={270} y={148} size={25} w={540} align="center" color={INK}>
-        one answer, text frozen
-      </Txt>
-      <Txt x={270} y={192} size={20} w={540} align="center" color={MUTED}>
-        every clip carries the identical words
-      </Txt>
-
-      <Txt x={60} y={338} size={22} w={200} align="center" color={SLATE}>
-        American
-      </Txt>
-      <Txt x={315} y={338} size={22} w={200} align="center" color={WARM}>
-        British
-      </Txt>
-      <Txt x={565} y={338} size={22} w={200} align="center" color={MAGENTA}>
-        Indian
-      </Txt>
-      <Txt x={820} y={338} size={22} w={200} align="center" color={GOOD}>
-        Nigerian
-      </Txt>
-
-      <Txt x={492} y={594} size={25} w={180} color={INK}>
-        audio judge
-      </Txt>
-      <Txt x={492} y={630} size={18} w={180} color={MUTED}>
-        Gemini 3.1 Pro
-      </Txt>
-
-      <Txt x={120} y={712} size={22} w={700} color={MUTED}>
-        score shift vs the American baseline
-      </Txt>
-
-      <DeltaRow y={790} label="American" shift={0} color={SLATE} cyc={cyc} note="baseline" />
-      <DeltaRow y={850} label="British" shift={-0.4} color={WARM} cyc={cyc} />
-      <DeltaRow y={910} label="Indian" shift={-2.5} color={MAGENTA} cyc={cyc} strong note="p = 0.005" />
-      <DeltaRow y={970} label="Nigerian" shift={1.0} color={GOOD} cyc={cyc} />
-
-      <Txt x={40} y={1016} size={22} w={1000} align="center" color={MUTED}>
-        identical words, temperature 0, one clip per call, judge blind to the study
-      </Txt>
+        <T x={60} y={905} size={23} color={INK2} w={904} align="center" weight={600}>
+          the judge heard identical words in every clip
+        </T>
+        <T x={60} y={945} size={21} color={MUTED} w={904} align="center">
+          24 frozen answers · temperature 0 · one clip per call · judge blind to the study
+        </T>
+        <ReplayPill />
+      </Card>
     </AbsoluteFill>
   );
 };

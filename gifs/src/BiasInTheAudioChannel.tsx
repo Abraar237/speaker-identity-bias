@@ -1,142 +1,91 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
-import { RoughRect, RoughPath, ArrowHead } from "./lib/Rough";
-import { FlowDots } from "./lib/FlowDots";
-import { Gear } from "./lib/Icons";
-import { Cubic, cubicD } from "./lib/bezier";
 import {
-  PAPER, CARD, INK, MUTED, SLATE, SLATE_SOFT, MAGENTA, MAGENTA_SOFT,
-  WARM, WARM_SOFT, Txt, loadGifFonts, fillCycle,
-} from "./shared";
+  PAGE, INK, INK2, MUTED, FAINT, GRID, HOT, SLATE, SHELF,
+  SANS, MONO, growth, fadeAlpha, T, Card, ReplayPill, Swatch, fmt,
+} from "./flat";
 
-// three horizontal lanes from the clip card to three judge boxes
-const lane = (y: number): Cubic => ({
-  p0: { x: 330, y },
-  p1: { x: 420, y },
-  p2: { x: 520, y },
-  p3: { x: 610, y },
-});
-const laneTop = lane(330);
-const laneMid = lane(560);
-const laneBot = lane(790);
+// Vertical bars: the same Indian-vs-American comparison under three grading
+// modes, Gemini 3.1 Pro. Numbers from results/analysis.json (decomposition).
+const BARS = [
+  { label: "hear the audio", shift: -2.5, color: HOT, tag: "penalty · p = 0.006", strong: true },
+  { label: "read its own transcript", shift: +1.88, color: SLATE, tag: "gone · p = 0.14", strong: false },
+  { label: "read the gold transcript", shift: -0.83, color: SHELF, tag: "gone · p = 0.51", strong: false },
+];
 
-const PERIOD = 120;
-const OFFSET = 40;
-
-const Meter: React.FC<{
-  y: number; shift: number; color: string; cyc: number; strong?: boolean; verdict: string;
-}> = ({ y, shift, color, cyc, strong = false, verdict }) => {
-  const zero = 905;
-  const scale = 120 / 3;
-  const w = Math.abs(shift) * scale * cyc;
-  const val = (shift * cyc).toFixed(1);
-  return (
-    <>
-      <svg width={1080} height={1080} style={{ position: "absolute", inset: 0 }}>
-        <line x1={zero} y1={y - 34} x2={zero} y2={y + 34} stroke={MUTED} strokeWidth={2} strokeDasharray="5 5" />
-        <rect
-          x={shift >= 0 ? zero : zero - w}
-          y={y - 15}
-          width={Math.max(w, 1)}
-          height={30}
-          fill={color}
-          opacity={strong ? 0.9 : 0.5}
-          rx={3}
-        />
-      </svg>
-      <Txt x={zero - 145} y={y - 66} size={strong ? 30 : 25} w={290} align="center" color={strong ? color : MUTED}>
-        {shift >= 0 ? `+${val}` : val}
-      </Txt>
-      <Txt x={zero - 145} y={y + 40} size={18} w={290} align="center" color={strong ? color : MUTED}>
-        {verdict}
-      </Txt>
-    </>
-  );
-};
+const ZERO_Y = 560;       // px of shift == 0
+const PX_PER_PT = 106;    // +-3 pts spans +-318 px
+const BAR_W = 120;
+const XS = [235, 540, 845];
 
 export const BiasInTheAudioChannel: React.FC = () => {
-  loadGifFonts();
   const frame = useCurrentFrame();
-  const cyc = fillCycle(frame + OFFSET, PERIOD);
+  const g = growth(frame);
+  const a = fadeAlpha(frame);
 
   return (
-    <AbsoluteFill style={{ background: PAPER }}>
-      <svg width={1080} height={1080} style={{ position: "absolute", inset: 0 }}>
-        {/* the one clip, spanning all three lanes */}
-        <RoughRect x={70} y={270} w={260} h={580} fill={CARD} stroke={INK} seed={41} strokeWidth={2.6} />
-        {/* waveform */}
-        <RoughPath
-          d="M 110 560 q 8 -30 17 0 q 9 34 18 0 q 8 -44 17 0 q 9 38 18 0 q 8 -26 17 0 q 9 30 18 0 q 8 -38 17 0 q 9 26 18 0 q 8 -32 17 0 q 9 22 18 0"
-          stroke={MAGENTA}
-          seed={42}
-          strokeWidth={3}
-        />
+    <AbsoluteFill style={{ background: PAGE }}>
+      <Card>
+        <T x={60} y={52} size={46} color={INK} weight={700} w={880}>
+          The bias lives in the audio channel
+        </T>
+        <T x={60} y={116} size={25} color={MUTED} w={880}>
+          one Indian-accented answer, graded three ways by the same judge
+        </T>
+        <Swatch x={60} y={182} color={HOT} label="hears sound" w={260} />
+        <Swatch x={320} y={182} color={SLATE} label="reads text only" w={420} />
 
-        {/* three lanes */}
-        <path d={cubicD(laneTop)} stroke={MAGENTA} strokeWidth={2} opacity={0.4} fill="none" />
-        <path d={cubicD(laneMid)} stroke={SLATE} strokeWidth={2} opacity={0.35} fill="none" />
-        <path d={cubicD(laneBot)} stroke={WARM} strokeWidth={2} opacity={0.35} fill="none" />
-        <ArrowHead x={610} y={330} angle={0} color={MAGENTA} />
-        <ArrowHead x={610} y={560} angle={0} color={SLATE} />
-        <ArrowHead x={610} y={790} angle={0} color={WARM} />
-        <FlowDots path={laneTop} color={MAGENTA} nDots={3} period={80} radius={5.6} />
-        <FlowDots path={laneMid} color={SLATE} nDots={2} period={80} radius={5} phase={0.33} />
-        <FlowDots path={laneBot} color={WARM} nDots={2} period={80} radius={5} phase={0.66} />
+        <T x={44} y={236} size={22} color={MUTED} w={700}>
+          score shift, Indian minus American · Gemini 3.1 Pro
+        </T>
 
-        {/* three judge boxes */}
-        <RoughRect x={614} y={276} w={146} h={108} fill={MAGENTA_SOFT} stroke={MAGENTA} seed={43} strokeWidth={2.4} />
-        <RoughRect x={614} y={506} w={146} h={108} fill={SLATE_SOFT} stroke={SLATE} seed={44} strokeWidth={2.4} />
-        <RoughRect x={614} y={736} w={146} h={108} fill={WARM_SOFT} stroke={WARM} seed={45} strokeWidth={2.4} />
-      </svg>
-      <Gears />
+        {/* horizontal gridlines + axis numerals, static from frame 0 */}
+        {[-3, -2, -1, 0, 1, 2, 3].map((v) => {
+          const y = ZERO_Y - v * PX_PER_PT;
+          if (y < 290 || y > 900) return null;
+          return (
+            <React.Fragment key={v}>
+              <div style={{ position: "absolute", left: 120, top: y,
+                width: 850, height: v === 0 ? 2.5 : 1,
+                background: v === 0 ? INK2 : GRID }} />
+              <T x={58} y={y - 13} size={20} color={FAINT} w={52}
+                 align="right" font={MONO}>{v === 0 ? "0" : fmt(v, 0)}</T>
+            </React.Fragment>
+          );
+        })}
 
-      <Txt x={40} y={24} size={46} w={1000} align="center" color={INK}>
-        The bias lives in the audio channel
-      </Txt>
-      <Txt x={40} y={86} size={24} w={1000} align="center" color={MUTED}>
-        one Indian-accented answer, graded three ways by the same judge
-      </Txt>
+        {BARS.map((b, i) => {
+          const x = XS[i];
+          const h = Math.abs(b.shift) * PX_PER_PT * g;
+          const top = b.shift < 0 ? ZERO_Y + 1 : ZERO_Y - h;
+          const val = b.shift * g;
+          const valY = b.shift < 0 ? ZERO_Y + h + 12 : ZERO_Y - h - 44;
+          return (
+            <React.Fragment key={b.label}>
+              <div style={{ position: "absolute", left: x - BAR_W / 2, top,
+                width: BAR_W, height: Math.max(h, 2), background: b.color,
+                borderRadius: 5, opacity: a }} />
+              <T x={x - 110} y={valY} size={34} color={b.color} font={MONO}
+                 weight={b.strong ? 700 : 600} w={220} align="center" opacity={a}>
+                {fmt(val, 2)}
+              </T>
+              <T x={x - 150} y={870} size={24} color={b.strong ? b.color : INK2}
+                 weight={b.strong ? 700 : 500} w={300} align="center">
+                {b.label}
+              </T>
+              <T x={x - 150} y={904} size={20} color={MUTED} w={300}
+                 align="center" font={MONO} opacity={a}>
+                {b.tag}
+              </T>
+            </React.Fragment>
+          );
+        })}
 
-      <Txt x={85} y={300} size={25} w={230} align="center" color={INK}>
-        one spoken answer
-      </Txt>
-      <Txt x={85} y={378} size={20} w={230} align="center" color={MUTED} lineHeight={1.4}>
-        Indian accent, words identical to the American version
-      </Txt>
-      <Txt x={85} y={620} size={20} w={230} align="center" color={MUTED}>
-        Gemini 3.1 Pro judges it three ways
-      </Txt>
-
-      {/* lane labels */}
-      <Txt x={350} y={272} size={22} w={240} color={MAGENTA}>
-        hear the audio
-      </Txt>
-      <Txt x={350} y={502} size={22} w={240} color={SLATE}>
-        read its own transcript
-      </Txt>
-      <Txt x={350} y={732} size={22} w={240} color={WARM}>
-        read the gold transcript
-      </Txt>
-
-      <Meter y={330} shift={-2.5} color={MAGENTA} cyc={cyc} strong verdict="penalty, p = 0.006" />
-      <Meter y={560} shift={1.9} color={SLATE} cyc={cyc} verdict="gone, p = 0.14" />
-      <Meter y={790} shift={-0.8} color={WARM} cyc={cyc} verdict="gone, p = 0.51" />
-
-      <Txt x={40} y={920} size={28} w={1000} align="center" color={INK}>
-        take away the sound, the penalty disappears
-      </Txt>
-      <Txt x={40} y={1010} size={22} w={1000} align="center" color={MUTED}>
-        score shift, Indian minus American accent, same words in every cell
-      </Txt>
+        <T x={60} y={956} size={24} color={INK2} w={904} align="center" weight={700}>
+          take away the sound, the penalty disappears
+        </T>
+        <ReplayPill />
+      </Card>
     </AbsoluteFill>
   );
 };
-
-// small gears inside the three judge boxes, own component so the svg above stays static
-const Gears: React.FC = () => (
-  <svg width={1080} height={1080} style={{ position: "absolute", inset: 0 }}>
-    <Gear cx={687} cy={330} r={22} period={120} color={MAGENTA} />
-    <Gear cx={687} cy={560} r={22} period={120} color={SLATE} />
-    <Gear cx={687} cy={790} r={22} period={120} color={WARM} />
-  </svg>
-);

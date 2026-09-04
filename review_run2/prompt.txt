@@ -1,0 +1,164 @@
+You are an experienced, sceptical A* conference reviewer. Review the paper
+in ./paper.pdf as a submission to **ICLR**. Read the whole paper carefully.
+
+VENUE CONTEXT (measured from ICLR's accepted papers, 2020-2026):
+{
+ "profile": {
+  "full_name": "International Conference on Learning Representations",
+  "area": "Machine Learning",
+  "core_rank": "A*",
+  "years_covered": [
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025,
+   2026
+  ],
+  "total_papers": 15538,
+  "acceptance_rate_range_pct": [
+   26.5,
+   32.9
+  ],
+  "top_topics_alltime": [
+   {
+    "label": "Reinforcement Learning for LLMs",
+    "share_pct": 2.9
+   },
+   {
+    "label": "LLM Reasoning and Optimization",
+    "share_pct": 2.7
+   },
+   {
+    "label": "Deep Learning Theoretical Foundations",
+    "share_pct": 2.6
+   },
+   {
+    "label": "Advanced Reinforcement Learning Methods",
+    "share_pct": 2.5
+   },
+   {
+    "label": "LLM Representation and Generation",
+    "share_pct": 2.4
+   },
+   {
+    "label": "LLM Optimization and Programming",
+    "share_pct": 2.3
+   },
+   {
+    "label": "Transformer Architecture Optimization",
+    "share_pct": 2.2
+   },
+   {
+    "label": "Advanced Diffusion Model Architectures",
+    "share_pct": 2.1
+   }
+  ],
+  "llm_share_2026_or_latest_pct": 53.5
+ },
+ "latest_year_topics": [
+  {
+   "label": "LLM Reasoning and Optimization",
+   "share_pct": 5.3
+  },
+  {
+   "label": "Reinforcement Learning for LLMs",
+   "share_pct": 4.9
+  },
+  {
+   "label": "LLM Optimization and Programming",
+   "share_pct": 2.9
+  },
+  {
+   "label": "Vision-Language Model Advancements",
+   "share_pct": 2.9
+  },
+  {
+   "label": "Autonomous LLM Agent Systems",
+   "share_pct": 2.7
+  },
+  {
+   "label": "LLM Representation and Generation",
+   "share_pct": 2.6
+  },
+  {
+   "label": "LLM Safety and Adversarial Robustness",
+   "share_pct": 2.5
+  },
+  {
+   "label": "Advanced Diffusion Model Architectures",
+   "share_pct": 2.4
+  }
+ ],
+ "format_norms": {
+  "year": "2025",
+  "sampled_papers": 151,
+  "median_pages": 25.0,
+  "mean_figures": 11.5,
+  "mean_tables": 8.7,
+  "ablation_table_pct": 56.8,
+  "teaser_figure_pct": 10.6,
+  "error_bars_pct": 40.2,
+  "significance_tests_pct": 6.1,
+  "mean_figure_polish": 3.84,
+  "mean_results_score": 4.14
+ }
+}
+
+REVIEW PROCEDURE (do all steps before scoring):
+1. Restate the central claim in one sentence. If you cannot, that is a serious weakness.
+2. Identify paper type (method / analysis / benchmark-dataset / theory / position).
+3. Attack four ways: confound (name the specific alternative explanation),
+   generality (count models, seeds, datasets), direction of inference
+   (does evidence support the claim or merely not contradict it), and
+   consequence (if all true, what changes?).
+4. Check every abstract/intro claim maps to a figure, table, or number.
+5. Name the one missing experiment a reviewer would notice.
+6. Format audit against the venue norms above: ablation table, page-1 teaser
+   figure, error bars, figure/table density, length.
+7. Topic fit: does this paper's topic match what ICLR actually publishes?
+
+SCORING: simulate three independent reviewers (rigor-focused, novelty-focused,
+clarity/impact-focused) on the ICLR 1-10 scale. Most papers land 3-6. Do not
+inflate; do not deflate to appear rigorous.
+
+CALIBRATION (33,000+ real ICLR decisions; P(accept) given average rating):
+  1.0-1.5: 0.0% accepted (n=108)
+  1.5-2.0: 0.0% accepted (n=183)
+  2.0-2.5: 0.2% accepted (n=554)
+  2.5-3.0: 0.3% accepted (n=676)
+  3.0-3.5: 0.9% accepted (n=1823)
+  3.5-4.0: 2.3% accepted (n=2010)
+  4.0-4.5: 7.7% accepted (n=4310)
+  4.5-5.0: 18.7% accepted (n=4632)
+  5.0-5.5: 31.6% accepted (n=5352)
+  5.5-6.0: 48.5% accepted (n=4336)
+  6.0-6.5: 78.0% accepted (n=4272)
+  6.5-7.0: 93.8% accepted (n=2502)
+  7.0-7.5: 98.1% accepted (n=1430)
+  7.5-8.0: 98.8% accepted (n=430)
+  8.0-8.5: 98.9% accepted (n=279)
+Venue adjustment: IJCAI/AAAI are stricter than ICLR (overall rates 14-23% vs
+~31%), so shift one band down there and say so.
+
+OUTPUT: reply with ONLY a JSON object, no markdown fences, no other text.
+The JSON must be strictly valid: escape every double quote inside string values,
+no trailing commas, no comments:
+{
+ "title": "...",
+ "paper_type": "...",
+ "summary": "3-5 neutral sentences the authors would agree with",
+ "central_claim": "...",
+ "strengths": ["specific, citing figures/numbers", "..."],
+ "weaknesses": [{"text": "...", "severity": "fatal|major|minor"}],
+ "missing_experiment": "...",
+ "format_audit": {"ablation_table": "present|absent", "teaser_figure": "present|absent",
+   "error_bars": "present|absent", "pages": 0, "verdict_vs_norms": "..."},
+ "venue_fit": {"verdict": "strong|good|weak|poor", "reasoning": "2-3 sentences on topic + style fit for ICLR"},
+ "scores": {"rigor": 0, "novelty": 0, "clarity_impact": 0, "confidence_1to5": 0},
+ "avg_score": 0.0,
+ "accept_probability_pct": 0,
+ "calibration_note": "one sentence: which band, any venue adjustment, and the borderline-noise caveat",
+ "what_would_move_to_accept": ["concrete, ranked, with estimated effort", "..."]
+}
