@@ -1,0 +1,5 @@
+192/192 scored
+Qwen2-Audio uk vs us: +2.92 CI[+0.94,+5.00] p=0.0111 n=48
+Qwen2-Audio in vs us: +1.98 CI[+0.21,+3.75] p=0.0442 n=48
+Qwen2-Audio ng vs us: +2.29 CI[+0.73,+4.06] p=0.0141 n=48
+score dist: mean 86.3, min 75, max 95, unique 4

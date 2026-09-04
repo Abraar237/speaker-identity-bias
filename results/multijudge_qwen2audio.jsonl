@@ -1,0 +1,192 @@
+{"clip": "item00_in_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but lacks some important details.\\\"}"}
+{"clip": "item00_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and specific about which nuclear reaction is being referred to.\\\"}"}
+{"clip": "item00_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but lacks some important details.\\\"}"}
+{"clip": "item00_ng_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but lacks some important details.\\\"}"}
+{"clip": "item00_uk_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but lacks some important details.\\\"}"}
+{"clip": "item00_uk_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response provides a clear explanation of nuclear fission and power plants, but lacks specific details about which reaction is more"}
+{"clip": "item00_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response provides a clear explanation of nuclear fission and its applications but lacks specific details about the types of power "}
+{"clip": "item00_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and specific about which nuclear reaction is being referred to.\\\"}"}
+{"clip": "item01_in_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately explains photosynthesis in plants, using clear language and including specific examples like chlorophyll.\\\"}"}
+{"clip": "item01_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive. It covers the basic process of photosynthesis but fails to mention the"}
+{"clip": "item01_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item01_ng_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately explains photosynthesis in plants, mentioning the process of converting carbon dioxide and water into oxygen a"}
+{"clip": "item01_uk_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately explains photosynthesis, includes relevant scientific terms like chlorophyll, and is delivered in a clear and "}
+{"clip": "item01_uk_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately explains photosynthesis, mentions the necessary ingredients and products, and includes additional relevant inf"}
+{"clip": "item01_us_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately explains photosynthesis in plants, including the process of converting carbon dioxide and water into oxygen an"}
+{"clip": "item01_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive. It covers the basic concept of photosynthesis but fails to mention the"}
+{"clip": "item02_in_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately explains the greenhouse effect, mentions key gases, and acknowledges human activities that affect the atmosphe"}
+{"clip": "item02_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response correctly explains the greenhouse effect but could be more comprehensive by mentioning other gases like methane and water"}
+{"clip": "item02_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The answer is mostly correct, but could be more comprehensive by mentioning other human activities that affect the atmosphere such as "}
+{"clip": "item02_ng_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response correctly explains the greenhouse effect but lacks detail about the gases involved and human activities that affect the a"}
+{"clip": "item02_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item02_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately explains the greenhouse effect, mentions key gases, and acknowledges human activities that affect the atmosphe"}
+{"clip": "item02_us_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately explains the greenhouse effect, mentions several gases that contribute to it, and includes human activities th"}
+{"clip": "item02_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive by mentioning specific greenhouse gases and their impact on the atmosph"}
+{"clip": "item03_in_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item03_in_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item03_ng_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item03_ng_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item03_uk_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately describes the fall of the Western Roman Empire due to constant invasions by Vikings, government corruption, an"}
+{"clip": "item03_uk_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item03_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate but could be more comprehensive and clear.\\\"}"}
+{"clip": "item03_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate but could be more comprehensive by mentioning specific events that led to the fall of the Western Roma"}
+{"clip": "item04_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is well-informed, comprehensive, and provides relevant examples to support the argument about the impact of the printing "}
+{"clip": "item04_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item04_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is well-informed, comprehensive, and provides relevant examples to support the significance of the printing press. The on"}
+{"clip": "item04_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is well-informed, comprehensive, and provides relevant examples to support the point about the printing press's impact.\\\""}
+{"clip": "item04_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is well-informed, comprehensive, and provides relevant examples to support the argument about the impact of the printing "}
+{"clip": "item04_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item04_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item04_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The answer is well-informed, comprehensive, and provides relevant background information about the printing press's impact on the spre"}
+{"clip": "item05_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item05_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item05_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is detailed, accurate, and provides background information which helps in understanding the context of the silk road.\\\"}"}
+{"clip": "item05_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item05_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item05_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item05_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately describes the Silk Road as a major trade route connecting Europe and Asia for silk and other goods, including "}
+{"clip": "item05_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately describes the Silk Road as a major trade route connecting Europe and Asia, mentions silk and spices as traded "}
+{"clip": "item06_in_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more comprehensive by mentioning specific types of vinegar and their uses.\\\"}"}
+{"clip": "item06_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more comprehensive by mentioning specific types of vinegar and their uses.\\\"}"}
+{"clip": "item06_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more comprehensive by mentioning specific types of vinegar and their roles in the process"}
+{"clip": "item06_ng_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more comprehensive by mentioning specific measurements and temperatures for each step.\\\"}"}
+{"clip": "item06_uk_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item06_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item06_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but it's incomplete as it doesn't mention all the necessary steps or ingredients for making vinaigrett"}
+{"clip": "item06_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more comprehensive by mentioning specific types of vinegar and oils that work well togeth"}
+{"clip": "item07_in_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item07_in_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item07_ng_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item07_ng_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item07_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item07_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately describes the differences between braising and stewing, provides examples of appropriate cuts of meat for each"}
+{"clip": "item07_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate but could be more comprehensive.\\\"}"}
+{"clip": "item07_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate but could be more comprehensive.\\\"}"}
+{"clip": "item08_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item08_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_in_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_ng_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_uk_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear, but could be more precise.\\\"}"}
+{"clip": "item09_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item09_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item10_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is comprehensive, accurate, and provides additional relevant information about symptoms of dehydration.\\\"}"}
+{"clip": "item10_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item10_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The spoken answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item10_ng_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The answer is correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item10_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item10_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item10_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately describes water's importance for organ function, mentions symptoms of dehydration, and provides a personal ane"}
+{"clip": "item10_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item11_in_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item11_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item11_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item11_ng_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item11_uk_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item11_uk_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately explains the difference between symmetric and asymmetric encryption, using clear language and appropriate math"}
+{"clip": "item11_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item11_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item12_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item12_in_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item12_ng_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item12_ng_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item12_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item12_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item12_us_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately describes relational databases and NoSQL databases, provides examples of when each might be preferred, and is "}
+{"clip": "item12_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately describes relational databases and NoSQL databases, provides examples of when each might be preferred, and is "}
+{"clip": "item13_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it functions. The only improvement would be if the response also"}
+{"clip": "item13_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it functions. The only improvement would be if the response also"}
+{"clip": "item13_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it functions. The only improvement would be if the response also"}
+{"clip": "item13_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it functions. The only improvement would be if the response prov"}
+{"clip": "item13_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it works. The only improvement would be if the response also men"}
+{"clip": "item13_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it works. The only improvement would be if the response also men"}
+{"clip": "item13_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it works. The only improvement would be if the response also men"}
+{"clip": "item13_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an API is, its purpose, and how it works. The only improvement would be if the response also men"}
+{"clip": "item14_in_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately describes the complex changes brought about by globalization, showing an understanding of how it impacts local"}
+{"clip": "item14_in_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately describes the effects of globalization on how stores are similar across different locations, mentions the comp"}
+{"clip": "item14_ng_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately describes the complex changes brought about by globalization, mentions the presence of familiar stores everywh"}
+{"clip": "item14_ng_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response accurately describes the complex nature of globalization and its impact on traditional stores, but could be more comprehe"}
+{"clip": "item14_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately explains the concept of globalization and its effects on cultures, providing examples of how it can lead to ho"}
+{"clip": "item14_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately describes the complex nature of globalization and its impact on traditional cultures. The answer is mostly com"}
+{"clip": "item14_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, but could be more comprehensive and provide specific examples to support the argument.\\\"}"}
+{"clip": "item14_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response accurately describes the effects of globalization on the retail industry, mentions the presence of both new and old tradi"}
+{"clip": "item15_in_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item15_in_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear. The speaker seems to have a good understanding of the role of museums i"}
+{"clip": "item15_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item15_ng_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item15_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item15_uk_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item15_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item15_us_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly accurate, complete, helpful, and clear.\\\"}"}
+{"clip": "item16_in_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item16_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item16_ng_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item16_ng_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item16_uk_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item16_uk_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item16_us_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately describes the Ring of Fire as a large circle of volcanoes around the Atlantic Ocean, mentions the presence of "}
+{"clip": "item16_us_m", "score": 90, "reason": "{'score': 90, 'reason': \\\"The response accurately describes the Ring of Fire around the Atlantic Ocean, mentions the complex tectonic plates involved, and brief"}
+{"clip": "item17_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and shows knowledge of geography.\\\"}"}
+{"clip": "item17_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and shows knowledge of geography.\\\"}"}
+{"clip": "item17_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides examples, and uses clear language.\\\"}"}
+{"clip": "item17_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and shows knowledge of geography.\\\"}"}
+{"clip": "item17_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and is delivered in a clear and coherent manner.\\"}
+{"clip": "item17_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and is delivered clearly and coherently.\\\"}"}
+{"clip": "item17_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and shows knowledge of geography.\\\"}"}
+{"clip": "item17_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains the rain shadow effect, provides relevant examples, and shows knowledge of geography.\\\"}"}
+{"clip": "item18_in_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item18_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive. It provides a good starting point for someone who doesn't remember the"}
+{"clip": "item18_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item18_ng_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more detailed and comprehensive.\\\"}"}
+{"clip": "item18_uk_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive and clear if the person explains how they arrived at their conclusion.\\"}
+{"clip": "item18_uk_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive and clear.\\\"}"}
+{"clip": "item18_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, complete, helpful, and clear, but could be more precise.\\\"}"}
+{"clip": "item18_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, complete, helpful, and clear. The only issue is that the speaker admits not remembering the math works"}
+{"clip": "item19_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item19_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately explains what an emergency fund is, provides examples of unexpected expenses that it could be used for, and su"}
+{"clip": "item19_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item19_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item19_uk_f", "score": 90, "reason": "{'score': 90, 'reason': \\\"The answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item19_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response accurately explains what an emergency fund is and provides examples of how it can be used, showing good knowledge and und"}
+{"clip": "item19_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The answer is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item19_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct but could be more comprehensive by mentioning specific types of unexpected expenses that one should con"}
+{"clip": "item20_in_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item20_in_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, but could be more comprehensive by mentioning that 'red tags' may also indicate items on clearance or "}
+{"clip": "item20_ng_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item20_ng_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, but could be more comprehensive by mentioning specific strategies for finding deals like checking the"}
+{"clip": "item20_uk_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item20_uk_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item20_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item20_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly accurate, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item21_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item21_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item21_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item21_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item21_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately describes the difficulty of waking up early and the strategies used to overcome it, such as setting multiple a"}
+{"clip": "item21_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item21_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately addresses the factors involved in waking up early and provides a practical solution for falling out of bed. Th"}
+{"clip": "item21_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response accurately describes the factors that make waking up early tough and provides a practical solution by setting multiple al"}
+{"clip": "item22_in_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_in_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_ng_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_ng_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_uk_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_uk_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_us_f", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item22_us_m", "score": 95, "reason": "{'score': 95, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_in_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_in_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_ng_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_ng_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_uk_f", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_uk_m", "score": 85, "reason": "{'score': 85, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_us_f", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}
+{"clip": "item23_us_m", "score": 75, "reason": "{'score': 75, 'reason': \\\"The response is mostly correct, comprehensive, helpful, and clear.\\\"}"}

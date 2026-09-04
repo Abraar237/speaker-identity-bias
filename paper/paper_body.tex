@@ -10,11 +10,13 @@ Pro and Gemini 3.6 Flash, one clip per call, temperature zero, blind to the
 purpose of the study. Two findings share the headline. First, the score can move with the voice: Gemini 3.1 Pro
 scores Indian-accented answers 2.5 points lower than the identical answer in
 an American accent, on a 0 to 100 scale (95\% CI $-4.06$ to $-0.94$,
-$p=0.005$, $d_z=-0.44$), the only one of the six accent-judge comparisons to
-reach significance and the only one to survive Benjamini-Hochberg correction
-across those six tests; Gemini 3.6 Flash shows no such penalty on the same
-comparison ($-0.04$, $p=1.0$), so two models from the same company, hearing
-identical audio, disagree about whether an accent lowers the score. Second,
+$p=0.005$, $d_z=-0.44$), a penalty that survives Benjamini-Hochberg
+correction across all nine accent-judge tests; Gemini 3.6 Flash shows no
+such penalty on the identical audio ($-0.04$, $p=1.0$), and a third,
+open-weight family reverses the sign entirely: Qwen2-Audio-7B scores every
+non-American accent \emph{higher} on the same words ($+2.0$ to $+2.9$, the
+UK and Nigerian cells also surviving correction). Three families, three
+directions: the axis is real and its sign belongs to the judge. Second,
 the penalty is localized and removable: grading from the model's own
 transcript of the same audio erases the effect ($+1.88$, $p=0.14$), and
 grading from the frozen gold transcript also erases it ($-0.83$, $p=0.51$),
@@ -251,14 +253,16 @@ ignore delivery, were run on the 139 surviving clips.
 
 \subsection{Judges and Protocol}
 
-Two judges scored every clip: \texttt{gemini-3.6-flash} and
-\texttt{gemini-3.1-pro-preview}, both called directly through the API at
+Three judges scored the Axis A clips: \texttt{gemini-3.6-flash} and
+\texttt{gemini-3.1-pro-preview}, called directly through the API at
 temperature zero, one clip per call, in randomized order, never informed
-that the study concerns voice or accent. The rubric asks for a single 0 to
-100 score covering correctness, completeness, helpfulness, and clarity,
-plus a one-sentence reason, returned as a structured JSON object. We did not
-use a third, open-weight judge or an OpenAI judge in this draft; both remain
-planned additions, discussed in Section~\ref{sec:limitations}.
+that the study concerns voice or accent; and, from a second vendor family,
+the open-weight \texttt{Qwen2-Audio-7B-Instruct} run on a single A10G GPU
+with greedy decoding, same rubric, one clip per call. The rubric asks for a
+single 0 to 100 score covering correctness, completeness, helpfulness, and
+clarity, plus a one-sentence reason, returned as structured JSON. The two
+Gemini judges also scored the delivery and decomposition arms; the
+open-weight judge scored Axis A only, to control GPU spend.
 
 \subsection{Decomposition Arm}
 \label{sec:decomp}
@@ -292,12 +296,22 @@ each non-American accent relative to the American-accent rendering of the
 same item and the same gender, so the comparison is never confounded by
 gender. Gemini 3.1 Pro shows one shift that clears our significance
 threshold: Indian-accented answers score 2.5 points lower than the
-identical American-accented answer ($p=0.005$, $d_z=-0.44$). Because this is
-one of six accent-judge tests, we apply Benjamini-Hochberg correction across
-all six: the Indian-accent penalty survives at $q=0.05$ (its $p=0.005$ falls
-under the rank-1 critical value of $0.0083$), and no other cell does. The same
-comparison under Gemini 3.6 Flash is indistinguishable from zero
-($-0.04$, $p=1.0$). Neither judge shows a significant British-accent effect.
+identical American-accented answer ($p=0.005$, $d_z=-0.44$), while the same
+comparison under Gemini 3.6 Flash is indistinguishable from zero ($-0.04$,
+$p=1.0$). The third family reverses the sign entirely: Qwen2-Audio-7B
+scores \emph{every} non-American accent higher than the American rendering
+of the identical words (UK $+2.92$, CI $[+0.83, +5.00]$, $p=0.012$; Indian
+$+1.98$, $[+0.31, +3.75]$, $p=0.042$; Nigerian $+2.29$, $[+0.73, +4.06]$,
+$p=0.016$; $n{=}48$ each, $d_z$ $0.32$ to $0.39$), though its absolute
+scores cluster on a coarse four-value grid around 75, so these shifts ride
+a blunt scale. Across the now nine accent-judge tests, Benjamini-Hochberg
+at $q=0.05$ retains three cells: the Pro Indian penalty and the Qwen2-Audio
+UK and Nigerian inflations (ranks one through three; the Qwen2-Audio Indian
+cell at $p=0.042$ does not survive). One family penalises an accent, one is
+null, one rewards every non-American voice: the speaker-identity axis is
+real and its \emph{direction} is a property of the judge, the same
+sign-opposite-across-families structure the predecessor study found for
+orthography in text judges.
 Both judges show a Nigerian-accent shift in the positive direction, the
 opposite of our pre-registered prediction that global-South accents would
 score lower; neither reaches significance at this sample size. The gender
