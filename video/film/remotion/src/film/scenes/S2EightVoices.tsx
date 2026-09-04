@@ -1,6 +1,6 @@
 import React from "react";
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from "remotion";
-import {Canvas, Eyebrow, Headline, secToFrame} from "../common";
+import {Canvas, Eyebrow, Headline, secToFrame, useFloat, useBreath} from "../common";
 import {SLATE, SHELF, GOOD, HOT, MUTED, CARD, INK} from "../theme";
 import {wordTime} from "../timeline";
 
@@ -11,12 +11,13 @@ const ACCENTS = [
   {label: "Nigerian", color: GOOD},
 ];
 
-const Tile: React.FC<{label: string; gender: string; color: string; at: number}> = ({label, gender, color, at}) => {
+const Tile: React.FC<{label: string; gender: string; color: string; at: number; seed: number}> = ({label, gender, color, at, seed}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: frame - at, fps, config: {damping: 15, stiffness: 100}});
+  const float = useFloat(seed, 2.5);
   return (
-    <div style={{opacity: interpolate(s, [0, 1], [0, 1]), transform: `scale(${interpolate(s, [0, 1], [0.8, 1])})`, background: CARD, borderRadius: 14, padding: "18px 20px", width: 218, boxShadow: "0 4px 18px rgba(27,24,16,0.08)", borderTop: `5px solid ${color}`}}>
+    <div style={{opacity: interpolate(s, [0, 1], [0, 1]), transform: `${float.transform} scale(${interpolate(s, [0, 1], [0.8, 1])})`, background: CARD, borderRadius: 14, padding: "18px 20px", width: 218, boxShadow: "0 4px 18px rgba(27,24,16,0.08)", borderTop: `5px solid ${color}`}}>
       <div style={{fontSize: 25, fontWeight: 700, color: INK}}>{label}</div>
       <div style={{fontSize: 20, color: MUTED, marginBottom: 10}}>{gender}</div>
       <div style={{display: "flex", gap: 4, alignItems: "center", height: 34}}>
@@ -41,10 +42,10 @@ export const S2EightVoices: React.FC<{audioStart: number}> = ({audioStart}) => {
         </div>
         <div style={{display: "grid", gridTemplateColumns: "repeat(4, auto)", gap: 26}}>
           {ACCENTS.map((a, i) => (
-            <Tile key={a.label + "f"} label={a.label} gender="female voice" color={a.color} at={start + i * 8} />
+            <Tile key={a.label + "f"} label={a.label} gender="female voice" color={a.color} at={start + i * 8} seed={i * 1.3} />
           ))}
           {ACCENTS.map((a, i) => (
-            <Tile key={a.label + "m"} label={a.label} gender="male voice" color={a.color} at={start + 32 + i * 8} />
+            <Tile key={a.label + "m"} label={a.label} gender="male voice" color={a.color} at={start + 32 + i * 8} seed={i * 1.3 + 5.2} />
           ))}
         </div>
         <Headline delay={t(wordTime(1, "single"))} size={42}>

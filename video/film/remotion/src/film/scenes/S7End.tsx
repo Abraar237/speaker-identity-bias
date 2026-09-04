@@ -1,6 +1,6 @@
 import React from "react";
 import {AbsoluteFill, interpolate, useCurrentFrame} from "remotion";
-import {Canvas, Headline, Eyebrow, secToFrame} from "../common";
+import {Canvas, Headline, Eyebrow, secToFrame, useFloat} from "../common";
 import {MUTED, INK, GOOD, HOT} from "../theme";
 import {wordTime} from "../timeline";
 
@@ -10,6 +10,8 @@ export const S7End: React.FC<{audioStart: number}> = ({audioStart}) => {
   const fixAt = t(wordTime(11, "transcript") || 5.0);
   const cardAt = t(wordTime(11, "score") || 15.5);
   const cardIn = interpolate(frame, [cardAt, cardAt + 30], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
+  const float = useFloat(2.2, 3);
+  const brandPulse = 1 + 0.015 * Math.sin(frame / 22);
   return (
     <Canvas>
       <AbsoluteFill style={{alignItems: "center", justifyContent: "center", gap: 42, padding: 120}}>
@@ -21,7 +23,7 @@ export const S7End: React.FC<{audioStart: number}> = ({audioStart}) => {
             Grading from a transcript is a real, tested fix.
           </div>
         )}
-        <div style={{opacity: cardIn, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, marginTop: 30}}>
+        <div style={{...float, opacity: cardIn, display: "flex", flexDirection: "column", alignItems: "center", gap: 14, marginTop: 30, transform: `${float.transform} scale(${brandPulse})`}}>
           <div style={{fontSize: 34, fontWeight: 700, color: HOT, letterSpacing: 1}}>Vizuara Research</div>
           <div style={{fontSize: 26, color: INK}}>Does the Voice Change the Grade?</div>
           <div style={{fontSize: 23, color: MUTED}}>github.com/Abraar237/speaker-identity-bias</div>
