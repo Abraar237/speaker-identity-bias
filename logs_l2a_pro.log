@@ -1,0 +1,60 @@
+    retry 1: The read operation timed out
+    retry 1: The read operation timed out
+    retry 1: The read operation timed out
+    retry 2: The read operation timed out
+    retry 3: The read operation timed out
+240 clips total, 0 already judged, prompt_arm=neutral, model=gemini-3.1-pro-preview
+  [20] bdl_eng_m_arctic_a0007__neutral__gemini-3.1-pro-preview score=95 (spend $11.9630)
+  [40] RRBI_hindi_m_arctic_a0006__neutral__gemini-3.1-pro-preview score=85 (spend $12.0476)
+  [60] TXHC_mandarin_m_arctic_a0006__neutral__gemini-3.1-pro-preview score=85 (spend $12.1382)
+  [80] LXC_mandarin_f_arctic_a0001__neutral__gemini-3.1-pro-preview score=45 (spend $12.2309)
+  [100] clb_eng_f_arctic_a0005__neutral__gemini-3.1-pro-preview score=95 (spend $12.3208)
+  [120] slt_eng_f_arctic_a0007__neutral__gemini-3.1-pro-preview score=95 (spend $12.4088)
+Traceback (most recent call last):
+  File "/Users/prometheus/VizzAI/voice agent research/experiments/judge_runner.py", line 191, in <module>
+    main()
+    ~~~~^^
+  File "/Users/prometheus/VizzAI/voice agent research/experiments/judge_runner.py", line 173, in main
+    verdict, cost = judge_audio(args.model, wav, rubric)
+                    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/prometheus/VizzAI/voice agent research/experiments/judge_runner.py", line 102, in judge_audio
+    resp = call(model, body)
+  File "/Users/prometheus/VizzAI/voice agent research/experiments/judge_runner.py", line 69, in call
+    with urllib.request.urlopen(req, timeout=180) as r:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1323, in do_open
+    r = h.getresponse()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1450, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+TimeoutError: The read operation timed out

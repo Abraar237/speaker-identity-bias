@@ -1,0 +1,16 @@
+240 clips total, 0 already judged, prompt_arm=neutral, model=gemini-3.6-flash
+  [20] bdl_eng_m_arctic_a0007__neutral__gemini-3.6-flash score=90 (spend $12.4399)
+  [40] RRBI_hindi_m_arctic_a0006__neutral__gemini-3.6-flash score=90 (spend $12.4435)
+  [60] TXHC_mandarin_m_arctic_a0006__neutral__gemini-3.6-flash score=85 (spend $12.4472)
+  [80] LXC_mandarin_f_arctic_a0001__neutral__gemini-3.6-flash score=60 (spend $12.4510)
+  [100] clb_eng_f_arctic_a0005__neutral__gemini-3.6-flash score=95 (spend $12.4547)
+  [120] slt_eng_f_arctic_a0007__neutral__gemini-3.6-flash score=95 (spend $12.4583)
+  [140] TXHC_mandarin_m_arctic_a0005__neutral__gemini-3.6-flash score=95 (spend $12.4618)
+  [160] NJS_spanish_f_arctic_a0007__neutral__gemini-3.6-flash score=95 (spend $12.4656)
+  [180] TLV_vietnamese_m_arctic_a0006__neutral__gemini-3.6-flash score=60 (spend $12.4695)
+  [200] NCC_mandarin_f_arctic_a0008__neutral__gemini-3.6-flash score=95 (spend $12.4731)
+  [220] HQTV_vietnamese_m_arctic_a0004__neutral__gemini-3.6-flash score=60 (spend $12.4768)
+  [240] YBAA_arabic_m_arctic_a0004__neutral__gemini-3.6-flash score=85 (spend $12.4804)
+
+Done. 240 new judgments -> ../results/l2arctic_flash.jsonl
+Running spend: $12.4804

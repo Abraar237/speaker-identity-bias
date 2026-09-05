@@ -1,0 +1,18 @@
+288 clips total, 0 already judged, prompt_arm=neutral, model=gemini-3.1-pro-preview
+  [20] item10_us_f_Leda__neutral__gemini-3.1-pro-preview score=50 (spend $9.9253)
+  [40] item00_ng_f_Aoede__neutral__gemini-3.1-pro-preview score=40 (spend $9.9934)
+  [60] item10_in_f_Leda__neutral__gemini-3.1-pro-preview score=50 (spend $10.0669)
+  [80] item04_ng_f_Zephyr__neutral__gemini-3.1-pro-preview score=85 (spend $10.1347)
+  [100] item03_in_f_Aoede__neutral__gemini-3.1-pro-preview score=45 (spend $10.2037)
+  [120] item09_in_m_Fenrir__neutral__gemini-3.1-pro-preview score=40 (spend $10.2729)
+  [140] item08_uk_f_Aoede__neutral__gemini-3.1-pro-preview score=75 (spend $10.3440)
+  [160] item09_uk_m_Orus__neutral__gemini-3.1-pro-preview score=40 (spend $10.4146)
+  [180] item02_ng_f_Aoede__neutral__gemini-3.1-pro-preview score=70 (spend $10.4832)
+  [200] item05_uk_m_Orus__neutral__gemini-3.1-pro-preview score=70 (spend $10.5515)
+  [220] item01_in_f_Leda__neutral__gemini-3.1-pro-preview score=65 (spend $10.6203)
+  [240] item05_us_m_Fenrir__neutral__gemini-3.1-pro-preview score=65 (spend $10.6892)
+  [260] item04_uk_f_Zephyr__neutral__gemini-3.1-pro-preview score=85 (spend $10.7576)
+  [280] item01_us_f_Zephyr__neutral__gemini-3.1-pro-preview score=70 (spend $10.8265)
+
+Done. 288 new judgments -> ../results/multivoice_pro.jsonl
+Running spend: $10.8526

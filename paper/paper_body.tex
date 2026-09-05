@@ -1,40 +1,39 @@
 \begin{abstract}
-Audio language models now grade spoken answers directly: automated oral exams,
-AI interview screening, and speech leaderboards all use an audio-input model
-as the judge. Every one of these systems assumes the judge scores what was
-said, not how it sounded. We test that assumption. We hold a bank of 24
-interview-style answers fixed and render each one in four accents (American,
-British, Indian, and Nigerian English) and two speaker genders using
-text-to-speech, then score every clip with two audio-input judges, Gemini 3.1
-Pro and Gemini 3.6 Flash, one clip per call, temperature zero, blind to the
-purpose of the study. Two findings share the headline. First, the score can move with the voice: Gemini 3.1 Pro
-scores Indian-accented answers 2.5 points lower than the identical answer in
-an American accent, on a 0 to 100 scale (95\% CI $-4.06$ to $-0.94$,
-$p=0.005$, $d_z=-0.44$), a penalty that survives Benjamini-Hochberg
-correction across all nine accent-judge tests; Gemini 3.6 Flash shows no
-such penalty on the identical audio ($-0.04$, $p=1.0$), and a third,
-open-weight family reverses the sign entirely: Qwen2-Audio-7B scores every
-non-American accent \emph{higher} on the same words ($+2.0$ to $+2.9$, the
-UK and Nigerian cells also surviving correction). Three families, three
-directions: the axis is real and its sign belongs to the judge. Second,
-the penalty is localized and removable: grading from the model's own
-transcript of the same audio erases the effect ($+1.88$, $p=0.14$), and
-grading from the frozen gold transcript also erases it ($-0.83$, $p=0.51$),
-so transcript-first grading is a tested mitigation, not a guess. Fourth, we test five delivery perturbations, filled
-pauses, faster or slower speech, an 8kHz telephone codec, and background
-noise, and find no significant score shift under either judge at this sample
-size, a result we read as inconclusive given the sample rather than as
-evidence that delivery never leaks into the score. We pre-registered the
-direction of the accent effect before collecting data, and we also find a
-partial reversal: Nigerian-accented answers trend toward higher scores under
-both judges, the opposite of the predicted direction. We report it as we
-found it.
+Audio language models now grade spoken answers directly: automated oral
+exams, AI interview screening, and speech leaderboards all use an
+audio-input model as the judge, and all of them assume the judge scores what
+was said, not how it sounded. We test that assumption three ways: a
+text-to-speech audit that holds 24 interview answers fixed while varying
+accent and gender (192 clips, three judges from two vendor families), a
+replication battery that re-renders the same design with six additional
+voices and a decomposed rubric, and a real-speech arm built from L2-ARCTIC
+(24 speakers, six first languages) against matched native recordings. The
+audit initially produced a headline: Gemini 3.1 Pro scored Indian-accented
+answers 2.5 points lower than the identical American-accented answer
+($p=0.005$), localized to the acoustic channel by an accent-by-grading-mode
+interaction ($-6.04$ versus own-transcript grading, $p=4\times10^{-4}$). The
+replication battery dissolved it. Across six additional voices the Indian
+shift is $-0.76$ ($p=0.35$), with per-voice swings from $+2.08$ to $-4.58$:
+the voice, not the accent, moves the score. Under a decomposed
+four-dimension rubric on the original voices the penalty vanishes entirely
+(all dimensions n.s.). We report this as our pre-registered discipline
+requires, and we flag the general lesson: single-voice, single-rubric audit
+designs, the norm in this literature, can manufacture an accent-bias
+finding. On real speech the picture inverts: both Gemini judges penalise
+every non-native L1, from $-4.3$ (Hindi) to $-15.7$ (Mandarin) points under
+a read-aloud rubric, all $p\le4\times10^{-4}$, with close cross-judge
+agreement, while the open-weight Qwen2-Audio-7B barely reacts on its
+compressed scale. Twelve of these real-speech cells plus four TTS cells
+survive Benjamini-Hochberg correction across all 33 accent-judge-arm tests.
+What an audio judge measures depends on the voice sample, the rubric, and
+the judge family; an audit that fixes all three can say more about its own
+design than about the model.
 \end{abstract}
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.95\textwidth]{assets/fig_teaser.png}
-  \caption{\textbf{Study design.} One frozen spoken answer, rendered in four accents and two genders by TTS, scored blind by audio-input judges. Any score gap between renderings of the same item is a voice effect by construction; measured outcomes previewed at right.}
+  \includegraphics[width=0.88\textwidth]{assets/fig_teaser.png}
+  \caption{\textbf{Study design (single-voice TTS arm).} One frozen spoken answer, rendered in four accents and two genders by TTS, scored blind by audio-input judges. Any score gap between renderings of the same item is a voice effect by construction. The $-2.5$ Indian-accent cell previewed at right is the single-voice arm's finding; \S\ref{sec:multivoice} shows it does not survive replication across voices.}
   \label{fig:teaser}
 \end{figure}
 
@@ -56,38 +55,50 @@ deployments has been checked against the one manipulation that would prove
 or disprove the assumption directly: holding what is said perfectly fixed,
 and changing only who appears to be saying it.
 
-We run that check. We author a bank of 24 short spoken answers once, freeze
-the text, and render each answer in four accents and two speaker genders
-using text-to-speech, so that every clip in a comparison carries the
-identical words. We then have two audio-input judges, Gemini 3.1 Pro and
-Gemini 3.6 Flash, score every clip on a 0 to 100 rubric, one clip per call,
-never told that the study concerns voice. Because the text is identical by
-construction, any score difference between two renderings of the same item
-can only be explained by the voice.
+We ran that check, and this paper reports what happened when we then subjected
+our own result to the replication battery a sceptical reviewer would demand.
+The first arm authors 24 short answers once, freezes the text, and renders
+each answer in four accents and two speaker genders with a single
+text-to-speech voice pair, the standard design in this literature. It
+produced a clean, significant, channel-localized accent penalty under one
+judge. The second arm re-rendered the same design with six additional voices
+and a decomposed rubric, and the penalty dissolved: what looked like an
+accent effect was a property of one voice pair under one rubric shape. The
+third arm replaced synthesis with real speech, 24 L2-ARCTIC speakers against
+matched native recordings, where both Gemini judges penalise every
+non-native first language, heavily, consistently, and in close agreement
+with each other.
 
-This paper makes four contributions.
+This paper makes five contributions.
 \begin{enumerate}
-\item A causal audit that puts an audio-input language model in the grader
-role and varies the evaluee's own accent and gender while holding the
-answer's content fixed (Section~\ref{sec:method}).
-\item A decomposition design that separates acoustic-channel bias from
-transcription-channel bias by grading the same item three ways: end-to-end
-audio, the judge's own transcript of that audio, and the frozen gold
-transcript (Section~\ref{sec:decomp}).
-\item A judge-family comparison showing that two models from the same
-company can disagree about whether an accent changes the score of identical
-content, one showing a significant penalty and the other showing none
-(Section~\ref{sec:results}).
+\item A three-arm causal audit design, single-voice TTS, multi-voice TTS
+replication, and real speech, that puts an audio-input model in the grader
+role with the evaluee's voice as the manipulated variable
+(Section~\ref{sec:method}).
+\item A cautionary methods finding: a single-voice, single-rubric audit
+produced a significant, multiple-comparison-surviving,
+channel-localized ``accent bias'' that did not survive voice replication or
+rubric decomposition (Section~\ref{sec:multivoice}). Single-voice designs
+are the norm in the work we review; the failure mode generalizes.
+\item A decomposition design with explicit interaction tests that localizes
+the (voice-level) penalty to the acoustic channel: grading the same audio
+from a transcript removes it ($-6.04$ interaction, $p=4\times10^{-4}$;
+Section~\ref{sec:decomp}).
+\item A real-speech arm showing large, cross-judge-consistent penalties for
+all six non-native L1s under a read-aloud rubric, with a stable per-L1
+gradient, alongside a third judge family that barely reacts
+(Section~\ref{sec:realspeech}).
 \item A delivery-perturbation battery, filled pauses, speaking rate,
 telephone-bandwidth audio, and background noise, tested under both a neutral
-rubric and an explicit instruction to ignore delivery
+rubric and an explicit ignore-delivery instruction, null at this sample size
 (Section~\ref{sec:delivery}).
 \end{enumerate}
 
 \section{What Was Known and What Is New}
 
 The premise that audio-language-model judges carry biases is not new. What
-is new is which bias, and in which role.
+is new is which bias, in which role, and what a replication battery does to
+it.
 
 \textbf{AudioJudge} \citep{manakul2025audiojudgeun} establishes that
 large audio models can act as judges of speech, and catalogs verbosity and
@@ -100,84 +111,54 @@ companion study using the same cohort and an explicitly judge-free protocol
 \emph{question-asker} across 2,880 controlled interactions and finds that a
 SpeechLLM's own reply is rated less helpful for some accents. But the judge
 in that paper is explicitly text-only and voice-blind: it reads only the
-assistant's written reply, never the audio. Voice never reaches the judge in
-that design. It cannot show, and does not claim, that an audio-input judge's
-score of an evaluee's own answer moves with that evaluee's voice, which is
-the exact question this paper asks.
+assistant's written reply, never the audio. It cannot show, and does not
+claim, that an audio-input judge's score of an evaluee's own answer moves
+with that evaluee's voice, which is the question this paper asks.
 
 \textbf{BiasInEar} \citep{wei2026biasintheear} varies the voice of a spoken
 multiple-choice question and measures whether the model's own answer choice
-changes. The model here is the test-taker, not a judge; there is no evaluee
-and no score assigned to anyone's spoken answer.
-
+changes. The model there is the test-taker, not a judge.
 \textbf{ParaPairAudioBench} \citep{jeon2026parapairaudi} puts an audio
-model in the judge role and tests whether it can correctly detect and rank
-paralinguistic differences such as gender and age. That is the inverse of
-our question: it asks whether the judge notices the attribute when told to
-look for it, not whether the attribute leaks into an unrelated content
-score when the judge is not told to look for it at all.
-
+model in the judge role and tests whether it can detect paralinguistic
+differences when told to look for them, the inverse of asking whether they
+leak into an unrelated content score unprompted.
 \textbf{Bias Analysis of L2 Speaking Assessment Systems}
 \citep{labroo2026biasanalysis} audits a real speaking-assessment grader for
-encoded speaker attributes, but the audit is representational, probing
-internal activations on naturally varying speakers, not a controlled
-same-content voice swap.
+encoded speaker attributes, but representationally, on naturally varying
+speakers, not through a controlled same-content voice swap.
 
-What remains uncovered by all of the above, and is the subject of this
-paper, is the exact intersection: an audio-input model in the grader role,
-the evaluee's own voice identity as a randomized treatment, and a content
-score as the outcome, with the text held identical across every condition.
+What remained uncovered, and is the subject of this paper, is the exact
+intersection: an audio-input model in the grader role, the evaluee's own
+voice identity as a randomized treatment, and a content score as the
+outcome, with the text held identical across every condition.
 
-Three further clusters of recent work sit adjacent to this gap without
-closing it. A judge-construction literature builds and validates audio
-judges without a bias axis at all
-\citep{wang2025speechllmasj,zhang2026jastinaligni,chen2025audiolargela,
-manakul2025audiojudgeun,park2026auditingprot}, including judges of speaking
-style \citep{chiang2025audioawarela} and disfluency robustness of
-comprehension rather than of scoring
-\citep{liu2025vocalbenchdf,takagi2026investigatin}. An advisor-role and
-assistant-role literature varies a user's paralinguistics and measures the
-model's own generated response, decision, or recommendation, not a grade
-assigned to the user's speech
-\citep{wu2025evaluatingbi,lin2026vibevoiceind,satish2025speakyourmin,
-satish2025dobiasbenchm,choi2025acousticbase}. A deployed-assessment
-literature grades real L2 speech but audits fairness observationally across
-naturally different speakers rather than through a controlled voice swap on
-identical content
+Three adjacent clusters do not close the gap: judge-construction work
+without a bias axis \citep{wang2025speechllmasj,zhang2026jastinaligni,
+chen2025audiolargela,park2026auditingprot,chiang2025audioawarela,
+liu2025vocalbenchdf,takagi2026investigatin}; advisor-role work measuring
+the model's own response, not a grade \citep{wu2025evaluatingbi,
+lin2026vibevoiceind,satish2025speakyourmin,satish2025dobiasbenchm,
+choi2025acousticbase}; and observational audits of deployed L2 grading
 \citep{uehara2026interpretabl,ginjala2026doLLMdecoders,koenecke2020racial}.
-None of these fifteen papers manipulates an evaluee's accent or gender as a
-randomized treatment on a content score. \citet{miller2026doaudiolangu}
-comes closest procedurally, holding a transcript fixed while varying affect
-and prosody to test whether a judge uses audio evidence at all, but the
-manipulated factor is delivery, not demographic identity, and the outcome is
-evidence-use correctness rather than a bias in the assigned score.
-
-Two literatures we deliberately stay out of. Voice-agent jailbreak and
-refusal work studies how prosody and emotion bypass safety training, a
-different outcome variable than a content grade
-\citep{jain2025voiceagentbench}. TTS-instrument validity work, on accent
-fidelity \citep{zhong2025pairwiseeval,huang2026codecmosacce,
-xinyuan2025scalablecont}, on the reliability of TTS-as-stimulus methodology
-\citep{yang2025positiontowa}, and on MOS-annotator demographics
-\citep{ren2026mosbiasfromh}, informs our manipulation-check design but does
-not audit a judge. We also note \citet{tam2025medvoicebias}, which finds
-large modality-driven shifts in a different deployed setting, clinical
-recommendation, using synthetic voices without an accent axis, and
-\citet{wang2026priorongevidence}, which uses the same real-speech corpus we
-plan as our causal anchor for a diagnostic-feedback task rather than a
-content-grading one. The human-listener precedent for our exact design
-predates audio language models entirely: \citet{kang2009reverse} show that
-identical recorded speech is rated less comprehensible when paired with a
-different apparent speaker identity, the same causal logic we apply here to
-an artificial judge instead of a human one.
+\citet{miller2026doaudiolangu} comes closest procedurally, holding a
+transcript fixed while varying affect to test evidence use, but manipulates
+delivery, not demographic identity. TTS-instrument validity work
+\citep{zhong2025pairwiseeval,huang2026codecmosacce,xinyuan2025scalablecont,
+yang2025positiontowa,ren2026mosbiasfromh} informs our manipulation checks;
+our multivoice result (\S\ref{sec:multivoice}) is itself evidence for that
+literature's central worry. \citet{wang2026priorongevidence} uses the same
+real-speech corpus we use as our causal anchor, for a diagnostic-feedback
+task rather than content grading. The human-listener precedent predates
+audio language models: \citet{kang2009reverse} show identical recorded
+speech is rated less comprehensible under a different apparent speaker
+identity, the causal logic we apply to an artificial judge.
 
 \textbf{Significance.} If a judge's score of a spoken answer depends on the
-speaker's accent, every deployed pipeline listed in the introduction is
-partly scoring the speaker rather than the answer. The practical
-consequence we test directly is whether the standard proposed fix, grading
-from a transcript instead of from audio, actually removes the effect. Our
-decomposition arm answers that question for the one bias we find: yes, for
-that judge, on that accent.
+speaker's voice, every deployed pipeline above is partly scoring the speaker
+rather than the answer. Our results sharpen this in two directions at once:
+audits using one synthetic voice per condition can \emph{overstate} accent
+effects (ours did), while on real speech the voice sensitivity of two
+production judges is large, consistent, and graded by first language.
 
 \section{Method}
 \label{sec:method}
@@ -185,144 +166,106 @@ that judge, on that accent.
 \subsection{Answer Bank}
 
 We authored 24 interview-style question-and-answer pairs across ten everyday
-domains (science, history, cooking, health, technology, culture, geography,
-personal finance, daily-life advice, and education), using a frozen text
-model. Each answer targets a medium quality band, not a strong or a weak
-one, because a judge has no room to move a score that is already near a
-ceiling or a floor.
+domains, using a frozen text model, each targeting a medium quality band so
+a judge has headroom to move the score. A first calibration failed
+instructively: ``incomplete or shallow'' answers scored a ceiling-level mean
+of 94.3/100 under a real audio judge. A rewritten prompt requiring
+checkable weaknesses, validated on five test answers (35 to 65),
+regenerated the bank at mean 61.3 (sd 17.0, range 20 to 90 under Gemini 3.6
+Flash), the distribution used throughout.
 
-Our first attempt at this calibration failed, and we report the failure
-because it changed our design. A prompt asking the model for a merely
-``incomplete or shallow'' answer produced answers that a real audio judge
-scored at a mean of 94.3 out of 100 (standard deviation 4.5, minimum 85), a
-ceiling with no headroom for any bias to move the score. We diagnosed this
-before collecting any of the results reported below, and rewrote the
-generation prompt to require specific, checkable weaknesses in each answer:
-answering only part of the question, hedging language, one clear factual
-gap, and a weak ending. We validated the rewritten prompt on five test
-answers scored by the real judge before regenerating the full bank; the
-calibration answers scored 35, 35, 45, 60, and 65. The full 24-item bank
-regenerated under this corrected prompt scored a mean of 61.3 (standard
-deviation 17.0, range 20 to 90) under Gemini 3.6 Flash, the distribution
-used throughout this paper.
+\subsection{Axis A: Accent and Gender, Single-Voice Arm}
 
-\subsection{Accent and Gender Conditions (Axis A)}
+Each answer was rendered with \texttt{gemini-3.1-flash-tts-preview} in four
+accents (American, British, Indian, Nigerian English) crossed with two
+voices (one male, one female: the Charon/Kore pair), producing 192 clips.
+Accent is a natural-language style instruction to the TTS engine. An 8-clip
+manipulation check preceded generation: a blind classifier judge identified
+the intended accent and gender in 8 of 8 clips at high stated confidence.
+Every clip was loudness-normalized (\texttt{ffmpeg loudnorm}) and resampled
+to 16kHz.
 
-Each of the 24 answers was rendered with \texttt{gemini-3.1-flash-tts-preview}
-in four accents, American, British, Indian, and Nigerian English, crossed
-with two voices (one designated male, one female), producing 192 clips. The
-accent is specified as a natural-language style instruction to the TTS
-model, together with a fixed voice choice per gender. We validated that the
-TTS model actually renders the requested accent with an 8-clip manipulation
-check before generating the study data: a separate blind classifier judge
-correctly identified the intended accent and gender in 8 of 8 clips, all at
-high stated confidence. Every clip was loudness-normalized
-(\texttt{ffmpeg loudnorm}) and resampled to 16kHz.
+\subsection{Axis A$^{+}$: Multi-Voice Replication and Decomposed Rubric}
+\label{sec:method-multivoice}
 
-\subsection{Delivery Conditions (Axis B)}
+Because a single voice per accent-gender cell aliases accent with everything
+else that voice carries, we re-rendered a 12-item subset in all four accents
+with six additional prebuilt voices (three per gender: Puck, Fenrir, Orus;
+Aoede, Leda, Zephyr), producing 288 further clips judged identically by both
+Gemini judges. Separately, we re-judged the full original 192-clip arm under
+a decomposed rubric that scores correctness, completeness, helpfulness, and
+clarity from 0 to 25 each, rather than one 0 to 100 score, to test whether
+the rubric's shape carries part of the effect.
 
-Using one fixed voice (the American-accented female condition), we
-generated five delivery perturbations of each of the 24 answers: filled
-pauses (``um,'' ``uh'' inserted at clause boundaries, re-synthesized by
-TTS), a slowed and a sped-up rendering (\texttt{ffmpeg atempo} at 0.85 and
-1.25), an 8kHz mu-law telephone-bandwidth rendering, and a background-noise
-condition mixing synthesized pink noise at a measured 10dB
-signal-to-noise ratio. We do not have a licensed multi-talker babble corpus,
-so the noise condition uses a pink-noise proxy rather than authentic babble;
-we state this as a limitation rather than presenting it as equivalent to a
-babble-noise benchmark.
+\subsection{Axis A$'$: Real Speech (L2-ARCTIC $\times$ CMU ARCTIC)}
+\label{sec:method-realspeech}
 
-Every perturbed clip passed a word-error-rate neutrality check before being
-judged: we transcribed each clip and compared it to the frozen source text,
-excluding any clip whose transcript changed by more than 5\% word error
-rate, since a perturbation that changes the recognized words is no longer a
-pure delivery manipulation, the same principle behind channel-specific
-robustness suites for text pipelines \citep{hu2026shouldwetype}. Our first
-transcription pass used a
-general-purpose instruction and produced an artificially high failure rate,
-because the transcribing model, an LLM used as an ad hoc speech recognizer,
-occasionally filled in unrelated caption-like text (video timestamps, a
-fragment of an unrelated course syllabus) instead of transcribing difficult
-audio, rather than mis-hearing the actual words. A stricter prompt that
-explicitly forbade inventing content flipped 28 of 33 initial failures to
-passing, confirming that most of the initial failures were an artifact of
-the transcribing model, not of the audio. The final gate excluded 5 of 120
-non-baseline conditions as genuine word-error-rate violations. Both prompt
-arms, a neutral rubric and an explicit instruction to grade content and
-ignore delivery, were run on the 139 surviving clips.
+The real-speech arm uses L2-ARCTIC \citep{zhao2018l2arctic}: 24 non-native
+English speakers, two male and two female for each of six first languages
+(Arabic, Hindi, Korean, Mandarin, Spanish, Vietnamese), reading the same
+prompt sentences as the native CMU ARCTIC voices. We selected eight
+sentences verified present for all 24 L2 speakers and all six native
+reference voices (bdl, rms, jmk, awb male; slt, clb female), 240 clips
+total, resampled to a common 16kHz and loudness-normalized identically to
+the TTS arms, since the two corpora ship at different sample rates. Because
+ARCTIC sentences are generic prompts rather than domain answers, the rubric
+for this arm scores the \emph{reading}: clarity, fluency, and how
+professional it sounds, 0 to 100 (verbatim in
+Appendix~\ref{app:prompts}). This is a delivery rubric by design; the arm
+measures how strongly judges respond to non-native speech, not content bias.
 
-\subsection{Judges and Protocol}
+\subsection{Axis B: Delivery Perturbations}
 
-Three judges scored the Axis A clips: \texttt{gemini-3.6-flash} and
-\texttt{gemini-3.1-pro-preview}, called directly through the API at
-temperature zero, one clip per call, in randomized order, never informed
-that the study concerns voice or accent; and, from a second vendor family,
-the open-weight \texttt{Qwen2-Audio-7B-Instruct} run on a single A10G GPU
-with greedy decoding, same rubric, one clip per call. The rubric asks for a
-single 0 to 100 score covering correctness, completeness, helpfulness, and
-clarity, plus a one-sentence reason, returned as structured JSON. The two
-Gemini judges also scored the delivery and decomposition arms; the
-open-weight judge scored Axis A only, to control GPU spend.
+Using one fixed voice (American female), we generated five perturbations of
+each answer: filled pauses, slowed (0.85$\times$) and sped (1.25$\times$)
+renderings, an 8kHz telephone codec, and pink noise at 10dB SNR. Every
+perturbed clip passed a word-error-rate neutrality gate ($\le$5\% WER
+against the frozen text); 5 of 120 conditions failed and were excluded
+(after a stricter transcription prompt eliminated 28 spurious failures
+caused by the transcriber inventing content, not mis-hearing it). Both
+prompt arms, neutral and explicit ignore-delivery, ran on the 139 surviving
+clips.
 
-\subsection{Decomposition Arm}
-\label{sec:decomp}
+\subsection{Judges, Protocol, and Analysis}
 
-For a stratified subset of Axis A, the American and Indian accents crossed
-with both genders across 12 of the 24 items, we graded the same content
-three ways per judge: end-to-end audio (already collected in Axis A), the
-judge's own transcript of that same audio, and the frozen gold text
-transcript. If a bias found in the audio mode shrinks under the transcript
-modes, that localizes the bias in the acoustic channel rather than in the
-model's general treatment of the content.
-
-\subsection{Analysis}
-
-The unit of analysis is the within-item score difference between a
-treatment condition and a reference condition (the American-accent
-rendering of the same gender for Axis A, the clean baseline for Axis B),
-computed separately per judge and per condition. We report the mean shift
-with a bootstrap 95\% confidence interval (10,000 resamples), a two-sided
-sign-flip permutation test ($p$, 20,000 permutations), and the paired effect
-size $d_z$. Every number in Section~\ref{sec:results} is read directly from
-one scripted analysis pass over the raw judgment logs.
+Three judges scored Axis A: \texttt{gemini-3.6-flash} and
+\texttt{gemini-3.1-pro-preview} through the API at temperature zero, one
+clip per call, randomized order, never told the study concerns voice; and
+the open-weight \texttt{Qwen2-Audio-7B-Instruct} on a single A10G GPU with
+greedy decoding. The rubric asks for one 0 to 100 score (correctness,
+completeness, helpfulness, clarity) plus a one-sentence reason as JSON. The
+Gemini judges also scored the multivoice, decomposition, delivery, and
+real-speech arms; Qwen2-Audio scored Axis A and the real-speech arm. The
+unit of analysis is the within-item paired difference against the matched
+reference (gender-matched American rendering for TTS arms; gender-matched
+native mean for real speech), with bootstrap 95\% CIs (10{,}000 resamples),
+two-sided sign-flip permutation tests (20{,}000 permutations), and paired
+$d_z$. Every number below is read from scripted analysis passes over the raw
+logs, which ship with the paper.
 
 \section{Results}
 \label{sec:results}
 
-\subsection{Accent and Gender (Axis A)}
+\subsection{The Single-Voice Arm Produces a Clean Finding}
 
-Table~\ref{tab:axisa} and Figure~\ref{fig:forest} report the score shift for
-each non-American accent relative to the American-accent rendering of the
-same item and the same gender, so the comparison is never confounded by
-gender. Gemini 3.1 Pro shows one shift that clears our significance
-threshold: Indian-accented answers score 2.5 points lower than the
-identical American-accented answer ($p=0.005$, $d_z=-0.44$), while the same
-comparison under Gemini 3.6 Flash is indistinguishable from zero ($-0.04$,
-$p=1.0$). The third family reverses the sign entirely: Qwen2-Audio-7B
-scores \emph{every} non-American accent higher than the American rendering
-of the identical words (UK $+2.92$, CI $[+0.94, +5.00]$, $p=0.011$; Indian
-$+1.98$, $[+0.21, +3.75]$, $p=0.044$; Nigerian $+2.29$, $[+0.73, +4.06]$,
-$p=0.014$; $n{=}48$ each, $d_z$ $0.32$ to $0.39$), though its absolute
-scores cluster on a coarse four-value grid around 75, so these shifts ride
-a blunt scale. Across the now nine accent-judge tests, Benjamini-Hochberg
-at $q=0.05$ retains three cells: the Pro Indian penalty and the Qwen2-Audio
-UK and Nigerian inflations (ranks one through three; the Qwen2-Audio Indian
-cell at $p=0.044$ does not survive). One family penalises an accent, one is
-null, one rewards every non-American voice: the speaker-identity axis is
-real and its \emph{direction} is a property of the judge, the same
-sign-opposite-across-families structure the predecessor study found for
-orthography in text judges.
-Both judges show a Nigerian-accent shift in the positive direction, the
-opposite of our pre-registered prediction that global-South accents would
-score lower; neither reaches significance at this sample size. The gender
-main effect (female minus male, within the American-accent condition) is
-not significant for either judge, though Gemini 3.6 Flash trends toward
-scoring the female voice 3.25 points higher ($p=0.12$).
+Table~\ref{tab:axisa} and Figure~\ref{fig:forest} report the single-voice
+arm. Gemini 3.1 Pro shows one shift that clears our threshold:
+Indian-accented answers score 2.5 points lower than the identical
+American-accented answer ($p=0.005$, $d_z=-0.44$), while the same comparison
+under Gemini 3.6 Flash is indistinguishable from zero ($-0.04$, $p=1.0$).
+The third family reverses the sign: Qwen2-Audio-7B scores \emph{every}
+non-American accent higher (UK $+2.92$, $p=0.011$; Indian $+1.98$,
+$p=0.044$; Nigerian $+2.29$, $p=0.014$; $n{=}48$ each), though its absolute
+scores cluster on a coarse four-value grid around 75. The gender main
+effect is not significant for either Gemini judge (Flash trends $+3.25$
+toward the female voice, $p=0.12$). Taken alone, this arm tells a tidy
+story: a significant, judge-specific accent penalty. The next subsection is
+why we no longer tell it.
 
 \begin{table}[t]
 \centering
 \small
-\caption{Accent shift versus the gender-matched American baseline, three judges, $n=48$ paired comparisons per cell. Bold marks the three cells that survive Benjamini-Hochberg correction across all nine tests. Qwen2-Audio's absolute scores fall on a coarse four-value grid around 75, so its shifts ride a blunt scale.}
+\caption{Single-voice TTS arm: accent shift versus the gender-matched American baseline, three judges, $n=48$ paired comparisons per cell. Bold marks cells that survive Benjamini-Hochberg correction across all 33 accent-judge-arm tests in the paper (\S\ref{sec:realspeech}). Qwen2-Audio's absolute scores fall on a coarse four-value grid.}
 \label{tab:axisa}
 \begin{tabular}{lrrr}
 \toprule
@@ -349,65 +292,176 @@ Nigerian& \textbf{$+2.29$} & [$+0.73$, $+4.06$] & \textbf{0.014} \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.78\textwidth]{assets/figure1_accent_forest.png}
-\caption{Score shift by accent and judge, 95\% bootstrap confidence
-intervals, $n=48$ paired comparisons per interval. Right of the dashed line
-means the accent scored higher than the American baseline. Only the Gemini
-3.1 Pro, Indian-accent interval (highlighted) excludes zero at $p<0.01$.}
+\caption{Single-voice TTS arm: score shift by accent and judge, 95\%
+bootstrap confidence intervals, $n=48$ paired comparisons per interval.
+Right of the dashed line means the accent scored higher than the American
+baseline. Filled markers survive the joint Benjamini-Hochberg correction of
+\S\ref{sec:realspeech}.}
 \label{fig:forest}
 \end{figure}
 
-\subsection{Decomposition: Where the Bias Lives}
+\subsection{The Finding Does Not Survive Its Replication Battery}
+\label{sec:multivoice}
+
+We pre-registered the direction of the accent effect before collecting any
+data, and pre-registration discipline cuts both ways: it obliges us to
+report reversals on replication as plainly as confirmations. Both
+replications reversed.
+
+\textbf{Six more voices.} Across six additional voices rendering the same
+items and accent instructions (Table~\ref{tab:multivoice},
+Figure~\ref{fig:multivoice}), Pro's Indian shift is $-0.76$
+(CI $[-2.22, +0.69]$, $p=0.35$, $n{=}72$), and the per-voice means swing
+from $+2.08$ (Fenrir) to $-4.58$ (Zephyr). The original Charon/Kore pair's
+$-2.50$ sits inside that swing, not outside it: the voice, not the accent,
+moves the score. Flash is equally unstable across voices (Indian $+0.11$,
+$p=0.95$; per-voice $-2.67$ to $+4.17$), and its multivoice Nigerian cell
+comes out significantly \emph{negative} ($-3.22$, $p=0.0042$) where its
+single-voice Nigerian trend was positive, a sign flip across voice samples
+within one judge.
+
+\textbf{A different rubric shape.} Re-judging the original 192 clips under
+the decomposed four-dimension rubric, Pro's Indian-vs-American shift
+vanishes: correctness $-0.15$ ($p=0.66$), completeness $-0.17$ ($p=0.56$),
+helpfulness $+0.21$ ($p=0.46$), clarity $-0.23$ ($p=0.48$), total $-0.33$
+on the 100-point equivalent ($n{=}48$). The same clips that produce $-2.50$
+under a single holistic score produce nothing under sub-scores.
+
+A finding can survive multiple-comparison correction (the $-2.50$ cell does,
+even in the joint 33-test family below) and still fail replication:
+correction controls false positives within a design, not the design's own
+aliasing. The lesson is uncomfortable for this literature: a one-voice,
+one-rubric audit can manufacture a clean, significant, channel-localized
+``bias'' that is really a statement about that voice under that rubric.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Multi-voice replication: accent shift versus the gender-matched American baseline across six new voices, $n=72$ paired comparisons per cell (12 items $\times$ 6 voices). Bold: survives the joint BH correction.}
+\label{tab:multivoice}
+\begin{tabular}{lrrr}
+\toprule
+Accent & Mean shift & 95\% CI & $p$ \\
+\midrule
+\multicolumn{4}{l}{\emph{Gemini 3.1 Pro}} \\
+UK      & $+0.90$ & [$-0.69$, $+2.57$] & 0.32 \\
+Indian  & $-0.76$ & [$-2.22$, $+0.69$] & 0.35 \\
+Nigerian& $+1.53$ & [$+0.14$, $+2.92$] & 0.043 \\
+\midrule
+\multicolumn{4}{l}{\emph{Gemini 3.6 Flash}} \\
+UK      & $-1.81$ & [$-4.03$, $+0.42$] & 0.12 \\
+Indian  & $+0.11$ & [$-2.11$, $+2.33$] & 0.95 \\
+Nigerian& \textbf{$-3.22$} & [$-5.38$, $-1.14$] & \textbf{0.0042} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.95\textwidth]{assets/fig_decomp_diagram.png}
-  \caption{\textbf{The decomposition design.} One Indian-accented answer graded three ways by the same judge; only the route that hears sound shows a penalty. Numbers from Table~\ref{tab:decomp}.}
-  \label{fig:decomproutes}
+  \includegraphics[width=0.88\textwidth]{assets/figure4_multivoice.png}
+  \caption{\textbf{The Indian-accent shift is a property of the voice.} Per-voice Indian-minus-American mean shift ($n{=}12$ item-gender pairs per voice; original arm $n{=}48$). The original pair's penalty sits inside the per-voice swing, not outside it.}
+  \label{fig:multivoice}
 \end{figure}
+
+\subsection{Where the Voice-Level Penalty Lives}
+\label{sec:decomp}
+
+For the original voice pair, where the penalty exists, the decomposition arm
+grades the same content three ways (Table~\ref{tab:decomp},
+Figure~\ref{fig:decomp}): end-to-end audio $-2.50$, the judge's own
+transcript of the same audio $+1.88$, the frozen gold transcript $-0.83$.
+Because a difference in significance is not a significant difference, we
+test the accent-by-mode interaction directly: the audio-mode shift differs
+from the own-transcript shift by $-6.04$ points (CI $[-8.5, -3.5]$,
+$p=4\times10^{-4}$, $n{=}24$) and from the gold-transcript shift by $-3.33$
+($[-5.8, -0.8]$, $p=0.028$). Whatever this judge penalises about this voice
+pair lives in the acoustic channel and does not survive transcription. The
+gold-transcript arm is a sanity check rather than evidence, since identical
+transcripts must tie for a deterministic judge; the informative contrast is
+audio versus the judge's own transcript. Flash, with no audio-mode effect to
+decompose, shows nothing informative in either transcript mode ($-4.25$,
+$p=0.17$; $+0.83$, $p=0.36$). Transcript-first grading thus remains a tested
+mitigation, but for a voice-level artifact, which reframes what it
+mitigates: it removes whatever the acoustic channel carries, legitimate or
+not.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.72\textwidth]{assets/figure2_decomposition.png}
-  \caption{\textbf{The penalty lives in the acoustic channel.} The Gemini 3.1 Pro Indian-accent shift under three grading modes; only end-to-end audio shows a significant penalty.}
+  \caption{\textbf{The voice-level penalty lives in the acoustic channel.} The Gemini 3.1 Pro Indian-accent shift (original voice pair) under three grading modes; interaction tests in \S\ref{sec:decomp}.}
   \label{fig:decomp}
 \end{figure}
-
-Table~\ref{tab:decomp} traces the Gemini 3.1 Pro Indian-accent penalty across
-grading modes: $-2.50$ hearing audio, $+1.88$ grading its own transcript of
-the identical audio, $-0.83$ grading the frozen gold transcript. Because a
-difference in significance is not a significant difference, we test the
-accent-by-mode interaction directly on within-item paired differences: the
-audio-mode shift differs from the own-transcript shift by $-6.04$ points
-(95\% CI $[-8.5, -3.5]$, sign-flip $p = 4 \times 10^{-4}$, $n{=}24$) and from
-the gold-transcript shift by $-3.33$ ($[-5.8, -0.8]$, $p = 0.028$). The
-penalty is significantly larger in the acoustic channel than in either
-transcript channel, not merely significant in one and not the other. One
-framing caution: the gold-transcript arm is a sanity check, not evidence.
-The frozen gold transcript is identical across accents by construction, so
-a null there is guaranteed if the judge behaves deterministically; the
-informative contrast is audio versus the judge's \emph{own} transcript of
-the accented audio, which carries whatever the recognizer heard. Gemini 3.6 Flash, which
-showed no significant audio-mode effect to begin with, shows a
-non-significant shift under its own transcript ($-4.25$, $p=0.17$) and under
-the gold transcript ($+0.83$, $p=0.36$); we do not read a channel story into
-a judge that showed no effect to decompose.
 
 \begin{table}[t]
 \centering
 \small
 \caption{Decomposition of the Indian-accent shift by grading mode, Gemini
-3.1 Pro. Transcript modes: $n{=}24$ paired comparisons (12 items $\times$ 2
-genders). The audio row reproduces the Table~\ref{tab:axisa} Axis-A cell
-($n{=}48$) for reference; interaction tests in the text use the 24
-item-gender pairs common to all three modes.}
+3.1 Pro, original voice pair. Transcript modes: $n{=}24$ paired comparisons.
+The audio row reproduces the Table~\ref{tab:axisa} cell ($n{=}48$);
+interaction tests use the 24 pairs common to all modes.}
 \label{tab:decomp}
 \begin{tabular}{lrrr}
 \toprule
 Mode & Mean shift & 95\% CI & $p$ \\
 \midrule
-Audio (from Table~\ref{tab:axisa}) & \textbf{$-2.50$} & [$-4.06$, $-0.94$] & \textbf{0.005} \\
+Audio (from Table~\ref{tab:axisa}) & $-2.50$ & [$-4.06$, $-0.94$] & 0.005 \\
 Own transcript   & $+1.88$ & [$0.00$, $3.96$]   & 0.14 \\
 Gold transcript  & $-0.83$ & [$-2.50$, $0.83$]  & 0.51 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Real Speech: Large, Consistent, and Graded by First Language}
+\label{sec:realspeech}
+
+On the 240 real recordings, both Gemini judges penalise every non-native L1
+relative to gender-matched native voices reading the same sentences
+(Figure~\ref{fig:l2arctic}, Table~\ref{tab:l2arctic}): under Pro, from
+$-4.27$ (Hindi, $p=3\times10^{-4}$) to $-15.67$ (Mandarin, $p<10^{-4}$);
+under Flash, from $-6.08$ to $-14.20$; all twelve cells
+$p\le4\times10^{-4}$, $n{=}32$ per cell, four speakers per L1. The two
+judges agree closely on both size and ordering (Hindi least penalised,
+Mandarin and Vietnamese most), a sharp contrast to their disagreement on
+the TTS arms. Qwen2-Audio, judging the identical clips, shifts by at most
+$-1.25$ (all n.s.), though it compresses essentially all clips onto two
+score values, so its flatness is partly an instrument property.
+
+Two framings must be kept apart. This arm's rubric scores the
+\emph{reading}, so a penalty is responsiveness to non-native delivery, not
+demonstrated content bias, and real L2 speech genuinely varies in fluency.
+What the arm establishes is the magnitude, consistency, and L1-gradient of
+that responsiveness in production judges, and that it replicates across
+speakers within each L1, which the TTS arm's effects did not across
+voices.
+
+Across all 33 accent-judge-arm tests reported in this paper,
+Benjamini-Hochberg at $q=0.05$ retains 16: all twelve real-speech Gemini
+cells, the single-voice Pro-Indian and Qwen UK and Nigerian cells, and the
+multivoice Flash-Nigerian cell.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.85\textwidth]{assets/figure5_l2arctic.png}
+  \caption{\textbf{Real speech.} Per-L1 shift versus gender-matched native voices, read-aloud rubric, 95\% bootstrap CIs, $n{=}32$ clips per cell (4 speakers $\times$ 8 sentences). Both Gemini judges agree on size and ordering; Qwen2-Audio barely reacts on its compressed scale.}
+  \label{fig:l2arctic}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Real-speech arm: mean shift versus gender-matched native baseline (Pro native means 94.2/94.7 m/f; Flash 93.9/95.6), $n{=}32$ per cell. All Gemini cells survive the joint BH correction; no Qwen2-Audio cell is significant.}
+\label{tab:l2arctic}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Gemini 3.1 Pro} & \multicolumn{2}{c}{Gemini 3.6 Flash} & \multicolumn{2}{c}{Qwen2-Audio} \\
+L1 & shift & $p$ & shift & $p$ & shift & $p$ \\
+\midrule
+Hindi      & $-4.27$  & $3\times10^{-4}$ & $-6.08$  & $4\times10^{-4}$ & $-0.31$ & 0.75 \\
+Korean     & $-7.08$  & $2\times10^{-4}$ & $-8.14$  & $2\times10^{-4}$ & $-0.62$ & 0.37 \\
+Spanish    & $-9.33$  & $<10^{-4}$ & $-9.61$  & $<10^{-4}$ & $-1.25$ & 0.14 \\
+Arabic     & $-13.08$ & $<10^{-4}$ & $-13.02$ & $<10^{-4}$ & $-0.62$ & 0.37 \\
+Mandarin   & $-15.67$ & $<10^{-4}$ & $-14.20$ & $<10^{-4}$ & $-0.31$ & 0.75 \\
+Vietnamese & $-15.27$ & $<10^{-4}$ & $-14.20$ & $<10^{-4}$ & $-0.94$ & 0.25 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -417,95 +471,70 @@ Gold transcript  & $-0.83$ & [$-2.50$, $0.83$]  & 0.51 \\
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.95\textwidth]{assets/fig_delivery_diagram.png}
-  \caption{\textbf{The five delivery perturbations.} Each changes how the answer sounds without changing the words or the accent; all effects are null at this sample size (Figure~\ref{fig:delivery}).}
-  \label{fig:deliverydesign}
-\end{figure}
-
-\begin{figure}[t]
-  \centering
   \includegraphics[width=0.9\textwidth]{assets/figure3_delivery.png}
-  \caption{\textbf{Delivery perturbations: all null at this sample size.} Five perturbations, two judges, two prompt arms; every 95\% interval spans zero ($n{=}21$-$24$ per cell). Read as inconclusive, not as proof of no effect.}
+  \caption{\textbf{Delivery perturbations: all null at this sample size.} Five perturbations, two judges, two prompt arms; every 95\% interval spans zero ($n{=}21$--$24$ per cell). Read as inconclusive, not as proof of no effect.}
   \label{fig:delivery}
 \end{figure}
 
 None of the five delivery perturbations produced a significant score shift
-under either judge, under either the neutral rubric or the explicit
-ignore-delivery instruction (all $p>0.1$; per-condition $n$ ranges from 21
-to 24 after the word-error-rate exclusions). Effect sizes were small
-throughout ($|d_z|<0.36$). We read this as inconclusive at the current
-sample size rather than as evidence that delivery never affects content
-scores: our own budget-driven power analysis at the planning stage flagged
-that 24 items would leave wide intervals on the secondary axis, and the
-observed intervals here span both directions of zero in every cell.
+under either Gemini judge, under either prompt arm (all $p>0.1$,
+$|d_z|<0.36$; $n$ of 21 to 24 per cell after WER exclusions). We read this
+as inconclusive at this sample size, as our planning-stage power analysis
+anticipated for the secondary axis, not as evidence that delivery never
+leaks into content scores.
 
 \section{Limitations}
 \label{sec:limitations}
 
-\textbf{One synthetic voice per accent-gender cell.} Each accent-gender cell
-is rendered by a single TTS voice, so accent is aliased with everything else
-that voice carries: timbre, prosodic habits, and the synthesis engine's
-rendering quality for that accent. Our effects are therefore
-\emph{voice-level} findings; reading them as accent-population claims
-requires multiple voices per cell, which we did not run. The 8-clip
-manipulation pilot found all renderings natural and correctly classifiable,
-and the same engine renders every accent, but a quality gradient across
-accent settings inside one engine cannot be excluded.
+\textbf{The rubrics differ across arms by design.} The TTS arms score
+content dimensions; the real-speech arm scores the reading itself, because
+ARCTIC sentences carry no domain content. The real-speech penalties are
+therefore delivery-responsiveness results, and their size should not be
+read as content bias. A content-bearing real-speech corpus would close this
+gap.
 
-\textbf{The rubric scores clarity.} Correctness, completeness, helpfulness,
-and clarity are the four rubric dimensions, and clarity is a property of the
-signal as heard, so part of any acoustic-channel penalty could be a
-legitimate clarity judgment rather than speaker-identity bias. The
-predecessor script-bias study found exactly this structure (a majority
-clarity component with a significant residue on content dimensions); a
-per-dimension decomposition on the audio arm is the analogous next
-experiment here.
+\textbf{Real-speech recording conditions are confounded with nativeness.}
+The native CMU ARCTIC voices are studio recordings of experienced voice
+talent; L2-ARCTIC speakers are not professional narrators. Part of the
+per-L1 gradient may reflect recording and speaker professionalism rather
+than accent per se. Four speakers per L1 also limits speaker-level
+generality, though the within-L1 consistency across speakers and across two
+judges is what the TTS arm's effects lacked.
 
-\textbf{Sample size.} The accent and delivery arms use 24 items under a
-\$20 compute budget, smaller than the 150-item design of the predecessor
-study this method is adapted from. The Indian-accent effect we report
-survives that sample size; the null results on the delivery arm and on the
-British and Nigerian accents may simply be underpowered.
+\textbf{Sample size.} The TTS arms use 24 items under a \$20 compute
+budget; the delivery nulls and the non-significant multivoice cells may be
+underpowered. The multivoice arm covers 12 of the 24 items.
 
-\textbf{Two judge families, both from one company.} Every scored clip was
-graded by Gemini 3.1 Pro or Gemini 3.6 Flash. We did not have access to an
-OpenAI audio judge at the time of this draft, and had not yet completed the
-integration of an open-weight audio judge on Modal. The disagreement between
-two Gemini models is itself informative, since it shows the effect is not a
-fixed property of one vendor's audio pipeline, but a genuine third-family
-and fourth-family comparison remains future work.
-
-\textbf{Text-to-speech only, no real-speech anchor yet.} Every accent
-condition in this draft is synthetic. The L2-ARCTIC corpus
-\citep{zhao2018l2arctic}, real recordings
-of non-native English speakers reading identical prompts against matched
-native recordings, is the planned causal anchor for this project, verified
-for license and sentence-overlap suitability, but its use here is pending a
-manual, human-completed registration step with the corpus's distributor
-that had not finished at the time of this draft.
+\textbf{Judge coverage is uneven.} Both Gemini judges scored every arm;
+Qwen2-Audio scored the single-voice TTS and real-speech arms only.
+Qwen2-Audio's compressed output scale (two to four distinct values) limits
+what its null shifts can show. A frontier non-Google audio judge remains
+untested.
 
 \textbf{Same-family manipulation check.} The 8-clip accent-fidelity check
-used a Gemini model to classify audio generated by a different Gemini
-model. The classification clips differ in content from the study items, but
-a same-vendor circularity concern remains until an independent or
-human-listener check is run.
+used a Gemini classifier on Gemini-generated audio; an independent or
+human-listener check has not been run. The multivoice results reduce the
+weight this check carries, since we no longer rest an accent claim on the
+TTS arm.
 
-\textbf{The noise condition is a proxy.} We synthesized pink noise at a
-measured signal-to-noise ratio rather than mixing in a licensed
-multi-talker babble corpus; a real babble condition may behave differently.
+\textbf{The noise condition is a proxy.} Pink noise at measured SNR stands
+in for licensed multi-talker babble.
 
 \section{Conclusion}
 
-We asked a narrow question with a clean design: if the words are identical,
-does an audio-input judge's score still move with the speaker's voice? For
-one judge, Gemini 3.1 Pro, on one accent, Indian English, the answer is yes,
-by 2.5 points on a 100-point scale, and the effect traces to the acoustic
-channel rather than to the content once transcribed. For a sibling model
-from the same company, Gemini 3.6 Flash, the answer on the identical
-comparison is no. Both facts matter for anyone deploying an audio-LLM judge
-today: which model you pick is not a neutral engineering choice, and
-grading from a transcript is a concrete, tested mitigation for at least the
-one failure mode we found. The delivery axis, the real-speech anchor, a
-third judge family, and a prompt-level mitigation battery are the natural
-next steps, and are already scoped in this project's experiment plan.
-
+We asked whether an audio-input judge's score moves with the speaker's
+voice when the words are held fixed, and the honest answer required three
+designs. A single-voice audit said yes, significantly, for one judge and
+one accent, localized to the acoustic channel. Six more voices said the
+penalty belongs to the voice, not the accent, and a decomposed rubric made
+it vanish on the original voices; we report our own headline as a
+replication failure, because that is what pre-registration is for. Real
+speech then said something larger: on actual non-native speakers, two
+production judges penalise every first language we tested, by up to fifteen
+points, consistently with each other and graded by L1, under a rubric that
+scores delivery. The practitioner checklist: audit with multiple voices per condition or
+real speakers, never one; treat rubric shape as a design variable; and know
+that transcript-first grading removes whatever the acoustic channel
+carries, a mitigation only if that is what you intend. Whether the large
+real-speech penalties are calibrated to human judgment of the same
+recordings is the natural next experiment.

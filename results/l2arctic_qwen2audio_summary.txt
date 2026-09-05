@@ -1,0 +1,8 @@
+240/240 clips scored; native baseline cells: 16
+Qwen2-Audio arabic     vs native:  -0.62 CI[-1.72,+0.16] p=0.3733 n=32
+Qwen2-Audio hindi      vs native:  -0.31 CI[-1.09,+0.31] p=0.7472 n=32
+Qwen2-Audio korean     vs native:  -0.62 CI[-1.72,+0.16] p=0.3746 n=32
+Qwen2-Audio mandarin   vs native:  -0.31 CI[-1.41,+0.62] p=0.7492 n=32
+Qwen2-Audio spanish    vs native:  -1.25 CI[-2.66,+0.00] p=0.1421 n=32
+Qwen2-Audio vietnamese vs native:  -0.94 CI[-2.34,+0.16] p=0.2490 n=32
+score dist: mean 94.2 min 85 max 95 unique 2

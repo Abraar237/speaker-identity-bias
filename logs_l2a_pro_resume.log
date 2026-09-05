@@ -1,0 +1,15 @@
+    retry 1: The read operation timed out
+    retry 2: The read operation timed out
+    retry 1: The read operation timed out
+    retry 2: The read operation timed out
+    retry 1: The read operation timed out
+    retry 2: The read operation timed out
+240 clips total, 126 already judged, prompt_arm=neutral, model=gemini-3.1-pro-preview
+  [20] NCC_mandarin_f_arctic_a0004__neutral__gemini-3.1-pro-preview score=95 (spend $12.5741)
+  [40] EBVS_spanish_m_arctic_a0002__neutral__gemini-3.1-pro-preview score=65 (spend $12.6730)
+  [60] ASI_hindi_m_arctic_a0004__neutral__gemini-3.1-pro-preview score=95 (spend $12.7697)
+  [80] LXC_mandarin_f_arctic_a0008__neutral__gemini-3.1-pro-preview score=95 (spend $12.8635)
+  [100] TNI_hindi_f_arctic_a0008__neutral__gemini-3.1-pro-preview score=85 (spend $12.9584)
+
+Done. 114 new judgments -> ../results/l2arctic_pro.jsonl
+Running spend: $13.0280

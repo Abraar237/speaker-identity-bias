@@ -1,0 +1,19 @@
+    retry 1: The read operation timed out
+288 clips total, 0 already judged, prompt_arm=neutral, model=gemini-3.6-flash
+  [20] item10_us_f_Leda__neutral__gemini-3.6-flash score=45 (spend $10.8610)
+  [40] item00_ng_f_Aoede__neutral__gemini-3.6-flash score=40 (spend $10.8695)
+  [60] item10_in_f_Leda__neutral__gemini-3.6-flash score=55 (spend $10.8782)
+  [80] item04_ng_f_Zephyr__neutral__gemini-3.6-flash score=85 (spend $10.8866)
+  [100] item03_in_f_Aoede__neutral__gemini-3.6-flash score=45 (spend $10.8952)
+  [120] item09_in_m_Fenrir__neutral__gemini-3.6-flash score=45 (spend $10.9038)
+  [140] item08_uk_f_Aoede__neutral__gemini-3.6-flash score=65 (spend $10.9123)
+  [160] item09_uk_m_Orus__neutral__gemini-3.6-flash score=62 (spend $10.9210)
+  [180] item02_ng_f_Aoede__neutral__gemini-3.6-flash score=75 (spend $10.9295)
+  [200] item05_uk_m_Orus__neutral__gemini-3.6-flash score=85 (spend $10.9380)
+  [220] item01_in_f_Leda__neutral__gemini-3.6-flash score=75 (spend $10.9464)
+  [240] item05_us_m_Fenrir__neutral__gemini-3.6-flash score=85 (spend $10.9548)
+  [260] item04_uk_f_Zephyr__neutral__gemini-3.6-flash score=85 (spend $10.9633)
+  [280] item01_us_f_Zephyr__neutral__gemini-3.6-flash score=75 (spend $10.9717)
+
+Done. 288 new judgments -> ../results/multivoice_flash.jsonl
+Running spend: $10.9751

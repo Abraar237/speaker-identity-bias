@@ -187,7 +187,7 @@ li { margin-bottom: 8px; }
     <span>
       <a href="#film" class="hidesm">The film</a>
       <a href="https://github.com/Abraar237/speaker-identity-bias">Code</a>
-      <a href="paper.pdf?v=3" class="pill" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+      <a href="paper.pdf?v=7" class="pill" style="display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
         <svg width="14" height="14" viewBox="0 0 20 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 2h9l5 5v15H4z"/><path d="M13 2v5h5M7 12h6M7 16h6"/></svg>
         Paper (PDF)</a>
       <span class="pill">Draft &middot; pre-CP4 review</span>
@@ -200,13 +200,13 @@ li { margin-bottom: 8px; }
   <div class="hero">
     <p class="eyebrow">Voice-identity audit &middot; audio-LLM judges</p>
     <h1>Does the Voice Change the Grade?</h1>
-    <p class="dek">We held the words of a spoken answer perfectly fixed and changed only the accent. One judge docked the same answer 2.5 points for sounding Indian. Its sibling model did not move at all. And a third, open-weight judge rewarded every non-American accent on the identical words. Three families, three directions.</p>
+    <p class="dek">We held the words of a spoken answer perfectly fixed and changed only the accent, and one judge docked the same answer 2.5 points for sounding Indian. Then we did what reviewers ask: we replicated across six more voices and a decomposed rubric &mdash; and the penalty dissolved. The voice, not the accent, was carrying the effect. On real human speech the picture inverts again: both Gemini judges penalise every non-native speaker group, heavily and in agreement. We report all of it exactly as we found it.</p>
     <div class="byline">
       <span>Mohammed Abraar, Vizuara Research</span>
       <span class="dot">&middot;</span>
       <span>Draft &middot; September 2026</span>
       <span class="dot">&middot;</span>
-      <span>9 min read</span>
+      <span>12 min read</span>
     </div>
   </div>
 
@@ -214,7 +214,7 @@ li { margin-bottom: 8px; }
     <h2>Watch the film</h2>
     <div class="filmwrap">
       <video controls preload="auto" poster="assets/thumb.png?v=6" playsinline src="assets/final.mp4?v=6"></video>
-      <div class="filmcap">Does the Voice Change the Grade? The four-and-a-half-minute film: one frozen answer, four accents, and the judge that hears a difference.</div>
+      <div class="filmcap">Does the Voice Change the Grade? The four-and-a-half-minute film: one frozen answer, four accents, and what a replication battery did to our own headline.</div>
     </div>
   </section>
 
@@ -226,7 +226,9 @@ li { margin-bottom: 8px; }
       <li><a href="#known">What was already known, and what wasn't</a></li>
       <li><a href="#method">24 answers, one frozen text, eight voices</a></li>
       <li><a href="#result1">Three judge families, three verdicts on the same voice</a></li>
-      <li><a href="#decomp">The penalty lives in the sound, not the content</a></li>
+      <li><a href="#replication">The replication that killed our own headline</a></li>
+      <li><a href="#decomp">The penalty lived in the sound &mdash; of one voice pair</a></li>
+      <li><a href="#realspeech">Real speech is different</a></li>
       <li><a href="#delivery">Five ways to sound different: no verdict yet</a></li>
       <li><a href="#significance">What this means if you deploy a judge today</a></li>
       <li><a href="#limits">What we haven't shown yet</a></li>
@@ -269,22 +271,22 @@ li { margin-bottom: 8px; }
     <p>We authored 24 interview-style question-and-answer pairs across ten everyday domains: science, history, cooking, health, technology, culture, geography, personal finance, daily-life advice, and education. Each answer was written once, by a text model, then frozen. It never changes again.</p>
     <p>Every answer targets a medium quality band on purpose. A judge can't move a score that already sits at 95 out of 100, or at 15. Our first attempt at this got it wrong: a prompt asking for a merely "shallow" answer produced text a real judge scored at a mean of 94.3, a ceiling with no room for any bias to move it. We caught this before collecting any of the results below, rewrote the prompt to require specific, checkable weaknesses (answering only part of the question, hedging, one clear gap, a weak ending), and validated the new prompt against the real judge before regenerating the bank. The corrected 24 items scored a mean of 61.3, with real spread from 20 to 90.</p>
     <figure>
-      <img src="assets/fig_teaser.png?v=3" alt="Study design: one frozen answer rendered in four accents and two genders, 192 clips, scored blind by audio-input judges">
+      <img src="assets/fig_teaser.png?v=7" alt="Study design: one frozen answer rendered in four accents and two genders, 192 clips, scored blind by audio-input judges">
       <figcaption><strong>The design in one picture.</strong> One frozen answer, eight voices, two blind audio judges; any score gap can only come from the voice.</figcaption>
     </figure>
     <p>Each answer was rendered with a text-to-speech model in four accents, American, British, Indian, and Nigerian English, crossed with two speaker genders, for 192 clips. We checked the accent actually came through before running the study: a separate blind classifier correctly named the intended accent and gender in 8 of 8 test clips. Three judges scored every accent clip: Gemini 3.6 Flash and Gemini 3.1 Pro, one clip per call, in random order, temperature zero, never told the study concerned voice; and, from a second vendor family, the open-weight Qwen2-Audio-7B on a single GPU with greedy decoding and the same rubric. The delivery and decomposition arms below were run on the two Gemini judges.</p>
     <div class="fig">
       <div class="gifnote">animated concept card</div>
       <img src="assets/gifs/same-words-different-voice.gif?v=4" alt="One frozen answer fans out into four accented voices, all flow into one audio judge; the Indian accent shifts minus 2.5 points, p equals 0.005, while Nigerian trends plus 1.0">
-      <figcaption>One answer, four voices, one blind judge. The score shifts are the real measured numbers.</figcaption>
+      <figcaption>One answer, four voices, one blind judge &mdash; the single-voice arm's measured numbers, before the replication below.</figcaption>
     </div>
   </section>
 
   <section id="result1">
     <h2>Three judge families, three verdicts on the same voice</h2>
-    <p>Comparing each non-American accent against the identical answer in an American accent, spoken by the same gender voice, gives a clean read on the accent effect alone.</p>
+    <p>Comparing each non-American accent against the identical answer in an American accent, spoken by the same gender voice, gave what looked like a clean read on the accent effect. This is the single-voice finding that started this project &mdash; and, as the next section shows, it did not survive replication. We keep it here because how it fell apart is the paper's most useful result.</p>
     <div class="stats">
-      <div class="stat"><p class="label">Gemini 3.1 Pro &middot; Indian accent</p><p class="value hot">&minus;2.50 pts</p></div>
+      <div class="stat"><p class="label">Gemini 3.1 Pro &middot; Indian accent &middot; single voice pair</p><p class="value hot">&minus;2.50 pts</p></div>
       <div class="stat"><p class="label">95% confidence interval</p><p class="value">[&minus;4.06, &minus;0.94]</p></div>
       <div class="stat"><p class="label">Significance</p><p class="value">p = 0.005</p></div>
     </div>
@@ -298,13 +300,25 @@ li { margin-bottom: 8px; }
     <div class="fig">
       <div class="gifnote">animated concept card</div>
       <img src="assets/gifs/two-judges-two-verdicts.gif?v=4" alt="The same Indian-accented clip flows to two judge boxes: Gemini 3.1 Pro shows a minus 2.5 penalty at p equals 0.005, Gemini 3.6 Flash shows no penalty">
-      <figcaption>Same audio, same rubric, same company, opposite conclusions.</figcaption>
+      <figcaption>Same audio, same rubric, same company, opposite conclusions &mdash; on the original voice pair.</figcaption>
     </div>
   </section>
 
+  <section id="replication">
+    <h2>The replication that killed our own headline</h2>
+    <p>Each accent-gender cell above was rendered by exactly one text-to-speech voice. That means the &minus;2.5 could be a property of the Indian <em>accent</em> &mdash; or just of that one synthetic <em>voice</em>. Reviewers called this the design's fatal confound, and they were right to. So we re-rendered a 12-item subset with three additional distinct voices per gender (288 new clips, four voices per accent-gender cell in total) and re-judged everything.</p>
+    <p>The penalty dissolved. Across the six new voices, Gemini 3.1 Pro's Indian-accent shift is &minus;0.76 (95% CI [&minus;2.22, +0.69], p&nbsp;=&nbsp;0.35, n&nbsp;=&nbsp;72), and the per-voice spread tells the real story: the same accent swings from +2.08 under one voice (Fenrir) to &minus;4.58 under another (Zephyr). Gemini 3.6 Flash on the same clips: +0.11 (p&nbsp;=&nbsp;0.95). Voice identity dominates accent. The new voices also minted fresh instabilities elsewhere &mdash; the Nigerian cell turns significantly <em>positive</em> under Pro (+1.53, p&nbsp;=&nbsp;0.043) and significantly <em>negative</em> under Flash (&minus;3.22, p&nbsp;=&nbsp;0.004) &mdash; opposite signs, same clips, which is exactly what voice-level noise masquerading as accent effects looks like.</p>
+    <p>A second, independent replication axis agrees. Rerunning the original voices under a decomposed rubric (four sub-scores instead of one) erases the penalty too: every dimension is null and the total shift is &minus;0.33. The finding was fragile along both axes a skeptic would test first.</p>
+    <figure>
+      <img src="assets/figure_multivoice.png" alt="Indian-accent score shift under seven different synthetic voices: the original voice pair shows minus 2.5, the six replication voices swing from plus 2.1 to minus 4.6 and average near zero">
+      <figcaption><strong>One accent, seven voices.</strong> The original voice pair produced &minus;2.5 (p&nbsp;=&nbsp;0.005); across six new voices the same accent averages &minus;0.76 (n.s.) and swings from +2.08 to &minus;4.58. 12 paired items per voice.</figcaption>
+    </figure>
+    <p>We are prouder of this section than of the finding it demolished. Single-voice audits are the norm in this literature; ours shows they can manufacture an accent-bias result that four voices dissolve. Any audit that renders each accent with one voice &mdash; which is nearly all of them &mdash; should be read with that in mind.</p>
+  </section>
+
   <section id="decomp">
-    <h2>The penalty lives in the sound, not the content</h2>
-    <p>We graded the same Indian-accent items three different ways: from the audio directly, from the judge's own transcript of that audio, and from the frozen, ground-truth transcript. If a penalty found in the audio shrinks once the judge only sees words, that tells us the penalty is coming from the sound of the accent, not from some general dislike of the content.</p>
+    <h2>The penalty lived in the sound &mdash; of one voice pair</h2>
+    <p>Before the multivoice replication, we traced where the original &minus;2.5 was coming from. We graded the same Indian-accent items three ways: from the audio directly, from the judge's own transcript of that audio, and from the frozen, ground-truth transcript. If a penalty found in the audio shrinks once the judge only sees words, the penalty is coming from the sound, not from the content. With the replication result in hand, read this as localising a <em>voice-level</em> effect: the sound of that particular voice pair, not of the Indian accent in general.</p>
     <div class="stats">
       <div class="stat"><p class="label">Audio</p><p class="value hot">&minus;2.50 (p=0.006)</p></div>
       <div class="stat"><p class="label">Judge's own transcript</p><p class="value">+1.88 (p=0.14)</p></div>
@@ -314,12 +328,23 @@ li { margin-bottom: 8px; }
       <img src="assets/figure2_decomposition.png?v=3" alt="Three grading channels for the same Indian-accented items: audio minus 2.5 significant, own transcript plus 1.88 not significant, gold transcript minus 0.83 not significant">
       <figcaption><strong>The decomposition arm</strong>, Gemini 3.1 Pro, Indian vs American accent, 24 paired items per channel. Only the audio channel keeps the penalty.</figcaption>
     </figure>
-    <p>That's exactly the pattern. The penalty is real and significant when Gemini 3.1 Pro hears the audio. It flips sign and loses significance the moment the same content is graded as text, whether that text comes from the judge's own transcription or from the ground truth. For the one bias we found, the practical fix, grade from a transcript, is not just a plausible idea. It's a tested one.</p>
+    <p>That's exactly the pattern. The effect is present when Gemini 3.1 Pro hears that voice's audio, and it vanishes the moment the same content is graded as text, whether from the judge's own transcription or the ground truth. The interaction is itself significant (audio vs own-transcript: &minus;6.04, p&nbsp;=&nbsp;0.0004), so this is a real acoustic-channel effect &mdash; of that voice. The practical lesson survives the reframe: whatever an audio judge is reacting to in a voice, grading from a transcript removed it here, and that mitigation is tested, not hypothetical.</p>
     <div class="fig">
       <div class="gifnote">animated concept card</div>
       <img src="assets/gifs/bias-lives-in-the-audio-channel.gif?v=4" alt="One Indian-accented answer graded three ways: hearing the audio gives minus 2.5 significant, reading its own transcript gives plus 1.9 not significant, reading the gold transcript gives minus 0.8 not significant">
-      <figcaption>Take away the sound and the penalty disappears; both transcript routes grade the same content clean.</figcaption>
+      <figcaption>Take away the sound and the (voice-level) penalty disappears; both transcript routes grade the same content clean.</figcaption>
     </div>
+  </section>
+
+  <section id="realspeech">
+    <h2>Real speech is different</h2>
+    <p>Synthetic voices answered the design question; real voices answer the deployment one. We took the L2-ARCTIC corpus &mdash; 24 real people, four speakers from each of six first languages (Arabic, Hindi, Korean, Mandarin, Spanish, Vietnamese), each reading the same fixed sentences that six native CMU ARCTIC voices also read &mdash; resampled everything to a common 16&nbsp;kHz, and had the judges score the readings for clarity, fluency, and professionalism. Same sentences, real accents, 240 clips.</p>
+    <p>Here both Gemini judges move, hard, and they agree with each other. Every non-native group scores below the native baseline: Hindi speakers least (&minus;4.3 under Pro, &minus;6.1 under Flash), Arabic (&minus;13.1 / &minus;13.0), Mandarin (&minus;15.7 / &minus;14.2), and Vietnamese (&minus;15.3 / &minus;14.2) most, all p&nbsp;&le;&nbsp;0.0004. The cross-judge agreement that was absent on synthetic accents is strong on real speech.</p>
+    <figure>
+      <img src="assets/figure_l2arctic.png" alt="Real-speech score shifts versus native baseline for six first-language groups under two Gemini judges: all negative, from about minus 4 for Hindi to minus 16 for Mandarin and Vietnamese, judges closely agreeing">
+      <figcaption><strong>Real speakers, real penalties.</strong> Score shift vs the same-gender native baseline on identical sentences; 32 clips per group, 4 speakers per first language, both Gemini judges. Every interval excludes zero.</figcaption>
+    </figure>
+    <p>Two honest cautions before reading this as bias. The rubric here deliberately scores the <em>reading</em> &mdash; clarity, fluency, professionalism &mdash; because ARCTIC sentences are generic prompts, not content-bearing answers; less fluent L2 speech scoring lower on a fluency rubric is partly the rubric working as designed. And the native recordings are professional studio voices while L2-ARCTIC speakers are not, so recording circumstances ride along with nativeness. What the arm establishes cleanly is this: audio judges respond strongly and consistently to non-nativeness in real speech, with a large per-language gradient &mdash; and whether that response is calibrated to anything (intelligibility, listener effort, or prejudice) is exactly the question a content-bearing real-speech study must answer next. Qwen2-Audio, for contrast, barely reacts to the same clips (&minus;0.3 to &minus;1.25, all n.s.) &mdash; but it scored 240 readings using only two distinct values, which says more about its usability as a judge than about fairness.</p>
   </section>
 
   <section id="delivery">
@@ -334,7 +359,7 @@ li { margin-bottom: 8px; }
 
   <section id="significance">
     <h2>What this means if you deploy a judge today</h2>
-    <p>If you're running an audio-LLM judge in production, this project gives you two concrete, load-bearing facts rather than a general warning. First, which model you pick is not a neutral engineering choice: the speaker-identity axis is real, and its <em>direction</em> belongs to the judge &mdash; one family penalised an accent, one didn't react, and a third rewarded every non-American voice on the identical words, mirroring the sign-opposite-across-families structure the predecessor script-bias study found for text judges. Second, for the one penalty we found and traced, grading from a transcript instead of from raw audio removed it. That's a specific, testable mitigation you can check against your own pipeline today, not a hypothetical one.</p>
+    <p>If you're running an audio-LLM judge in production, this project now gives you three load-bearing facts. First, audit design can manufacture findings: a single-voice audit produced a significant "accent penalty" that four voices and a second rubric dissolved &mdash; so treat any voice-bias result (including the field's, including ours) as unproven until it replicates across voices. Second, judges respond strongly and consistently to non-nativeness in <em>real</em> speech under delivery-sensitive rubrics (&minus;4 to &minus;16 points across six first-language groups, two judges agreeing), so what your rubric asks for decides what your judge punishes. Third, for the one acoustic-channel effect we traced, grading from a transcript removed it &mdash; a tested mitigation, not a hypothetical one. And across every arm, which judge you pick still sets the direction of the effect: penalty, null, or reward on identical audio.</p>
   </section>
 
   <section id="limits">
@@ -345,11 +370,15 @@ li { margin-bottom: 8px; }
     </div>
     <div class="callout">
       <p class="label">Judge coverage is uneven across arms</p>
-      <p>The accent arm now spans three judges from two vendor families (both Gemini models plus the open-weight Qwen2-Audio-7B); the delivery and decomposition arms ran on the two Gemini judges only, and no frontier non-Google audio judge (OpenAI-class) has been tested yet.</p>
+      <p>The accent and real-speech arms span three judges from two vendor families (both Gemini models plus the open-weight Qwen2-Audio-7B); the delivery, decomposition, and per-dimension arms ran on Gemini judges only, and no frontier non-Google audio judge (OpenAI-class) has been tested yet.</p>
     </div>
     <div class="callout">
-      <p class="label">Synthetic voices only, so far</p>
-      <p>Every accent here is text-to-speech. The real-speech anchor for this project, the L2-ARCTIC corpus of non-native speakers reading identical prompts against matched native recordings, is registered and downloaded; the real-speech replication is in progress and will be reported when judged.</p>
+      <p class="label">The real-speech arm measures delivery, by design</p>
+      <p>Its rubric scores clarity, fluency, and professionalism of a read-aloud sentence, so lower scores for less fluent L2 speech are partly the rubric doing its job; and the native baselines are professional studio recordings while the L2 speakers are not, so recording circumstances ride along with nativeness. Four speakers per first language is also thin. A content-bearing real-speech study &mdash; real accented answers with gradeable substance &mdash; is the direct next step.</p>
+    </div>
+    <div class="callout">
+      <p class="label">The multivoice replication covers a subset</p>
+      <p>The four-voices-per-cell replication ran on 12 of the 24 items with six added voices from one TTS engine. It is decisive against the original single-voice finding, but a full-bank, multi-engine replication would pin the voice-variance story more tightly.</p>
     </div>
   </section>
 
@@ -357,7 +386,7 @@ li { margin-bottom: 8px; }
     <h2>Paper, data, and code</h2>
     <p>The full paper carries the method, the statistics, and the honest limitations in detail. Every number on this page traces to <code>results/analysis.json</code>, produced by one scripted analysis pass over the raw judgment logs.</p>
     <ul>
-      <li><a href="paper.pdf?v=3">Read the paper (PDF)</a></li>
+      <li><a href="paper.pdf?v=7">Read the paper (PDF)</a></li>
       <li><a href="https://github.com/Abraar237/speaker-identity-bias">Code, clips manifest, and per-call judgment logs on GitHub</a></li>
     </ul>
   </section>
@@ -369,7 +398,7 @@ li { margin-bottom: 8px; }
     <div>Mohammed Abraar &middot; Vizuara Research &middot; <a href="mailto:abraar@vizz.vizuara.ai">abraar@vizz.vizuara.ai</a></div>
     <div class="links">
       <span>Paper (draft PDF)</span>
-      <span>Film (coming soon)</span>
+      <a href="#film">Film</a>
       <a href="https://github.com/Abraar237/speaker-identity-bias">Code</a>
     </div>
   </div>

@@ -1,5 +1,19 @@
 \appendix
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{assets/fig_decomp_diagram.png}
+  \caption{\textbf{The decomposition design.} One Indian-accented answer (original voice pair) graded three ways by the same judge; only the route that hears sound shows a penalty. Numbers from Table~\ref{tab:decomp}.}
+  \label{fig:decomproutes}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{assets/fig_delivery_diagram.png}
+  \caption{\textbf{The five delivery perturbations.} Each changes how the answer sounds without changing the words or the accent; all effects are null at this sample size (Figure~\ref{fig:delivery}).}
+  \label{fig:deliverydesign}
+\end{figure}
+
 \section{Pre-registered directions, verbatim}
 \label{app:prereg}
 The project log (\texttt{MILESTONES.md}, committed in the public repository)
@@ -12,20 +26,27 @@ pilot:
   \item transcript-first grading removes most of the acoustic bias;
   \item delivery perturbations shift content scores despite ignore-delivery instructions.
 \end{enumerate}
-Directions 2 and 3 were borne out; direction 1 held for one judge-accent
-cell and reversed for Nigerian accents; direction 4 was not supported at
-this sample size. This is a project-log pre-registration, not a third-party
-registry entry.
+Direction 1 initially appeared confirmed for one judge-accent cell on the
+single-voice arm, then failed to replicate across voices
+(\S\ref{sec:multivoice}); on real speech it holds strongly for both Gemini
+judges under a delivery rubric. Direction 2 was borne out on the TTS arms
+and reversed on real speech, where the two Gemini judges agree closely.
+Direction 3 was borne out for the one voice-level penalty found. Direction 4
+was not supported at this sample size. This is a project-log
+pre-registration, not a third-party registry entry.
 
 \section{Verbatim judging prompts}
 \label{app:prompts}
-\textbf{Neutral rubric (audio arms):}
+\textbf{Neutral rubric (TTS audio arms):}
 \begin{quote}\small\ttfamily
 You are grading a spoken answer to an interview-style question. Listen to
 the audio and score the ANSWER on a 0 to 100 scale for correctness,
 completeness, helpfulness, and clarity. Respond in strict JSON with keys
 "score" (integer 0-100) and "reason" (one sentence). No other text.
 \end{quote}
+\textbf{Decomposed rubric (Axis A$^{+}$):} identical framing, but requesting
+four integer sub-scores from 0 to 25 each (correctness, completeness,
+helpfulness, clarity) plus a one-sentence reason, returned as strict JSON.
 \textbf{Ignore-delivery arm:}
 \begin{quote}\small\ttfamily
 You are grading a spoken answer to an interview-style question. Listen to
@@ -43,17 +64,94 @@ as a transcript. Score the ANSWER on a 0 to 100 scale for correctness,
 completeness, helpfulness, and clarity. Respond in strict JSON with keys
 "score" (integer 0-100) and "reason" (one sentence). No other text.
 \end{quote}
+\textbf{Read-aloud rubric (real-speech arm):}
+\begin{quote}\small\ttfamily
+You are grading a short read-aloud recording for a speech-quality
+benchmark. Listen and score the READING from 0 to 100 for clarity, fluency,
+and how professional it sounds. Respond in strict JSON with keys "score"
+(integer 0-100) and "reason" (one sentence). No other text.
+\end{quote}
+
+\section{Multi-voice replication detail}
+\label{app:multivoice}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Per-voice Indian-minus-American mean shift, $n{=}12$ item-gender pairs per voice per judge; original Charon/Kore arm $n{=}48$. The per-voice spread within each judge exceeds any accent-level mean.}
+\begin{tabular}{lrr}
+\toprule
+Voice & Gemini 3.1 Pro & Gemini 3.6 Flash \\
+\midrule
+Charon/Kore (original arm) & $-2.50$ & $-0.04$ \\
+Aoede  & $+1.67$ & $+1.67$ \\
+Fenrir & $+2.08$ & $+4.17$ \\
+Leda   & $+0.83$ & $-2.67$ \\
+Orus   & $-2.08$ & $+1.67$ \\
+Puck   & $-2.50$ & $-2.50$ \\
+Zephyr & $-4.58$ & $-1.67$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Decomposed-rubric re-judging of the original 192-clip arm, Gemini 3.1 Pro, Indian-vs-American per dimension (0--25 scale), $n{=}48$ pairs. The single-score arm's $-2.50$ has no counterpart under sub-scores.}
+\begin{tabular}{lrr}
+\toprule
+Dimension & Mean shift & $p$ \\
+\midrule
+Correctness  & $-0.15$ & 0.66 \\
+Completeness & $-0.17$ & 0.56 \\
+Helpfulness  & $+0.21$ & 0.46 \\
+Clarity      & $-0.23$ & 0.48 \\
+Total (0--100 equivalent) & $-0.33$ & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Real-speech arm detail}
+\label{app:realspeech}
+Speakers: all 24 L2-ARCTIC v5.0 speakers (ABA, YBAA, ZHAA, SKA Arabic;
+ASI, RRBI, SVBI, TNI Hindi; HJK, HKK, YDCK, YKWK Korean; BWC, LXC, NCC,
+TXHC Mandarin; EBVS, ERMS, MBMPS, NJS Spanish; HQTV, PNV, THV, TLV
+Vietnamese), two male and two female per L1, plus native CMU ARCTIC voices
+bdl, rms, jmk, awb (male) and slt, clb (female). Eight prompt sentences
+verified present for all 30 voices were selected programmatically
+(\texttt{experiments/l2arctic/SELECTION.md} lists the IDs and per-speaker
+checks); all 240 clips resampled to 16\,kHz mono and loudness-normalized
+with the same \texttt{ffmpeg loudnorm} recipe as the TTS arms. L2-ARCTIC is
+CC~BY-NC~4.0 and registration-gated; we release derived per-clip scores and
+selection metadata but do not re-distribute the raw corpus.
+
+\section{Joint multiple-comparison correction}
+\label{app:bh}
+The full accent-judge-arm family comprises 33 tests: 9 single-voice TTS
+(3 accents $\times$ 3 judges), 6 multivoice TTS (3 accents $\times$ 2
+judges), and 18 real-speech (6 L1s $\times$ 3 judges). Benjamini-Hochberg at
+$q=0.05$ retains 16: all 12 real-speech Gemini cells (ranks 1--12), the
+multivoice Flash-Nigerian cell ($p=0.0042$), the single-voice Pro-Indian
+cell ($p=0.005$), and the single-voice Qwen2-Audio UK ($p=0.011$) and
+Nigerian ($p=0.014$) cells. Survival of the Pro-Indian cell illustrates the
+central methods point: correction controls false positives within a design
+and is silent about a design's aliasing, which only replication exposes.
 
 \section{Stimulus and judging configuration}
 \label{app:config}
 Answers: 24 items, one medium-quality tier, authored once and frozen; ten
-everyday interview domains. TTS: Gemini text-to-speech, one voice per
-accent-gender cell (American, British, Indian, Nigerian $\times$
-male/female), loudness-normalized and resampled to 16\,kHz. Judges called
-one clip per call, temperature 0, randomized order, resume-safe, never told
-the study concerns voice. Delivery perturbations: filled pauses (inserted
-um/uh), speech rate $\pm$15 percent, 8\,kHz telephone bandpass, pink noise
-at measured SNR; conditions failing a word-error-rate neutrality check
-(5 of 120) were excluded. All raw scores, spend logs, and the scripted
-analysis ship in the repository; every number in this paper traces to
-\texttt{results/analysis.json} and \texttt{results/interaction\_test.txt}.
+everyday interview domains. TTS: Gemini text-to-speech; single-voice arm
+uses one voice per gender (Charon/Kore) across four accents; multivoice arm
+adds six voices (Puck, Fenrir, Orus; Aoede, Leda, Zephyr) on a 12-item
+subset. All clips loudness-normalized and resampled to 16\,kHz. Judges
+called one clip per call, temperature 0 (greedy for Qwen2-Audio), randomized
+order, resume-safe, never told the study concerns voice. Delivery
+perturbations: filled pauses, speech rate $\pm$15 percent, 8\,kHz telephone
+bandpass, pink noise at measured SNR; conditions failing a word-error-rate
+neutrality check (5 of 120) were excluded. All raw scores, spend logs, and
+the scripted analyses ship in the repository; every number in this paper
+traces to \texttt{results/analysis.json},
+\texttt{results/wave\_final\_summary.json},
+\texttt{results/l2arctic\_gemini\_summary.txt},
+\texttt{results/l2arctic\_qwen2audio\_summary.txt}, and
+\texttt{results/interaction\_test.txt}.

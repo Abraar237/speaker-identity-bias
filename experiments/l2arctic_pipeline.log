@@ -2,3 +2,6 @@ Fri Sep  4 08:37:51 IST 2026 waiting for corpus download to finish...
 Fri Sep  4 09:28:12 IST 2026 zip complete and valid (7.0G). extracting speaker zips...
 Fri Sep  4 09:29:33 IST 2026 prep: selecting + resampling 240 clips
 Fri Sep  4 09:29:54 IST 2026 judging with Qwen2-Audio on Modal
+Fri Sep  4 09:41:45 IST 2026 analysis
+Fri Sep  4 09:41:46 IST 2026 arming wave-2 gemini driver
+Fri Sep  4 09:41:46 IST 2026 L2ARCTIC PIPELINE ARMED/COMPLETE
