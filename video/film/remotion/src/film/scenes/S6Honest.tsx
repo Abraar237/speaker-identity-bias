@@ -84,8 +84,8 @@ export const S6Honest: React.FC<{audioStart: number}> = ({audioStart}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = (sec: number) => audioStart + secToFrame(sec);
-  const start = t(wordTime(5, "five") || 2.0);
-  const ngAt = t(wordTime(5, "nigerian") || 16.0);
+  const start = t(wordTime(7, "five") || 2.0);
+  const ngAt = t(wordTime(7, "nigerian") || 16.0);
   const ng = spring({frame: frame - ngAt, fps, config: {damping: 15, stiffness: 90}});
   const ngShown = useCount(ngAt + 6, 1.0, 30);
   const ngPunch = usePunch(ngAt + 40, 0.14);

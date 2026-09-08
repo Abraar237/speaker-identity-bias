@@ -1,0 +1,86 @@
+{
+ "title": "Does the Voice Change the Grade? A Causal Audit of Voice Effects in Audio-LLM Judges, with a Cautionary Replication",
+ "paper_type": "analysis / empirical audit (methods-cautionary, largely negative-result)",
+ "summary": "The paper asks whether an audio-input LLM acting as a grader changes its content score when the speaker's voice changes but the words are held fixed. It runs three arms: a single-voice TTS audit (24 authored interview answers x 4 accents x 2 genders = 192 clips, three judges), a replication that re-renders a 12-item subset with six additional TTS voices plus a re-judging of the original clips under a decomposed four-dimension rubric, and a real-speech arm pairing 24 L2-ARCTIC non-native speakers against native CMU ARCTIC voices under a read-aloud rubric. The single-voice arm found a significant -2.50 point Indian-accent penalty under Gemini 3.1 Pro, localized to the acoustic channel by a grading-mode interaction test (-6.04 versus own-transcript grading, p=4e-4), but that penalty did not reappear across six other voices (-0.76, p=0.35) nor under the decomposed rubric (all dimensions n.s.). On real recordings both Gemini judges penalize all six non-native first languages by -4.3 to -15.7 points with close cross-judge agreement, while the open-weight Qwen2-Audio-7B is flat there and reverses sign on the TTS arm. All 33 accent-judge-arm tests are reported under a joint Benjamini-Hochberg correction, of which 16 survive.",
+ "central_claim": "What an audio-LLM judge appears to measure is a joint property of the voice sample, the rubric, and the judge family, so a single-voice/single-rubric audit -- the norm in this literature -- can manufacture a clean, significant, multiple-comparison-surviving 'accent bias' that dissolves under voice and rubric replication, even though production judges do respond strongly and consistently to real non-native speech under a delivery rubric.",
+ "strengths": [
+  "The three-arm escalation (single voice -> seven voices -> real speech) is the right design for the question, and the paper actually ran the replication that would have killed its own headline rather than shipping the -2.50 result alone (Table 1 vs Table 2, Figure 3).",
+  "The grading-mode decomposition is a genuine causal localization, not a correlational gesture: the same clip graded end-to-end audio (-2.50), from the judge's own transcript (+1.88), and from a frozen gold transcript (-0.83), with an explicit interaction test on the 24 common pairs (-6.04, CI [-8.5, -3.5], p=4e-4). This is stronger inference than most bias audits in this space attempt.",
+  "Statistical hygiene is far above the ICLR norm: bootstrap 95% CIs on every reported cell, 20,000-permutation sign-flip tests, paired d_z, and a single joint Benjamini-Hochberg family across all 33 accent-judge-arm tests (Appendix E) rather than per-table correction. Only ~6% of accepted ICLR papers report significance tests at all.",
+  "Judge diversity is used substantively rather than decoratively: Qwen2-Audio-7B reverses sign on the TTS arm (UK +2.92, Indian +1.98, Nigerian +2.29, all p<0.05) while being flat on the real-speech arm, which is the paper's cleanest evidence that 'audio judge bias' is not a single portable quantity.",
+  "Nulls are labelled as nulls. The delivery axis (Figure 6) is explicitly reported as inconclusive at n=21-24 rather than as evidence of no effect, and the Limitations section names the rubric mismatch across arms and the professional-vs-amateur recording confound without being asked.",
+  "Directional predictions were logged before data collection (Appendix A), and the paper reports which of the four were borne out, reversed, or unsupported -- including the one that reversed."
+ ],
+ "weaknesses": [
+  {
+   "text": "The largest and most quotable result in the paper -- real-speech penalties up to -15.7 points -- is confounded in at least two ways the paper names but never tests. First, the rubric for that arm scores clarity, fluency, and 'how professional it sounds,' so a lower score for accented reading may be the rubric working correctly rather than any bias; there is no human-listener anchor on the same clips to say whether -15.7 for Mandarin is miscalibrated or accurate. Second, CMU ARCTIC natives are studio recordings by experienced voice talent and L2-ARCTIC speakers are not, so recording quality and speaker professionalism are perfectly correlated with nativeness. The paper's single robust finding therefore cannot distinguish 'judge penalizes non-native speech' from 'judge correctly rates lower-fidelity readings by non-professionals lower.'",
+   "severity": "fatal"
+  },
+  {
+   "text": "The headline negative claim -- 'the voice, not the accent, moves the score' -- is a null result plus a descriptive spread, presented as a positive conclusion. The multivoice Indian shift is -0.76 with CI [-2.22, +0.69] at n=72; no equivalence test (TOST) or power analysis is reported anywhere, so the paper cannot distinguish 'no accent effect' from 'underpowered to detect a 2-point effect.' The 'per-voice swing dwarfs the accent effect' inference rests on 7 voices x 12 items with no random-effects model: voice and item are treated as fixed via cell-mean paired tests, which is precisely the analysis error (stimulus-as-fixed-effect, Clark 1973) whose consequence the paper is otherwise trying to demonstrate. A crossed voice-by-item mixed model would test the variance-components claim directly and is the natural analysis for this design.",
+   "severity": "major"
+  },
+  {
+   "text": "There is a live alternative explanation for the failed replication that the paper does not rule out: accent is delivered as a natural-language style instruction to a TTS engine, and the only manipulation check is 8 clips classified by a Gemini judge on Gemini-generated audio (same-family circularity, acknowledged in Limitations). If the six additional prebuilt voices render the accent instruction weakly or inconsistently, the multivoice null reflects treatment non-delivery, not absence of an accent effect -- which would invert the paper's central methodological lesson. An independent accent-strength measure (human raters, or an accent-ID classifier from a different vendor) on all 288 multivoice clips is missing.",
+   "severity": "major"
+  },
+  {
+   "text": "The three arms use different rubrics by design (content rubric for TTS arms, read-aloud delivery rubric for real speech), which makes the paper's central narrative arc non-comparable. 'The TTS accent effect dissolved but real speech shows -15 points' juxtaposes two different measurements of two different constructs on two different corpora; neither arm is a control for the other. The paper flags this in Limitations but the abstract, introduction, and conclusion all present it as a single escalating story.",
+   "severity": "major"
+  },
+  {
+   "text": "Scale is well below what an ICLR analysis paper is normally expected to carry: 24 authored items, a 12-item subset for the pivotal replication, n=48/72/32 paired comparisons per cell, one judge call per clip (no repeat sampling, so judge test-retest reliability is never measured), and a stated $20 compute budget. Judge coverage is effectively two vendor families -- two Gemini checkpoints that plausibly share a backbone lineage, plus one 7B open-weight model whose four-value output granularity the paper itself says limits what its nulls can show. No GPT-4o-audio, Qwen2.5-Omni, or Phi-4-multimodal; the claim that effects are 'judge-family dependent' rests on a very thin sample of families.",
+   "severity": "major"
+  },
+  {
+   "text": "The methodological lesson -- that fixing one stimulus exemplar per condition manufactures false positives that survive multiple-comparison correction -- is a rediscovery of a long-standing point in psycholinguistics and experimental design (language-as-fixed-effect fallacy; item-level random effects). The paper neither cites that literature nor connects to it, which both overstates the novelty of the lesson and forgoes the standard remedy (mixed models) that would have made the replication argument quantitative rather than illustrative.",
+   "severity": "major"
+  },
+  {
+   "text": "The gold-transcript condition is a built-in noise estimate that is under-used: since the frozen gold transcript is identical text across accents, the true shift is exactly zero by construction, yet the measured shift is -0.83. That is a ~0.8-point judge noise floor at temperature zero, sitting uncomfortably close to the -2.50 headline effect and to the entire per-dimension decomposed-rubric range (-0.23 to +0.21). The paper calls this a 'sanity check' rather than quantifying the noise floor and comparing every reported effect against it.",
+   "severity": "major"
+  },
+  {
+   "text": "Contribution 5 (the delivery-perturbation battery) is entirely null, self-described as underpowered and inconclusive, and produces no usable conclusion; listing it as one of five contributions inflates the contribution count. Similarly, the pre-registration is a self-committed MILESTONES.md in the authors' own repository rather than a third-party registry (stated honestly in Appendix A), which limits how much evidentiary weight the 'pre-registered' framing can bear.",
+   "severity": "minor"
+  },
+  {
+   "text": "Reproducibility is limited by dependence on proprietary preview endpoints (gemini-3.1-pro-preview, gemini-3.6-flash, gemini-3.1-flash-tts-preview) that will be deprecated, and the real-speech corpus is registration-gated and not redistributable, so only derived per-clip scores are released. The paper is a study of specific dated checkpoints; nothing here can be re-run in a year.",
+   "severity": "minor"
+  },
+  {
+   "text": "The 24-item answer bank was regenerated after a first calibration produced ceiling scores, i.e. the stimulus set was tuned against a real audio judge until it gave headroom. This is reasonable practice and reported openly, but it means the item pool is selected for judge sensitivity on Gemini 3.6 Flash, which is one of the judges under test.",
+   "severity": "minor"
+  }
+ ],
+ "missing_experiment": "Human listener ratings on the exact same L2-ARCTIC and CMU ARCTIC clips under the exact same read-aloud rubric, ideally with a recording-quality-matched native control (e.g. non-professional native speakers recorded under L2-ARCTIC conditions). Without it, the paper's one large, replicated, cross-judge-consistent effect cannot be called bias at all: there is no reference point that separates judge miscalibration from correct perception of genuinely less fluent or lower-fidelity readings. The paper's own conclusion names this as 'the natural next experiment,' which is an accurate description of why the current version is incomplete rather than a defence.",
+ "format_audit": {
+  "ablation_table": "present",
+  "teaser_figure": "present",
+  "error_bars": "present",
+  "pages": 14,
+  "verdict_vs_norms": "Compliant with the ICLR 9-page main-text limit (9 pages body, references to p.11, appendices A-F to p.14), but thin against accepted-paper norms: 14 total pages versus a 25-page median, 8 figures versus a mean of 11.5, 6 tables versus 8.7, and a 5-page appendix where accepted papers typically carry 10-15. On the dimensions ICLR papers usually skip, this one is unusually strong -- a genuine page-1 teaser (only ~11% of accepted papers have one), bootstrap CIs on every estimate (~40% have error bars), and formal significance testing with joint BH correction (~6%). Figure polish is above average: Figures 2, 3, and 5 carry in-panel interpretive annotations rather than bare legends. The gap is volume of evidence, not presentation."
+ },
+ "venue_fit": {
+  "verdict": "weak",
+  "reasoning": "Audio-LLM evaluation and LLM-judge bias sit inside ICLR's expanded remit -- LLM safety/robustness and vision-language work together make up ~5% of the latest cohort -- but ICLR analysis papers that get in usually carry either scale (many models, many datasets, many seeds) or a mechanistic result about representations; this has 24 items, three judges, and a behavioural finding whose headline is a non-replication. The essayistic register ('the next subsection is why we no longer tell it') and the audit-methodology framing read closer to an Interspeech, *ACL, or FAccT submission than to a representation-learning venue. As an ICLR workshop paper or a short empirical paper at a speech venue this would be well placed; as a main-track ICLR submission the contribution-to-evidence ratio is below bar."
+ },
+ "scores": {
+  "rigor": 4,
+  "novelty": 3,
+  "clarity_impact": 5,
+  "confidence_1to5": 4
+ },
+ "avg_score": 4.0,
+ "accept_probability_pct": 8,
+ "calibration_note": "Average 4.0 places this at the bottom of the 4.0-4.5 band, where 7.7% of 4,310 real ICLR submissions were accepted; no venue adjustment applies since ICLR is the target, though at AAAI/IJCAI this would shift a band lower to roughly 3-4%. Borderline noise on a three-reviewer draw is real -- the rigor-focused reviewer could plausibly land at 5 on the strength of the pre-registration and joint BH correction, which would push the average to 4.3 and the estimate to ~10% -- but the confounded real-speech arm and the missing mixed-effects analysis are the kind of objections that survive rebuttal, so the mode of the outcome distribution is reject.",
+ "what_would_move_to_accept": [
+  "Collect human listener ratings (20-30 raters, same read-aloud rubric) on the 240 real-speech clips and report judge-versus-human residuals per L1. This converts the -4.3 to -15.7 penalties from 'the judge responds to accent' into a calibrated over- or under-penalization claim, which is the actual contribution the paper wants. Effort: 2-3 weeks and a few thousand dollars of crowdsourcing; this is the single highest-value addition and on its own would move rigor from 4 to 6.",
+  "Re-analyze every arm with crossed random effects for item and voice (and speaker for the real-speech arm), and report TOST equivalence bounds for the three headline nulls (multivoice accent shift, decomposed rubric, delivery perturbations). This makes 'the voice, not the accent, moves the score' a tested variance-components claim rather than an eyeballed spread across seven points, and turns the nulls into evidence instead of absences. Effort: about a week of analysis on existing logs, no new data.",
+  "Add a native-speaker control matched on recording conditions and speaker professionalism -- non-professional native readers of the same ARCTIC sentences -- to break the nativeness/studio-quality confound. Effort: 1-2 weeks of recording or sourcing from an existing amateur-native corpus; without this the real-speech arm stays uninterpretable.",
+  "Verify accent delivery in the multivoice arm with an out-of-family measure (independent accent-ID classifier plus a small human check across all six added voices). If accent strength is comparable across voices, the replication failure becomes a solid finding; if it is not, the paper's central lesson needs restating. Effort: a few days; this is cheap insurance on the paper's main claim.",
+  "Add at least two more judge families (GPT-4o-audio and Qwen2.5-Omni or Phi-4-multimodal) and repeat-sample each clip 3-5 times to report judge test-retest reliability alongside the effect sizes. Four families would make 'judge-family dependence' a supported generalization rather than an observation about three checkpoints. Effort: 1-2 weeks and modest API cost.",
+  "Rebuild the real-speech arm on a content-bearing corpus so the same content rubric can be used across all three arms, making the escalation narrative an actual comparison. Effort: substantial (new corpus or new elicitation), but it is what would let the abstract's story hold as written.",
+  "Situate the methodological lesson in the existing fixed-effect-fallacy literature and reframe contribution 2 as a quantified demonstration in a new modality rather than a new insight; drop or relegate the null delivery axis from the contribution list. Effort: a day of writing; improves the novelty score's honesty rather than its magnitude."
+ ]
+}

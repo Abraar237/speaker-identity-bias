@@ -1,0 +1,1 @@
+We also changed one more thing: the rubric. Instead of one overall score, we asked the original judge for four separate scores: correctness, completeness, helpfulness, and clarity. On the very same voices that produced the penalty, it vanished. Every dimension came back flat.

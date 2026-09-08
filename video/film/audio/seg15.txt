@@ -1,0 +1,1 @@
+Before we collected any data, we wrote our prediction down. So we are reporting exactly what happened: our own headline did not survive our own replication. That is not a failure. That is the method working. And it carries a warning for this whole field: an audit built on a single voice and a single rubric can manufacture an accent bias that is not there.

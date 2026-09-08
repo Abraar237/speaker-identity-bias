@@ -37,9 +37,9 @@ const MiniBar: React.FC<{label: string; value: number; color: string; at: number
 export const S10Interaction: React.FC<{audioStart: number}> = ({audioStart}) => {
   const frame = useCurrentFrame();
   const t = (sec: number) => audioStart + secToFrame(sec);
-  const quoteAt = t(wordTime(8, "significant", 3) || 9);
-  const growAt = t(wordTime(8, "tested") || 13);
-  const braceAt = t(wordTime(8, "larger") || 16);
+  const quoteAt = t(wordTime(5, "significant", 3) || 9);
+  const growAt = t(wordTime(5, "tested") || 13);
+  const braceAt = t(wordTime(5, "larger") || 16);
   const braceO = interpolate(frame, [braceAt, braceAt + 18], [0, 1], {extrapolateLeft: "clamp", extrapolateRight: "clamp"});
   const gapShown = useCount(braceAt + 4, 6.04, 44);
   const punch = usePunch(braceAt + 50, 0.18);

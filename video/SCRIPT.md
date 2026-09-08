@@ -130,3 +130,59 @@ Scene map: S8ThirdFamily (flat up-bars echoing the site GIFs), S9ThreeDirections
 24-real-speakers tiles, pulsing "running now"), then the original end card.
 The real-speech L2-ARCTIC results scene was SKIPPED: results file not present
 at script time.
+
+## Reversal cut (v4, ~5:14) — 2026-09-05
+
+Scene order: segs 1-5 kept (hook, eight voices, -2.5 verdict, two judges,
+decomposition), then kept-but-reordered seg9 (interaction test), seg7 (Qwen
+third family, TTS arm), seg6 (delivery nulls + Nigerian), then five NEW
+segments. Old seg8 (three directions), seg10 (nine tests), seg11 (in
+progress), seg12 (old closing) retired — superseded by the reversal story.
+
+**seg13 — the replication pivot (32.1s).** "Then we did the experiment every
+careful reviewer asks for. Every accent you heard so far came from one
+synthetic voice. So we re-rendered the whole study with six more voices, and
+asked the same judges again. The penalty dissolved. Across the new voices,
+the Indian shift is small and indistinguishable from zero. And voice by
+voice, the story scatters: one voice is up two points, another is down four
+and a half. The voice, not the accent, moves the score."
+Visual: six per-voice bars grow one by one (Fenrir +2.08 ... Zephyr -4.58),
+overall -0.76 p=0.35 line, thesis line.
+
+**seg14 — the rubric vanishing (20.3s).** "We also changed one more thing:
+the rubric. Instead of one overall score, we asked the original judge for
+four separate scores: correctness, completeness, helpfulness, and clarity.
+On the very same voices that produced the penalty, it vanished. Every
+dimension came back flat."
+Visual: four dimension cards cascade in, values settle near zero, green
+flat-lines draw.
+
+**seg15 — the honest reversal (22.0s).** "Before we collected any data, we
+wrote our prediction down. So we are reporting exactly what happened: our
+own headline did not survive our own replication. That is not a failure.
+That is the method working. And it carries a warning for this whole field:
+an audit built on a single voice and a single rubric can manufacture an
+accent bias that is not there."
+Visual: the -2.5 p=0.005 stamp gets struck through; "method working" beat;
+warning line word-reveals. THE THESIS SCENE.
+
+**seg16 — real speech (38.5s).** "Real speech is a different story. We took
+recordings of twenty-four real people, from six language backgrounds,
+reading the same sentences as native speakers. Under a read-aloud rubric,
+both Gemini judges penalised every single group: Hindi speakers by four to
+six points, Arabic by about thirteen, Mandarin and Vietnamese by around
+fifteen. Two judges, in close agreement. The open-weight judge barely
+reacted at all. Whether that penalty is fair grading of fluency, or
+something more, is exactly the question this rubric cannot settle. We say so
+in the paper."
+Visual: per-L1 double-bar ladder (Pro hot / Flash slate) animates row by
+row, Hindi shortest to Mandarin longest; agreement + caveat lines.
+
+**seg17 — closing checklist (26.7s).** "So here is what to demand of any
+audio judge audit, including ours. More than one voice per accent. More than
+one rubric. Real human speech, not just synthetic. And a judge from more
+than one family. If you are using an AI to grade a human voice today,
+grading from a transcript is still the one tested fix. Because a score
+should measure what somebody said. Never who they sound like."
+Visual: four checkmarks draw in on spoken beats; transcript-fix line; end
+card (Vizuara Research, title, repo URL).

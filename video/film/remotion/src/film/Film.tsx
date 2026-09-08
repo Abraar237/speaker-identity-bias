@@ -1,6 +1,6 @@
 import React from "react";
 import {AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame} from "remotion";
-import {SEGS, NARRATION_WINDOWS, TOTAL_FRAMES} from "./timeline";
+import {SEGS, NARRATION_WINDOWS, TOTAL_FRAMES, AUDIO_IDS} from "./timeline";
 import {S1Hook} from "./scenes/S1Hook";
 import {S2EightVoices} from "./scenes/S2EightVoices";
 import {S3Verdict} from "./scenes/S3Verdict";
@@ -13,6 +13,11 @@ import {S9ThreeDirections} from "./scenes/S9ThreeDirections";
 import {S10Interaction} from "./scenes/S10Interaction";
 import {S11NineTests} from "./scenes/S11NineTests";
 import {S12InProgress} from "./scenes/S12InProgress";
+import {S13Replication} from "./scenes/S13Replication";
+import {S14RubricVanish} from "./scenes/S14RubricVanish";
+import {S15Reversal} from "./scenes/S15Reversal";
+import {S16RealSpeech} from "./scenes/S16RealSpeech";
+import {S17Closing} from "./scenes/S17Closing";
 
 const musicVolume = (frame: number): number => {
   let v = 0.3;
@@ -30,7 +35,8 @@ const musicVolume = (frame: number): number => {
   return v * fadeIn * fadeOut;
 };
 
-const SCENES = [S1Hook, S2EightVoices, S3Verdict, S4TwoJudges, S5Decomp, S6Honest, S8ThirdFamily, S9ThreeDirections, S10Interaction, S11NineTests, S12InProgress, S7End];
+// v4 reversal cut: order matches timeline AUDIO_IDS [1,2,3,4,5,9,7,6,13,14,15,16,17]
+const SCENES = [S1Hook, S2EightVoices, S3Verdict, S4TwoJudges, S5Decomp, S10Interaction, S8ThirdFamily, S6Honest, S13Replication, S14RubricVanish, S15Reversal, S16RealSpeech, S17Closing];
 
 export const Film: React.FC = () => {
   const frame = useCurrentFrame();
@@ -43,7 +49,7 @@ export const Film: React.FC = () => {
           <Sequence key={i} from={seg.start} durationInFrames={seg.frames}>
             <Scene audioStart={seg.audioStart} durSec={seg.dur} />
             <Sequence from={seg.audioStart}>
-              <Audio src={staticFile(`audio/seg${i + 1}.wav`)} />
+              <Audio src={staticFile(`audio/seg${AUDIO_IDS[i]}.wav`)} />
             </Sequence>
           </Sequence>
         );
